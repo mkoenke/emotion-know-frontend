@@ -3,10 +3,22 @@ import { Parallax, ParallaxBanner } from "react-scroll-parallax"
 import Background1 from "../assets/images/background1mod5.jpeg"
 import Background2 from "../assets/images/background2mod5.jpeg"
 import Background3 from "../assets/images/background3mod5.jpeg"
+import SignUpModal from "../Components/SignUpModal"
 
 class Homepage extends React.Component {
+  state = {
+    modalView: false,
+  }
+  handleSignUpClick = () => {
+    this.setState({ modalView: !this.state.modalView })
+  }
+  setViewModalStateToFalse = () => {
+    if (this.state.modalView) {
+      this.setState({ modalView: false })
+    }
+  }
   render() {
-    const copy = "EmotionKnow".split("")
+    console.log(this.state)
     return (
       <>
         <ParallaxBanner
@@ -35,12 +47,17 @@ class Homepage extends React.Component {
           style={{ height: "500px" }}
         ></ParallaxBanner>
         <div className="root">
-          <span className={`copy h1`}>
+          <span className={`copy h1`} onClick={this.handleSignUpClick}>
             <Parallax x={[80, -80]} className="letter">
               Sign Up!
             </Parallax>
           </span>
         </div>
+        {this.state.modalView && (
+          <SignUpModal
+            setViewModalStateToFalse={this.setViewModalStateToFalse}
+          />
+        )}
         <ParallaxBanner
           layers={[
             {
