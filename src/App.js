@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from "react-router-dom"
+import "semantic-ui-css/semantic.min.css"
+import "./App.css"
+import NavBar from "./Components/NavBar"
+// import CameraPage from "./Containers/CameraPage"
+import Homepage from "./Containers/Homepage"
+
+// import ReportGalleryPage from "./Containers/ReportGalleryPage"
+// import VideoGalleryPage from "./Containers/VideoGalleryPage"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <NavBar />
+      <Switch>
+        {/* <Route path="/webcam" component={CameraPage} />
+        <Route path="/videos" component={VideoGalleryPage} />
+        <Route path="/reports" component={ReportGalleryPage} /> */}
+        <Route path="/" component={Homepage} />
+      </Switch>
+    </>
+  )
 }
 
-export default App;
+export default App
