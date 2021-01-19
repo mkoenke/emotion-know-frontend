@@ -1,5 +1,7 @@
 import React from "react"
+import { connect } from "react-redux"
 import { Button, Form, Modal } from "semantic-ui-react"
+import { setChild } from "../Redux/actions"
 
 class SignUpModal extends React.Component {
   state = {
@@ -23,7 +25,7 @@ class SignUpModal extends React.Component {
     let parentData = {
       email: this.state.email,
     }
-    fetch("https://localhost3000/parents", {
+    fetch("http://localhost:3000/parents", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +41,8 @@ class SignUpModal extends React.Component {
           image: this.state.image,
           parent_id: returnedParentObj.id,
         }
-        fetch("https://localhost3000/children", {
+        console.log("child data:", childData)
+        fetch("http://localhost:3000/children", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -50,6 +53,9 @@ class SignUpModal extends React.Component {
           .then((response) => response.json())
           .then((data) => {
             console.log("Success:", data)
+            localStorage.setItem("token", data.jwt)
+            console.log("props: ", this.props)
+            this.props.dispatchChild(data.child)
             this.props.setViewModalStateToFalse()
           })
           .catch((error) => {
@@ -62,7 +68,7 @@ class SignUpModal extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log("state:", this.state)
     return (
       <Modal
         onClose={() => this.setState({ isOpen: false })}
@@ -122,4 +128,10 @@ class SignUpModal extends React.Component {
   }
 }
 
-export default SignUpModal
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatchChild: (child) => dispatch(setChild(child)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SignUpModal)

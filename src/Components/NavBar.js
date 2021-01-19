@@ -3,10 +3,13 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import { Menu } from "semantic-ui-react"
 import LoginModal from "./LoginModal"
-import SideNav from "./SideNav"
 
 class NavBar extends React.Component {
-  state = { modalView: false, sideNavView: false, activeItem: "home" }
+  state = {
+    modalView: false,
+    // sideNavView: false,
+    activeItem: "home",
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -14,9 +17,9 @@ class NavBar extends React.Component {
     console.log("Login clicked")
     this.setState({ modalView: !this.state.modalView })
   }
-  toggleSideNav = () => {
-    this.setState({ sideNavView: true })
-  }
+  // toggleSideNav = () => {
+  //   this.setState({ sideNavView: true })
+  // }
 
   render() {
     const { activeItem } = this.state
@@ -28,7 +31,7 @@ class NavBar extends React.Component {
           secondary
           style={{ backgroundColor: "rgb(171, 218, 225)" }}
         >
-          <NavLink to="/">
+          {/* <NavLink to="/">
             <Menu.Item
               name="menu"
               active={activeItem === "menu"}
@@ -37,7 +40,7 @@ class NavBar extends React.Component {
               className="navbar"
             />
             {this.state.sideNavView && <SideNav />}
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/">
             <Menu.Item
               name="home"
