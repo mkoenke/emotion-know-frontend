@@ -1,7 +1,8 @@
 import React from "react"
-// import { connect } from "react-redux"
+import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { Menu } from "semantic-ui-react"
+import { logout } from "../Redux/actions"
 import LoginModal from "./LoginModal"
 
 class NavBar extends React.Component {
@@ -20,8 +21,13 @@ class NavBar extends React.Component {
   // toggleSideNav = () => {
   //   this.setState({ sideNavView: true })
   // }
+  handleLogOutClick = () => {
+    localStorage.removeItem("token")
+    this.props.logout()
+  }
 
   render() {
+    console.log("Child in nav bar:", this.props.child)
     const { activeItem } = this.state
 
     return (
@@ -61,13 +67,15 @@ class NavBar extends React.Component {
             {this.state.modalView && (
               <LoginModal handleLoginClick={this.handleLoginClick} />
             )}
-
-            <Menu.Item
-              name="logout"
-              active={activeItem === "logout"}
-              onClick={this.handleItemClick}
-              className="navbar"
-            />
+            {this.props.child ? (
+              <Menu.Item
+                name="logout"
+                active={activeItem === "logout"}
+                onClick={this.handleItemClick}
+                onClick={this.handleLogOutClick}
+                className="navbar"
+              />
+            ) : null}
           </Menu.Menu>
         </Menu>
       </div>
@@ -75,4 +83,15 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar
+function mapStateToProps(state) {
+  return {
+    child: state.child,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => dispatch(logout()),
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

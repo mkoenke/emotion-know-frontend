@@ -1,4 +1,4 @@
-import { SET_CHILD } from "./actionTypes"
+import { LOGOUT, SET_CHILD } from "./actionTypes"
 
 export function setChild(child) {
   return { type: SET_CHILD, payload: child }
@@ -21,4 +21,8 @@ export function login(child) {
         dispatch(setChild(data.child))
       })
   }
+}
+
+export function logout() {
+  return { type: LOGOUT }
 }
