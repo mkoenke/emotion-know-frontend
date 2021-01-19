@@ -69,6 +69,7 @@ class SignUpModal extends React.Component {
         onOpen={() => this.setState({ isOpen: true })}
         open={this.state.isOpen}
         closeOnDimmerClick={false}
+        dimmer="blurring"
       >
         <Modal.Header>Welcome</Modal.Header>
         <Modal.Content>

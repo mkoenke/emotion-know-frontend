@@ -20,7 +20,7 @@ class Homepage extends React.Component {
   render() {
     console.log(this.state)
     return (
-      <>
+      <div className="pusher">
         <ParallaxBanner
           layers={[
             {
@@ -67,7 +67,7 @@ class Homepage extends React.Component {
           ]}
           style={{ height: "500px" }}
         ></ParallaxBanner>
-      </>
+      </div>
     )
   }
 }

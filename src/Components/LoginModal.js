@@ -28,6 +28,7 @@ class LoginModal extends React.Component {
         onOpen={() => this.setState({ isOpen: true })}
         open={this.state.isOpen}
         closeOnDimmerClick={false}
+        dimmer="blurring"
       >
         <Modal.Header>Welcome back!</Modal.Header>
         <Modal.Content>
