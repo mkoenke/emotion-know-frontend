@@ -8,6 +8,7 @@ import ReportGalleryPage from "./Containers/ReportGalleryPage"
 import VideoGalleryPage from "./Containers/VideoGalleryPage"
 import WelcomePageContainer from "./Containers/WelcomePageContainer"
 import WritingPage from "./Containers/WritingPage"
+import WrittenJournalGallery from "./Containers/WrittenJournalGallery"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/welcome" component={WelcomePageContainer} />
         <Route path="/webcam" component={CameraPage} />
         <Route path="/write" component={WritingPage} />
+        <Route path="/journals" component={WrittenJournalGallery} />
         <Route path="/videos" component={VideoGalleryPage} />
         <Route path="/reports" component={ReportGalleryPage} />
         <Route path="/" component={Homepage} />

@@ -18,7 +18,8 @@ class WelcomePageGrid extends React.Component {
         header: "Write a Journal Entry",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fGHvS_YFT4u5MXXA_s2fDAHaHa%26pid%3DApi&f=1",
-        description: "Express Yourself!  Write a Journal Entry!",
+        description:
+          "Express Yourself!  Write a Journal Entry the old school way!",
         url: "./write",
       },
       {
@@ -31,6 +32,14 @@ class WelcomePageGrid extends React.Component {
       },
       {
         id: 4,
+        header: "Written Journal Gallery",
+        image:
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ikkJdaCOvsuuwHSUIvT4FQHaHa%26pid%3DApi&f=1",
+        description: "See all the journals you have written in the past!",
+        url: "./journals",
+      },
+      {
+        id: 5,
         header: "Report Gallery",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.jyH3x6SEemM9C7Yys7DDpQHaHa%26pid%3DApi&f=1",
