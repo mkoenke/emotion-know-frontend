@@ -54,6 +54,7 @@ class LoginModal extends React.Component {
             <Form.Field required>
               <label>Password</label>
               <input
+                type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleFormChange}
