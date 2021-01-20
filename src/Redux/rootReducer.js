@@ -1,9 +1,17 @@
 import { combineReducers } from "redux"
-import { LOGOUT, SET_CHILD, SET_JOURNAL } from "./actionTypes"
+import {
+  ADD_JOURNAL,
+  ALL_JOURNALS,
+  DELETE_JOURNAL,
+  LOGOUT,
+  SET_CHILD,
+  SET_JOURNAL,
+} from "./actionTypes"
 
 const defaultState = {
   child: null,
   journal: null,
+  allJournals: [],
 }
 
 function childReducer(prevState = defaultState.child, action) {
@@ -29,9 +37,29 @@ function journalReducer(prevState = defaultState.journal, action) {
   }
 }
 
+function journalArrayReducer(prevState = defaultState.allJournals, action) {
+  switch (action.type) {
+    case ALL_JOURNALS:
+      console.log("All journals in reducer: ", action.payload)
+      return action.payload
+    case ADD_JOURNAL:
+      console.log("Added journal in reducer: ", action.payload)
+      return prevState.concat(action.payload)
+    case DELETE_JOURNAL:
+      let filteredArray = prevState.filter(
+        (journal) => journal.id !== action.payload.id
+      )
+      console.log("all journals after deleted: ", filteredArray)
+      return filteredArray
+    default:
+      return prevState
+  }
+}
+
 const rootReducer = combineReducers({
   child: childReducer,
   journal: journalReducer,
+  allJournals: journalArrayReducer,
 })
 
 export default rootReducer

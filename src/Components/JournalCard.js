@@ -1,10 +1,16 @@
 import React from "react"
 import Animista, { AnimistaTypes } from "react-animista"
 import Flippy, { BackSide, FrontSide } from "react-flippy"
+import { connect } from "react-redux"
 // import { NavLink } from "react-router-dom"
 import { Button, Card, Image, Popup } from "semantic-ui-react"
+import { deleteJournal } from "../Redux/actions"
 
 class JournalCard extends React.Component {
+  handleDeleteClick = () => {
+    console.log("Delete Click")
+    this.props.deleteJournal(this.props.cardObj)
+  }
   render() {
     return (
       <>
@@ -18,20 +24,20 @@ class JournalCard extends React.Component {
                   </Card.Header>
                   <Image
                     src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.mhaYy171K74k3WtSxfBZaQHaHJ%26pid%3DApi&f=1"
-                    // wrapped
                     size="medium"
                     circular
-                    // ui={false}
                   />
                 </Card.Content>
                 <Popup
                   content="Warning!  This will delete this journal entry!"
-                  trigger={<Button icon="close" />}
+                  trigger={
+                    <Button icon="close" onClick={this.handleDeleteClick} />
+                  }
                 />
               </Card>
             </FrontSide>
             <BackSide>
-              <Card>
+              <Card centered>
                 <Card.Content>
                   <Card.Description textAlign="center">
                     {this.props.cardObj.content}
@@ -39,11 +45,17 @@ class JournalCard extends React.Component {
                 </Card.Content>
               </Card>
             </BackSide>
-          </Flippy>{" "}
+          </Flippy>
         </Animista>
       </>
     )
   }
 }
 
-export default JournalCard
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteJournal: (journal) => dispatch(deleteJournal(journal)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(JournalCard)

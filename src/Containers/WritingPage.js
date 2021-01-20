@@ -13,7 +13,7 @@ class WritingPage extends React.Component {
   }
   handleFormSubmit = (event) => {
     event.preventDefault()
-    console.log("journal submit")
+    // console.log("journal submit")
     let journal = {
       child_id: this.props.child.id,
       title: this.state.title,
@@ -29,7 +29,16 @@ class WritingPage extends React.Component {
     console.log(this.state)
     return (
       <>
-        <Header textAlign="center">How are you feeling today?</Header>
+        {this.props.child ? (
+          <Header
+            className="h1"
+            size="huge"
+            textAlign="center"
+            style={{ color: "rgb(171, 218, 225)" }}
+          >
+            How are you feeling today, {this.props.child.username}?
+          </Header>
+        ) : null}
         <br />
         <Grid centered>
           <Form onSubmit={this.handleFormSubmit}>

@@ -8,7 +8,7 @@ class WrittenJournalGallery extends React.Component {
     // get all journal entries from redux?  or fetch from backend?
   }
   arrayOfJournals = () => {
-    return this.props.child.journal_entries.map((card) => {
+    return this.props.allJournals.map((card) => {
       return (
         <Grid.Column>
           <JournalCard centered key={card.id} cardObj={card} />
@@ -42,6 +42,7 @@ class WrittenJournalGallery extends React.Component {
 function mapStateToProps(state) {
   return {
     child: state.child,
+    allJournals: state.allJournals,
   }
 }
 

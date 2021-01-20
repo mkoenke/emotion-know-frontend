@@ -1,3 +1,7 @@
 export const SET_CHILD = "SET_CHILD"
 export const LOGOUT = "LOGOUT"
 export const SET_JOURNAL = "SET_JOURNAL"
+export const ADD_JOURNAL = "ADD_JOURNAL"
+export const ALL_JOURNALS = "ALL_JOURNALS"
+export const DELETE_JOURNAL = "DELETE_JOURNAL"
+// export const REMOVE_JOURNAL = "REMOVE_JOURNAL"

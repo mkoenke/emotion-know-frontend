@@ -1,9 +1,32 @@
 import React from "react"
+import { connect } from "react-redux"
+import { Header } from "semantic-ui-react"
 
 class VideoGalleryPage extends React.Component {
   render() {
-    return <h1>Video Gallery Page</h1>
+    return (
+      <>
+        {this.props.child ? (
+          <Header
+            className="h1"
+            size="huge"
+            textAlign="center"
+            style={{ color: "rgb(171, 218, 225)" }}
+          >
+            {this.props.child.username}'s Video Journals
+          </Header>
+        ) : null}
+
+        {/* <Grid centered columns="three">
+          <Grid.Row>{this.arrayOfJournals()}</Grid.Row>
+        </Grid> */}
+      </>
+    )
   }
 }
-
-export default VideoGalleryPage
+function mapStateToProps(state) {
+  return {
+    child: state.child,
+  }
+}
+export default connect(mapStateToProps)(VideoGalleryPage)
