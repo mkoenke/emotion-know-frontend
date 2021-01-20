@@ -30,3 +30,21 @@ export function logout() {
 export function setJournal(journal) {
   return { type: SET_JOURNAL, payload: journal }
 }
+
+export function postJournal(journal) {
+  return (dispatch) => {
+    return fetch("http://localhost:3000/journal_entries", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(journal),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("returned journal:", data)
+        dispatch(setJournal(data))
+      })
+  }
+}

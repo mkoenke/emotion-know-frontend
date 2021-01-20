@@ -8,7 +8,7 @@ import LoginModal from "./LoginModal"
 class NavBar extends React.Component {
   state = {
     modalView: false,
-    // sideNavView: false,
+
     activeItem: "home",
   }
 
@@ -18,9 +18,7 @@ class NavBar extends React.Component {
     console.log("Login clicked")
     this.setState({ modalView: !this.state.modalView })
   }
-  // toggleSideNav = () => {
-  //   this.setState({ sideNavView: true })
-  // }
+
   handleLogOutClick = () => {
     localStorage.removeItem("token")
     this.props.logout()
@@ -37,25 +35,25 @@ class NavBar extends React.Component {
           secondary
           style={{ backgroundColor: "rgb(171, 218, 225)" }}
         >
-          {/* <NavLink to="/">
-            <Menu.Item
-              name="menu"
-              active={activeItem === "menu"}
-              onClick={this.handleItemClick}
-              onClick={this.toggleSideNav}
-              className="navbar"
-            />
-            {this.state.sideNavView && <SideNav />}
-          </NavLink> */}
-
-          <NavLink to="/">
-            <Menu.Item
-              name="home"
-              active={activeItem === "home"}
-              onClick={this.handleItemClick}
-              className="navbar"
-            />
-          </NavLink>
+          {this.props.child ? (
+            <NavLink to="/welcome">
+              <Menu.Item
+                name="home"
+                active={activeItem === "home"}
+                onClick={this.handleItemClick}
+                className="navbar"
+              />
+            </NavLink>
+          ) : (
+            <NavLink to="/">
+              <Menu.Item
+                name="home"
+                active={activeItem === "home"}
+                onClick={this.handleItemClick}
+                className="navbar"
+              />
+            </NavLink>
+          )}
 
           <Menu.Menu position="right">
             {!this.props.child ? (

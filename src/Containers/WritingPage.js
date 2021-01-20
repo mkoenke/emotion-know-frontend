@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Form, Grid, Header } from "semantic-ui-react"
-import { setJournal } from "../Redux/actions"
+import { postJournal } from "../Redux/actions"
 
 class WritingPage extends React.Component {
   state = {
@@ -15,12 +15,15 @@ class WritingPage extends React.Component {
     event.preventDefault()
     console.log("journal submit")
     let journal = {
+      child_id: this.props.child.id,
       title: this.state.title,
       content: this.state.content,
     }
 
     console.log("Props:", this.props)
     this.props.dispatchJournal(journal)
+    this.setState({ title: "", content: "" })
+    /// redirect to written journal gallery
   }
   render() {
     console.log(this.state)
@@ -57,9 +60,18 @@ class WritingPage extends React.Component {
     )
   }
 }
+// function mapStateToProps(state) {
+//     return {
+//       child: state.child,
+//     }
+//   }
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatchJournal: (journal) => dispatch(setJournal(journal)),
+const mapStateToProps = (state) => ({
+  child: state.child,
 })
 
-export default connect(null, mapDispatchToProps)(WritingPage)
+const mapDispatchToProps = (dispatch) => ({
+  dispatchJournal: (journal) => dispatch(postJournal(journal)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(WritingPage)
