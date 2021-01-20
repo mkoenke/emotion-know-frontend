@@ -15,6 +15,14 @@ class WelcomePageGrid extends React.Component {
       },
       {
         id: 2,
+        header: "Write a Journal Entry",
+        image:
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fGHvS_YFT4u5MXXA_s2fDAHaHa%26pid%3DApi&f=1",
+        description: "Express Yourself!  Write a Journal Entry!",
+        url: "./write",
+      },
+      {
+        id: 3,
         header: "Video Gallery",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.cZ_jqhXaUIp-_uUroQahIAHaHa%26pid%3DApi&f=1",
@@ -22,7 +30,7 @@ class WelcomePageGrid extends React.Component {
         url: "./videos",
       },
       {
-        id: 3,
+        id: 4,
         header: "Report Gallery",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.jyH3x6SEemM9C7Yys7DDpQHaHa%26pid%3DApi&f=1",
