@@ -1,5 +1,6 @@
 import React from "react"
 import { Grid, Icon, Menu, Segment, Sidebar } from "semantic-ui-react"
+import WelcomePage from "../Containers/WelcomePage"
 
 class SideNav extends React.Component {
   state = {
@@ -9,12 +10,12 @@ class SideNav extends React.Component {
     return (
       <Grid>
         {/* <Grid.Column>
-        <Checkbox
-          checked={visible}
-          label={{ children: <code>visible</code> }}
-          onChange={(e, data) => setVisible(data.checked)}
-        />
-      </Grid.Column> */}
+          <Checkbox
+            checked={visible}
+            label={{ children: <code>visible</code> }}
+            onChange={(e, data) => setVisible(data.checked)}
+          />
+        </Grid.Column> */}
 
         <Grid.Column>
           <Sidebar.Pushable as={Segment}>
@@ -42,11 +43,11 @@ class SideNav extends React.Component {
               </Menu.Item>
             </Sidebar>
 
-            {/* <Sidebar.Pusher>
+            <Sidebar.Pusher>
               <Segment basic>
-                <Homepage />
+                <WelcomePage />
               </Segment>
-            </Sidebar.Pusher> */}
+            </Sidebar.Pusher>
           </Sidebar.Pushable>
         </Grid.Column>
       </Grid>

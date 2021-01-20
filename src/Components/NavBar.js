@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { NavLink, Redirect } from "react-router-dom"
 import { Menu } from "semantic-ui-react"
 import { logout } from "../Redux/actions"
 import LoginModal from "./LoginModal"
@@ -47,6 +47,7 @@ class NavBar extends React.Component {
             />
             {this.state.sideNavView && <SideNav />}
           </NavLink> */}
+
           <NavLink to="/">
             <Menu.Item
               name="home"
@@ -57,24 +58,33 @@ class NavBar extends React.Component {
           </NavLink>
 
           <Menu.Menu position="right">
-            <Menu.Item
-              name="login"
-              active={activeItem === "login"}
-              onClick={this.handleItemClick}
-              onClick={this.handleLoginClick}
-              className="navbar"
-            />
+            {!this.props.child ? (
+              <>
+                <Menu.Item
+                  name="login"
+                  active={activeItem === "login"}
+                  onClick={this.handleItemClick}
+                  onClick={this.handleLoginClick}
+                  className="navbar"
+                />
+                <Redirect to="/" />
+              </>
+            ) : null}
+
             {this.state.modalView && (
               <LoginModal handleLoginClick={this.handleLoginClick} />
             )}
             {this.props.child ? (
-              <Menu.Item
-                name="logout"
-                active={activeItem === "logout"}
-                onClick={this.handleItemClick}
-                onClick={this.handleLogOutClick}
-                className="navbar"
-              />
+              <>
+                <Menu.Item
+                  name="logout"
+                  active={activeItem === "logout"}
+                  onClick={this.handleItemClick}
+                  onClick={this.handleLogOutClick}
+                  className="navbar"
+                />
+                <Redirect to="/welcome" />
+              </>
             ) : null}
           </Menu.Menu>
         </Menu>
