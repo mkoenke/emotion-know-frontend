@@ -1,25 +1,65 @@
 import React from "react"
 import Chart from "react-apexcharts"
+import { connect } from "react-redux"
 
 class MyChart extends React.Component {
+  componentDidMount() {
+    this.xAxis()
+    this.chartData()
+  }
   state = {
     options: {
       chart: {
-        id: "apexchart-example",
+        id: `${this.props.child}`,
       },
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        categories: ["Journal 1", "Journal 2", "Journal 3"],
       },
     },
-    series: [
-      {
-        name: "series-1",
-        data: [30, 40, 45, 50, 49, 60, 70, 91],
+    series: [],
+  }
+
+  xAxis = () => {
+    let xAxisCategories = this.props.allReports.map(
+      (report) => `Journal ${report.id}`
+    )
+    console.log("X-axis: ", xAxisCategories)
+    this.setState({
+      options: {
+        ...this.state.options,
+        xaxis: {
+          ...this.state.options.xaxis,
+          categories: xAxisCategories,
+        },
       },
-    ],
+    })
+  }
+  chartData = () => {
+    let happyDecimals = this.props.allReports.map((report) => report.happy)
+    let sadDecimals = this.props.allReports.map((report) => report.sad)
+    let angryDecimals = this.props.allReports.map((report) => report.angry)
+    let excitedDecimals = this.props.allReports.map((report) => report.excited)
+    let fearDecimals = this.props.allReports.map((report) => report.fear)
+    let boredDecimals = this.props.allReports.map((report) => report.bored)
+
+    this.setState({
+      options: {
+        ...this.state.options,
+      },
+      series: [
+        ...this.state.series,
+        { name: "Happy", data: happyDecimals },
+        { name: "Sad", data: sadDecimals },
+        { name: "Angry", data: angryDecimals },
+        { name: "Excited", data: excitedDecimals },
+        { name: "Fear", data: fearDecimals },
+        { name: "Bored", data: boredDecimals },
+      ],
+    })
   }
 
   render() {
+    console.log("Reports in chart:", this.props.allReports)
     return (
       <Chart
         options={this.state.options}
@@ -32,4 +72,11 @@ class MyChart extends React.Component {
   }
 }
 
-export default MyChart
+function mapStateToProps(state) {
+  return {
+    child: state.child,
+    allReports: state.allReports,
+  }
+}
+
+export default connect(mapStateToProps)(MyChart)
