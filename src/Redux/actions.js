@@ -1,6 +1,7 @@
 import {
   ADD_JOURNAL,
   ALL_JOURNALS,
+  ALL_REPORTS,
   DELETE_JOURNAL,
   LOGOUT,
   SET_CHILD,
@@ -27,6 +28,7 @@ export function login(child) {
         localStorage.setItem("token", data.jwt)
         dispatch(setChild(data.child))
         dispatch(allJournals(data.child.journal_entries))
+        dispatch(allReports(data.child.journal_entries))
       })
   }
 }
@@ -80,4 +82,24 @@ export function deleteJournal(journal) {
 
 function removeJournal(journal) {
   return { type: DELETE_JOURNAL, payload: journal }
+}
+
+export function fetchReportsfromChild(child) {
+  // return (dispatch) => {
+  //   return fetch(`http://localhost:3000/children/${child.id}/reports`)
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       console.log("report data:", data)
+  //       // dispatch(setChild(childData))
+  //       // dispatch(setReport())
+  //       // dispatch(allReports())
+  //     })
+  // }
+  console.log(child)
+}
+
+export function allReports(arrayOfJournals) {
+  let arrayOfReports = arrayOfJournals.map((journal) => journal.report)
+  console.log(arrayOfReports)
+  return { type: ALL_REPORTS, payload: arrayOfReports }
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Form, Grid, Header } from "semantic-ui-react"
-import { postJournal } from "../Redux/actions"
+import { fetchReportsfromChild, postJournal } from "../Redux/actions"
 
 class WritingPage extends React.Component {
   state = {
@@ -24,6 +24,8 @@ class WritingPage extends React.Component {
     this.props.dispatchJournal(journal)
     this.setState({ title: "", content: "" })
     /// redirect to written journal gallery
+    /// fetch child again and set reports in state
+    this.props.dispatchReports(this.props.child)
   }
   render() {
     console.log(this.state)
@@ -81,6 +83,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchJournal: (journal) => dispatch(postJournal(journal)),
+  dispatchReports: (child) => dispatch(fetchReportsfromChild(child)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WritingPage)

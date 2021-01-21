@@ -1,11 +1,18 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Header } from "semantic-ui-react"
+import { Header, List } from "semantic-ui-react"
+import MyChart from "../Components/MyChart"
 
 class ReportGalleryPage extends React.Component {
   componentDidMount() {
     ///fetch all reports from database and display on page as images
   }
+  listOfReports = () => {
+    return this.props.allReports.map((report) => {
+      return <List.Item>{report.title}</List.Item>
+    })
+  }
+
   render() {
     return (
       <>
@@ -23,6 +30,9 @@ class ReportGalleryPage extends React.Component {
         {/* <Grid centered columns="three">
           <Grid.Row>{this.arrayOfJournals()}</Grid.Row>
         </Grid> */}
+        <Header>Report List</Header>
+        <List>{this.listOfReports()}</List>
+        <MyChart />
       </>
     )
   }
@@ -30,6 +40,7 @@ class ReportGalleryPage extends React.Component {
 function mapStateToProps(state) {
   return {
     child: state.child,
+    allReports: state.allReports,
   }
 }
 

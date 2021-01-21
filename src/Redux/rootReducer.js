@@ -2,6 +2,7 @@ import { combineReducers } from "redux"
 import {
   ADD_JOURNAL,
   ALL_JOURNALS,
+  ALL_REPORTS,
   DELETE_JOURNAL,
   LOGOUT,
   SET_CHILD,
@@ -12,6 +13,7 @@ const defaultState = {
   child: null,
   journal: null,
   allJournals: [],
+  allReports: [],
 }
 
 function childReducer(prevState = defaultState.child, action) {
@@ -55,11 +57,21 @@ function journalArrayReducer(prevState = defaultState.allJournals, action) {
       return prevState
   }
 }
+function reportArrayReducer(prevState = defaultState.allReports, action) {
+  switch (action.type) {
+    case ALL_REPORTS:
+      console.log("All reports in reducer: ", action.payload)
+      return action.payload
+    default:
+      return prevState
+  }
+}
 
 const rootReducer = combineReducers({
   child: childReducer,
   journal: journalReducer,
   allJournals: journalArrayReducer,
+  allReports: reportArrayReducer,
 })
 
 export default rootReducer
