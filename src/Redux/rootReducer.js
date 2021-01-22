@@ -7,10 +7,12 @@ import {
   LOGOUT,
   SET_CHILD,
   SET_JOURNAL,
+  SET_PARENT,
 } from "./actionTypes"
 
 const defaultState = {
   child: null,
+  parent: null,
   journal: null,
   allJournals: [],
   allReports: [],
@@ -20,6 +22,19 @@ function childReducer(prevState = defaultState.child, action) {
   switch (action.type) {
     case SET_CHILD:
       console.log("Set child: ", action.payload)
+
+      return action.payload
+    case LOGOUT:
+      return null
+    default:
+      return prevState
+  }
+}
+
+function parentReducer(prevState = defaultState.parent, action) {
+  switch (action.type) {
+    case SET_PARENT:
+      console.log("Set parent: ", action.payload)
 
       return action.payload
     case LOGOUT:
@@ -69,6 +84,7 @@ function reportArrayReducer(prevState = defaultState.allReports, action) {
 
 const rootReducer = combineReducers({
   child: childReducer,
+  parent: parentReducer,
   journal: journalReducer,
   allJournals: journalArrayReducer,
   allReports: reportArrayReducer,

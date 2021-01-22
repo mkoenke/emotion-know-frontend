@@ -99,15 +99,6 @@ class SignUpModal extends React.Component {
               />
             </Form.Field>
             <Form.Field required>
-              <label>Image Url</label>
-              <input
-                name="image"
-                value={this.state.image}
-                onChange={this.handleFormChange}
-                placeholder="Image Url"
-              />
-            </Form.Field>
-            <Form.Field required>
               <label>Parent's email</label>
               <input
                 name="email"
@@ -115,8 +106,16 @@ class SignUpModal extends React.Component {
                 onChange={this.handleFormChange}
                 placeholder="Parent's email"
               />
+            </Form.Field>{" "}
+            <Form.Field required>
+              <label>Image Url</label>
+              <input
+                name="image"
+                value={this.state.image}
+                onChange={this.handleFormChange}
+                placeholder="Image Url"
+              />{" "}
             </Form.Field>
-
             <Button type="submit">Submit</Button>
             <Button onClick={this.handleCancel} type="cancel">
               Cancel

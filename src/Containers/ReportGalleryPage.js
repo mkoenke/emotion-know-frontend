@@ -9,9 +9,6 @@ class ReportGalleryPage extends React.Component {
     beenClicked: false,
     clickedReport: {},
   }
-  componentDidMount() {
-    ///fetch all reports from database and display on page as images
-  }
 
   handleReportClick = (event) => {
     console.log("target: ", event.target)
@@ -43,29 +40,61 @@ class ReportGalleryPage extends React.Component {
   render() {
     return (
       <>
-        <Segment raised padded>
-          {this.props.child ? (
-            <Header
-              className="h1"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)" }}
-            >
-              {this.props.child.username}'s Reports
-            </Header>
-          ) : null}
-        </Segment>
-        <Segment textAlign="center">
-          <Header>Individual Journal Data Reports</Header>
-          <List bulleted>{this.listOfReports()}</List>
-          <br />
-          {this.state.beenClicked ? this.renderReportGraph() : null}
-        </Segment>
-        <Segment textAlign="center">
-          <Header>Data Reports over Time</Header>
-          <br />
-          <MyChart />
-        </Segment>
+        {this.props.child ? (
+          <>
+            <Segment raised padded>
+              {this.props.child ? (
+                <Header
+                  className="h1"
+                  size="huge"
+                  textAlign="center"
+                  style={{ color: "rgb(171, 218, 225)" }}
+                >
+                  {this.props.child.username}'s Reports
+                </Header>
+              ) : null}
+            </Segment>
+            <Segment textAlign="center">
+              <Header>Individual Journal Data Reports</Header>
+              <List bulleted>{this.listOfReports()}</List>
+              <br />
+              {this.state.beenClicked ? this.renderReportGraph() : null}
+            </Segment>
+            <Segment textAlign="center">
+              <Header>Data Reports over Time</Header>
+              <br />
+              <MyChart />
+            </Segment>
+          </>
+        ) : (
+          this.props.parent && (
+            <>
+              <Segment raised padded>
+                {this.props.child ? (
+                  <Header
+                    className="h1"
+                    size="huge"
+                    textAlign="center"
+                    style={{ color: "rgb(171, 218, 225)" }}
+                  >
+                    {this.props.child.username}'s Reports
+                  </Header>
+                ) : null}
+              </Segment>
+              <Segment textAlign="center">
+                <Header>Individual Journal Data Reports</Header>
+                <List bulleted>{this.listOfReports()}</List>
+                <br />
+                {this.state.beenClicked ? this.renderReportGraph() : null}
+              </Segment>
+              <Segment textAlign="center">
+                <Header>Data Reports over Time</Header>
+                <br />
+                <MyChart />
+              </Segment>
+            </>
+          )
+        )}
       </>
     )
   }
@@ -73,6 +102,7 @@ class ReportGalleryPage extends React.Component {
 function mapStateToProps(state) {
   return {
     child: state.child,
+    parent: state.parent,
     allReports: state.allReports,
   }
 }

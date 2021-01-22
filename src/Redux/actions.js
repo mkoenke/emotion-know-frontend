@@ -6,10 +6,15 @@ import {
   LOGOUT,
   SET_CHILD,
   SET_JOURNAL,
+  SET_PARENT,
 } from "./actionTypes"
 
 export function setChild(child) {
   return { type: SET_CHILD, payload: child }
+}
+
+export function setParent(parent) {
+  return { type: SET_PARENT, payload: parent }
 }
 
 export function login(child) {
@@ -29,6 +34,25 @@ export function login(child) {
         dispatch(setChild(data.child))
         dispatch(allJournals(data.child.journal_entries))
         dispatch(allReports(data.child.journal_entries))
+      })
+  }
+}
+
+export function loginParent(parent) {
+  return (dispatch) => {
+    return fetch("http://localhost:3000/parentLogin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(parent),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("data:", data)
+        localStorage.setItem("token", data.jwt)
+        dispatch(setParent(data.parent))
       })
   }
 }
