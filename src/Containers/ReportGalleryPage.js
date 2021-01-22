@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Header, List } from "semantic-ui-react"
+import { Header, List, Segment } from "semantic-ui-react"
 import Graph from "../Components/Graph"
 import MyChart from "../Components/MyChart"
 
@@ -33,7 +33,9 @@ class ReportGalleryPage extends React.Component {
   listOfReports = () => {
     return this.props.allReports.map((report) => {
       return (
-        <List.Item onClick={this.handleReportClick}>{report.title}</List.Item>
+        <List.Item alignItems="center" onClick={this.handleReportClick}>
+          {report.title}
+        </List.Item>
       )
     })
   }
@@ -41,24 +43,29 @@ class ReportGalleryPage extends React.Component {
   render() {
     return (
       <>
-        {this.props.child ? (
-          <Header
-            className="h1"
-            size="huge"
-            textAlign="center"
-            style={{ color: "rgb(171, 218, 225)" }}
-          >
-            {this.props.child.username}'s Reports
-          </Header>
-        ) : null}
-
-        {/* <Grid centered columns="three">
-          <Grid.Row>{this.arrayOfJournals()}</Grid.Row>
-        </Grid> */}
-        <Header>Report List</Header>
-        <List>{this.listOfReports()}</List>
-        {this.state.beenClicked ? this.renderReportGraph() : null}
-        <MyChart />
+        <Segment raised padded>
+          {this.props.child ? (
+            <Header
+              className="h1"
+              size="huge"
+              textAlign="center"
+              style={{ color: "rgb(171, 218, 225)" }}
+            >
+              {this.props.child.username}'s Reports
+            </Header>
+          ) : null}
+        </Segment>
+        <Segment textAlign="center">
+          <Header>Individual Journal Data Reports</Header>
+          <List bulleted>{this.listOfReports()}</List>
+          <br />
+          {this.state.beenClicked ? this.renderReportGraph() : null}
+        </Segment>
+        <Segment textAlign="center">
+          <Header>Data Reports over Time</Header>
+          <br />
+          <MyChart />
+        </Segment>
       </>
     )
   }
