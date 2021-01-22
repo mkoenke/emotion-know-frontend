@@ -35,12 +35,12 @@ class MyChart extends React.Component {
     })
   }
   chartData = () => {
-    let happyDecimals = this.props.allReports.map((report) => report.happy)
-    let sadDecimals = this.props.allReports.map((report) => report.sad)
-    let angryDecimals = this.props.allReports.map((report) => report.angry)
-    let excitedDecimals = this.props.allReports.map((report) => report.excited)
-    let fearDecimals = this.props.allReports.map((report) => report.fear)
-    let boredDecimals = this.props.allReports.map((report) => report.bored)
+    let angerData = this.props.allReports.map((report) => report.anger)
+    let disgustData = this.props.allReports.map((report) => report.disgust)
+    let fearData = this.props.allReports.map((report) => report.fear)
+    let joyData = this.props.allReports.map((report) => report.joy)
+    let sadnessData = this.props.allReports.map((report) => report.sadness)
+    let surpriseData = this.props.allReports.map((report) => report.surprise)
 
     this.setState({
       options: {
@@ -48,12 +48,12 @@ class MyChart extends React.Component {
       },
       series: [
         ...this.state.series,
-        { name: "Happy", data: happyDecimals },
-        { name: "Sad", data: sadDecimals },
-        { name: "Angry", data: angryDecimals },
-        { name: "Excited", data: excitedDecimals },
-        { name: "Fear", data: fearDecimals },
-        { name: "Bored", data: boredDecimals },
+        { name: "Anger", data: angerData },
+        { name: "Disgust", data: disgustData },
+        { name: "Fear", data: fearData },
+        { name: "Joy", data: joyData },
+        { name: "Sadness", data: sadnessData },
+        { name: "Surprise", data: surpriseData },
       ],
     })
   }

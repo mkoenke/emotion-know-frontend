@@ -85,17 +85,16 @@ function removeJournal(journal) {
 }
 
 export function fetchReportsfromChild(child) {
-  // return (dispatch) => {
-  //   return fetch(`http://localhost:3000/children/${child.id}/reports`)
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       console.log("report data:", data)
-  //       // dispatch(setChild(childData))
-  //       // dispatch(setReport())
-  //       // dispatch(allReports())
-  //     })
-  // }
-  console.log(child)
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/children/${child.id}/`)
+      .then((resp) => resp.json())
+      .then((childData) => {
+        console.log("child data with reports:", childData)
+        dispatch(setChild(childData))
+        // dispatch(setReport())
+        dispatch(allReports(childData.journal_entries))
+      })
+  }
 }
 
 export function allReports(arrayOfJournals) {
@@ -103,3 +102,7 @@ export function allReports(arrayOfJournals) {
   console.log(arrayOfReports)
   return { type: ALL_REPORTS, payload: arrayOfReports }
 }
+
+// export function setReport(report) {
+//   return { type: SET_REPORT, payload: report }
+// }
