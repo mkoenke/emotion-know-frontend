@@ -9,7 +9,7 @@ class SignUpModal extends React.Component {
     username: "",
     password: "",
     email: "",
-    image: "",
+    parentPassword: "",
   }
   handleCancel = () => {
     this.setState({ isOpen: false })
@@ -24,7 +24,9 @@ class SignUpModal extends React.Component {
     console.log("Sign up")
     let parentData = {
       email: this.state.email,
+      password: this.state.parentPassword,
     }
+    console.log("Parent data: ", parentData)
     fetch("http://localhost:3000/parents", {
       method: "POST",
       headers: {
@@ -38,7 +40,6 @@ class SignUpModal extends React.Component {
         let childData = {
           username: this.state.username,
           password: this.state.password,
-          image: this.state.image,
           parent_id: returnedParentObj.id,
         }
         console.log("child data:", childData)
@@ -93,6 +94,7 @@ class SignUpModal extends React.Component {
               <label>Password</label>
               <input
                 name="password"
+                type="password"
                 value={this.state.password}
                 onChange={this.handleFormChange}
                 placeholder="Password"
@@ -104,16 +106,17 @@ class SignUpModal extends React.Component {
                 name="email"
                 value={this.state.email}
                 onChange={this.handleFormChange}
-                placeholder="Parent's email"
+                placeholder="Parent's Email"
               />
             </Form.Field>{" "}
             <Form.Field required>
-              <label>Image Url</label>
+              <label>Parent's Password</label>
               <input
-                name="image"
-                value={this.state.image}
+                name="parentPassword"
+                type="password"
+                value={this.state.parentPassword}
                 onChange={this.handleFormChange}
-                placeholder="Image Url"
+                placeholder="Parent's Password"
               />{" "}
             </Form.Field>
             <Button type="submit">Submit</Button>

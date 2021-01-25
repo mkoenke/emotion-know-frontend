@@ -7,6 +7,12 @@ class MyChart extends React.Component {
     this.xAxis()
     this.chartData()
   }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps !== this.props) {
+  //     this.xAxis()
+  //     this.chartData()
+  //   }
+  // }
   state = {
     options: {
       chart: {

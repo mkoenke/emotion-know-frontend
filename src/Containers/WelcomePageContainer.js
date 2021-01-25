@@ -9,7 +9,7 @@ class WelcomePageContainer extends React.Component {
     console.log("props: ", this.props.parent)
     return (
       <>
-        {this.props.child ? (
+        {!this.props.parent && this.props.child ? (
           <>
             <Header
               className="h1"

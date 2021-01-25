@@ -53,6 +53,9 @@ export function loginParent(parent) {
         console.log("data:", data)
         localStorage.setItem("token", data.jwt)
         dispatch(setParent(data.parent))
+        dispatch(setChild(data.parent.child))
+        dispatch(allJournals(data.parent.journal_entries))
+        dispatch(allReports(data.parent.journal_entries))
       })
   }
 }
