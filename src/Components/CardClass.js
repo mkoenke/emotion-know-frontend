@@ -9,7 +9,11 @@ class CardClass extends React.Component {
       <>
         <Animista type={AnimistaTypes.ROTATE_SCALE_DOWN}>
           <NavLink to={this.props.cardObj.url}>
-            <Card id={this.props.cardObj.id} centered>
+            <Card
+              id={this.props.cardObj.id}
+              centered
+              style={{ boxShadow: "10px 10px 5px grey", margin: "20px" }}
+            >
               <Image src={this.props.cardObj.image} wrapped ui={false} />
               <Card.Content>
                 <Card.Header textAlign="center">

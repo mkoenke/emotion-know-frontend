@@ -7,7 +7,7 @@ class WelcomePageGrid extends React.Component {
     return [
       {
         id: 1,
-        header: "Record a Video",
+        header: "Record a Video Journal",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.l9T2fA4HUL7SB4NNRDG2lAHaHa%26pid%3DApi&f=1",
         description: "Express Yourself!  Record a Video Journal!",
@@ -15,6 +15,14 @@ class WelcomePageGrid extends React.Component {
       },
       {
         id: 2,
+        header: "Record an Audio Journal",
+        image:
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.1gHLVwGFlV82VbreeTh_OQHaHa%26pid%3DApi&f=1",
+        description: "Express Yourself!  Record an Audio Journal!",
+        url: "./audio",
+      },
+      {
+        id: 3,
         header: "Write a Journal Entry",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fGHvS_YFT4u5MXXA_s2fDAHaHa%26pid%3DApi&f=1",
@@ -23,7 +31,7 @@ class WelcomePageGrid extends React.Component {
         url: "./write",
       },
       {
-        id: 3,
+        id: 4,
         header: "Video Gallery",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.cZ_jqhXaUIp-_uUroQahIAHaHa%26pid%3DApi&f=1",
@@ -31,7 +39,15 @@ class WelcomePageGrid extends React.Component {
         url: "./videos",
       },
       {
-        id: 4,
+        id: 5,
+        header: "Audio Gallery",
+        image:
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.CZskoeFaP2XeH3Rqd1ceiAHaHa%26pid%3DApi&f=1",
+        description: "See all the audios you have recorded in the past!",
+        url: "./audios",
+      },
+      {
+        id: 6,
         header: "Written Journal Gallery",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ikkJdaCOvsuuwHSUIvT4FQHaHa%26pid%3DApi&f=1",
@@ -39,7 +55,7 @@ class WelcomePageGrid extends React.Component {
         url: "./journals",
       },
       {
-        id: 5,
+        id: 7,
         header: "Report Gallery",
         image:
           "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.jyH3x6SEemM9C7Yys7DDpQHaHa%26pid%3DApi&f=1",
