@@ -19,6 +19,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-scroll-parallax": "^2.3.5",
+    "react-speech-recognition": "^3.6.0",
     "react-voice-recorder": "^2.0.7",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",

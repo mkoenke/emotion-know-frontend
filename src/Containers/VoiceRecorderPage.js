@@ -3,6 +3,8 @@ import { connect } from "react-redux"
 import { Recorder } from "react-voice-recorder"
 import "react-voice-recorder/dist/index.css"
 import { Form, Grid, Header } from "semantic-ui-react"
+import SpeechRecognition from "../Components/SpeechRecogition"
+import { postJournal } from "../Redux/actions"
 
 class VoiceRecorderPage extends React.Component {
   state = {
@@ -33,7 +35,13 @@ class VoiceRecorderPage extends React.Component {
     this.setState({ audioDetails: data })
   }
   handleAudioUpload(file) {
-    console.log(file)
+    let journal = {
+      title: this.state.submittedTitle,
+      clip: file,
+      child_id: this.props.child.id,
+    }
+    console.log(journal)
+    this.props.dispatchJournal(journal)
   }
   handleRest() {
     const reset = {
@@ -76,18 +84,22 @@ class VoiceRecorderPage extends React.Component {
                 value={this.state.title}
               />
             </Form.Group>
-            <Form.Button>Set Title</Form.Button>
+            <Form.Button>Set Audio Journal Title</Form.Button>
           </Form>
         </Grid>
-        <Recorder
-          record={true}
-          title={this.state.submittedTitle}
-          audioURL={this.state.audioDetails.url}
-          showUIAudio
-          handleAudioStop={(data) => this.handleAudioStop(data)}
-          handleAudioUpload={(data) => this.handleAudioUpload(data)}
-          handleRest={() => this.handleRest()}
-        />
+        <br />
+        <div style={{ width: "600px", margin: "20px" }}>
+          <SpeechRecognition />
+          <Recorder
+            record={true}
+            title={this.state.submittedTitle}
+            audioURL={this.state.audioDetails.url}
+            showUIAudio
+            handleAudioStop={(data) => this.handleAudioStop(data)}
+            handleAudioUpload={(data) => this.handleAudioUpload(data)}
+            handleRest={() => this.handleRest()}
+          />
+        </div>
       </>
     )
   }
@@ -98,4 +110,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(VoiceRecorderPage)
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatchJournal: (journal) => dispatch(postJournal(journal)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VoiceRecorderPage)
