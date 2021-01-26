@@ -35,12 +35,15 @@ class VoiceRecorderPage extends React.Component {
     this.setState({ audioDetails: data })
   }
   handleAudioUpload(file) {
-    let journal = {
-      title: this.state.submittedTitle,
-      clip: file,
-      child_id: this.props.child.id,
+    const journal = new FormData()
+    journal.append("title", this.state.submittedTitle)
+    journal.append("child_id", this.props.child.id)
+    journal.append("clip", file, "audio1")
+
+    // console.log(journal)
+    for (let value of journal.values()) {
+      console.log(value)
     }
-    console.log(journal)
     this.props.dispatchJournal(journal)
   }
   handleRest() {
