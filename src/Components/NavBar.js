@@ -59,6 +59,14 @@ class NavBar extends React.Component {
               />
             </NavLink>
           )}
+          <NavLink to="/resources">
+            <Menu.Item
+              name="resources"
+              active={activeItem === "resources"}
+              onClick={this.handleItemClick}
+              className="navbar"
+            />
+          </NavLink>
 
           <Menu.Menu position="right">
             {!this.props.child ? (

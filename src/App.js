@@ -6,6 +6,7 @@ import AudioGalleryPage from "./Containers/AudioGalleryPage"
 import CameraPage from "./Containers/CameraPage"
 import Homepage from "./Containers/Homepage"
 import ReportGalleryPage from "./Containers/ReportGalleryPage"
+import ResourcesPage from "./Containers/ResourcesPage"
 import VideoGalleryPage from "./Containers/VideoGalleryPage"
 import VoiceRecorderPage from "./Containers/VoiceRecorderPage"
 import WelcomePageContainer from "./Containers/WelcomePageContainer"
@@ -17,6 +18,7 @@ function App() {
     <>
       <NavBar />
       <Switch>
+        <Route path="/resources" component={ResourcesPage} />
         <Route path="/welcome" component={WelcomePageContainer} />
         <Route path="/webcam" component={CameraPage} />
         <Route path="/write" component={WritingPage} />

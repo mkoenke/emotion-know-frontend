@@ -1,5 +1,6 @@
 import React from "react"
 import { Parallax, ParallaxBanner } from "react-scroll-parallax"
+import { Header } from "semantic-ui-react"
 import Background1 from "../assets/images/background1mod5.jpeg"
 import Background2 from "../assets/images/background2mod5.jpeg"
 import Background3 from "../assets/images/background3mod5.jpeg"
@@ -36,6 +37,9 @@ class Homepage extends React.Component {
               EmotionKnow
             </Parallax>
           </span>
+          <Header style={{ color: "rgb(171, 218, 225)" }}>
+            Building Emotional Intelligence in Children
+          </Header>
         </div>
         <ParallaxBanner
           layers={[
@@ -48,7 +52,7 @@ class Homepage extends React.Component {
         ></ParallaxBanner>
         <div className="root">
           <span className={`copy h1`} onClick={this.handleSignUpClick}>
-            <Parallax x={[80, -80]} className="letter">
+            <Parallax x={[80, -80]} className="letter link">
               Sign Up!
             </Parallax>
           </span>
