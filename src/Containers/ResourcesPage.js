@@ -33,7 +33,7 @@ class ResourcesPage extends React.Component {
               <Image src={resourceImage} />
             </Grid.Column>
             <Grid.Column width={10}>
-              <Header textAlign="center" size="huge">
+              <Header textAlign="center" size="huge" color="blue">
                 Parent Resources
               </Header>
               <List bulleted>
@@ -72,7 +72,7 @@ class ResourcesPage extends React.Component {
               <Image src={resourceImage} />
             </Grid.Column>
             <Grid.Column width={10}>
-              <Header textAlign="center" size="huge">
+              <Header textAlign="center" size="huge" color="blue">
                 Child Resources
               </Header>
               <List bulleted>

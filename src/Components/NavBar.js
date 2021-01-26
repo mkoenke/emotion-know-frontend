@@ -16,11 +16,9 @@ class NavBar extends React.Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   handleLoginClick = () => {
-    console.log("Login clicked")
     this.setState({ modalView: !this.state.modalView })
   }
   handleParentLoginClick = () => {
-    console.log("Parent Login clicked")
     this.setState({ parentModalView: !this.state.parentModalView })
   }
 
@@ -72,8 +70,8 @@ class NavBar extends React.Component {
             {!this.props.child ? (
               <>
                 <Menu.Item
-                  name="login"
-                  active={activeItem === "login"}
+                  name="childLogin"
+                  active={activeItem === "childLogin"}
                   onClick={this.handleItemClick}
                   onClick={this.handleLoginClick}
                   className="navbar"
@@ -81,11 +79,11 @@ class NavBar extends React.Component {
                 <Redirect to="/" />
               </>
             ) : null}
-            {!this.props.parent ? (
+            {!this.props.parent && !this.props.child ? (
               <>
                 <Menu.Item
-                  name="parents"
-                  active={activeItem === "parents"}
+                  name="parentLogin"
+                  active={activeItem === "parentLogin"}
                   onClick={this.handleItemClick}
                   onClick={this.handleParentLoginClick}
                   className="navbar"

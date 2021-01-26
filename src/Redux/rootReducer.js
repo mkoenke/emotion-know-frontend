@@ -6,6 +6,7 @@ import {
   DELETE_JOURNAL,
   LOGOUT,
   SET_CHILD,
+  SET_ERROR,
   SET_JOURNAL,
   SET_PARENT,
 } from "./actionTypes"
@@ -16,6 +17,7 @@ const defaultState = {
   journal: null,
   allJournals: [],
   allReports: [],
+  error: null,
 }
 
 function childReducer(prevState = defaultState.child, action) {
@@ -82,12 +84,23 @@ function reportArrayReducer(prevState = defaultState.allReports, action) {
   }
 }
 
+function errorReducer(prevState = defaultState.error, action) {
+  switch (action.type) {
+    case SET_ERROR:
+      console.log("Error: ", action.payload)
+      return action.payload
+    default:
+      return prevState
+  }
+}
+
 const rootReducer = combineReducers({
   child: childReducer,
   parent: parentReducer,
   journal: journalReducer,
   allJournals: journalArrayReducer,
   allReports: reportArrayReducer,
+  error: errorReducer,
 })
 
 export default rootReducer

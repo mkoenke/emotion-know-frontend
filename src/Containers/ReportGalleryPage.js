@@ -29,11 +29,13 @@ class ReportGalleryPage extends React.Component {
 
   listOfReports = () => {
     return this.props.allReports.map((report) => {
-      return (
-        <List.Item alignItems="center" onClick={this.handleReportClick}>
-          {report.title}
-        </List.Item>
-      )
+      if (report) {
+        return (
+          <List.Item alignItems="center" onClick={this.handleReportClick}>
+            {report.title}
+          </List.Item>
+        )
+      }
     })
   }
 

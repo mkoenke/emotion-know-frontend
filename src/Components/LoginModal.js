@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Button, Form, Modal } from "semantic-ui-react"
+import { Button, Form, Message, Modal } from "semantic-ui-react"
 import { login } from "../Redux/actions"
 
 class LoginModal extends React.Component {
@@ -41,6 +41,11 @@ class LoginModal extends React.Component {
       >
         <Modal.Header>Welcome back!</Modal.Header>
         <Modal.Content>
+          {this.props.error ? (
+            <Message negative>
+              <Message.Header>{this.props.error}</Message.Header>
+            </Message>
+          ) : null}
           <Form onSubmit={this.handleFormSubmit}>
             <Form.Field required>
               <label>Username</label>
@@ -73,8 +78,12 @@ class LoginModal extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  error: state.error,
+})
+
 const mapDispatchToProps = (dispatch) => ({
   login: (childInfo) => dispatch(login(childInfo)),
 })
 
-export default connect(null, mapDispatchToProps)(LoginModal)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal)

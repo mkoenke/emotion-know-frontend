@@ -5,6 +5,7 @@ import {
   DELETE_JOURNAL,
   LOGOUT,
   SET_CHILD,
+  SET_ERROR,
   SET_JOURNAL,
   SET_PARENT,
 } from "./actionTypes"
@@ -29,13 +30,21 @@ export function login(child) {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("data:", data)
-        localStorage.setItem("token", data.jwt)
-        dispatch(setChild(data.child))
-        dispatch(allJournals(data.child.journal_entries))
-        dispatch(allReports(data.child.journal_entries))
+        if (!data.error) {
+          console.log("data:", data)
+          localStorage.setItem("token", data.jwt)
+          dispatch(setChild(data.child))
+          dispatch(allJournals(data.child.journal_entries))
+          dispatch(allReports(data.child.journal_entries))
+        } else {
+          dispatch(setError(data.error))
+        }
       })
   }
+}
+
+export function setError(error) {
+  return { type: SET_ERROR, payload: error }
 }
 
 export function loginParent(parent) {
