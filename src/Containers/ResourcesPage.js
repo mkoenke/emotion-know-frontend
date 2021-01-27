@@ -1,7 +1,7 @@
 import React from "react"
 import { Parallax, ParallaxBanner } from "react-scroll-parallax"
-import { Grid, Header, Image, List } from "semantic-ui-react"
-import resourceImage from "../assets/images/profilebackground.jpeg"
+import { Grid, Header, List } from "semantic-ui-react"
+// import resourceImage from "../assets/images/profilebackground.jpeg"
 import Background1 from "../assets/images/profileBackground2.jpeg"
 
 class ResourcesPage extends React.Component {
@@ -20,7 +20,7 @@ class ResourcesPage extends React.Component {
         <div className="root">
           <span className={`copy h1`}>
             <Parallax x={[-80, 80]} className="letter">
-              EmotionKnow
+              EmotionKnow Resources
             </Parallax>
           </span>
           <Header style={{ color: "rgb(171, 218, 225)" }}>
@@ -29,10 +29,38 @@ class ResourcesPage extends React.Component {
         </div>
         <Grid centered celled="internally">
           <Grid.Row>
-            <Grid.Column width={3}>
-              <Image src={resourceImage} />
+            <Grid.Column width={5}>
+              <Header textAlign="center" size="huge" color="blue">
+                Child Resources
+              </Header>
+              <List bulleted>
+                <List.Item href="https://childhood101.com/which-emotion-am-i-exploring-emotions-guessing-game/">
+                  Which Emotion Am I? Exploring Emotions Guessing Game
+                </List.Item>
+                <List.Item href="https://childhood101.com/calm-down-bottle/">
+                  Slow Motion Calm Down Sensory Bottle
+                </List.Item>
+                <List.Item href="https://eqforchildren.com/cjs-kids-club/the-cj-kids-club/">
+                  The CJ Kids Club
+                </List.Item>
+                <List.Item href="https://gozen.com/ref/42/?campaign=Home">
+                  GoZen
+                </List.Item>
+                <List.Item href="https://thesocialinstitute.com/">
+                  The Social Institute
+                </List.Item>
+                <List.Item href="https://nourishingmyscholar.com/social-emotional-intelligence/">
+                  Nourishing My Scholar Books List
+                </List.Item>
+                <List.Item href="https://positivepsychology.com/emotional-intelligence-exercises/">
+                  13 Emotional Intelligence Activities & Exercises
+                </List.Item>
+                <List.Item href="https://www.thepathway2success.com/free-social-emotional-learning-resources/">
+                  The Pathway 2 Success
+                </List.Item>
+              </List>
             </Grid.Column>
-            <Grid.Column width={10}>
+            <Grid.Column width={5}>
               <Header textAlign="center" size="huge" color="blue">
                 Parent Resources
               </Header>
@@ -67,7 +95,7 @@ class ResourcesPage extends React.Component {
               </List>
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row>
+          {/* <Grid.Row>
             <Grid.Column width={3}>
               <Image src={resourceImage} />
             </Grid.Column>
@@ -93,7 +121,7 @@ class ResourcesPage extends React.Component {
                 </List.Item>
               </List>
             </Grid.Column>
-          </Grid.Row>
+          </Grid.Row> */}
         </Grid>
       </>
     )

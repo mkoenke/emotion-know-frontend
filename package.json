@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "activestorage": "^5.2.4-4",
     "apexcharts": "^3.23.1",
+    "mic-recorder-to-mp3": "^2.2.2",
     "react": "^17.0.1",
     "react-animista": "^1.0.2",
     "react-apexcharts": "^1.3.7",

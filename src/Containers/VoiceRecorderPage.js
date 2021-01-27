@@ -1,13 +1,20 @@
+// import MicRecorder from "mic-recorder-to-mp3"
 import React from "react"
 import { connect } from "react-redux"
 import { Recorder } from "react-voice-recorder"
 import "react-voice-recorder/dist/index.css"
 import { Form, Grid, Header } from "semantic-ui-react"
 import SpeechRecognition from "../Components/SpeechRecogition"
+import SpeechTranscriber from "../Components/SpeechTranscriber"
 import { postJournal } from "../Redux/actions"
+// const Mp3Recorder = new MicRecorder({ bitRate: 128 })
 
 class VoiceRecorderPage extends React.Component {
   state = {
+    // isRecording: false,
+    // blobURL: "",
+    // isBlocked: false,
+    // blob: "",
     title: "",
     submittedTitle: "",
     audioDetails: {
@@ -34,18 +41,30 @@ class VoiceRecorderPage extends React.Component {
     console.log(data)
     this.setState({ audioDetails: data })
   }
+
   handleAudioUpload(file) {
     const journal = new FormData()
     journal.append("title", this.state.submittedTitle)
     journal.append("child_id", this.props.child.id)
-    journal.append("clip", file, "audio1")
+    journal.append("clip", file, `${this.state.submittedTitle}`)
 
     // console.log(journal)
     for (let value of journal.values()) {
       console.log(value)
     }
-    this.props.dispatchJournal(journal)
+    // this.props.dispatchJournal(journal)
+    fetch("http://localhost:3000/journal_entries", {
+      method: "POST",
+      body: journal,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("returned journal:", data)
+        // dispatch(setJournal(data))
+        // dispatch(addJournalToAllJournals(data))
+      })
   }
+
   handleRest() {
     const reset = {
       url: null,
@@ -59,6 +78,44 @@ class VoiceRecorderPage extends React.Component {
     }
     this.setState({ audioDetails: reset })
   }
+  //   start = () => {
+  //     if (this.state.isBlocked) {
+  //       console.log("Permission Denied")
+  //     } else {
+  //       Mp3Recorder.start()
+  //         .then(() => {
+  //           this.setState({ isRecording: true })
+  //         })
+  //         .catch((e) => console.error(e))
+  //     }
+  //   }
+
+  //   stop = () => {
+  //     Mp3Recorder.stop()
+  //       .getMp3()
+  //       .then(([buffer, blob]) => {
+  //         const blobURL = URL.createObjectURL(blob)
+  //         this.setState(
+  //           { blobURL, blob, isRecording: false },
+  //           this.handleAudioUpload(blob)
+  //         )
+  //       })
+  //       .catch((e) => console.log(e))
+  //   }
+
+  //   componentDidMount() {
+  //     navigator.getUserMedia(
+  //       { audio: true },
+  //       () => {
+  //         console.log("Permission Granted")
+  //         this.setState({ isBlocked: false })
+  //       },
+  //       () => {
+  //         console.log("Permission Denied")
+  //         this.setState({ isBlocked: true })
+  //       }
+  //     )
+  //   }
 
   render() {
     console.log("state in audio recorder: ", this.state)
@@ -92,6 +149,13 @@ class VoiceRecorderPage extends React.Component {
         </Grid>
         <br />
         <div style={{ width: "600px", margin: "20px" }}>
+          {/* <button onClick={this.start} disabled={this.state.isRecording}>
+            Record
+          </button>
+          <button onClick={this.stop} disabled={!this.state.isRecording}>
+            Stop
+          </button>
+          <audio src={this.state.blobURL} controls="controls" /> */}
           <SpeechRecognition />
           <Recorder
             record={true}
@@ -102,6 +166,7 @@ class VoiceRecorderPage extends React.Component {
             handleAudioUpload={(data) => this.handleAudioUpload(data)}
             handleRest={() => this.handleRest()}
           />
+          <SpeechTranscriber />
         </div>
       </>
     )
