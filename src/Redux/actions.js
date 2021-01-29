@@ -1,7 +1,10 @@
 import {
+  ADD_AUDIO,
   ADD_JOURNAL,
+  ALL_AUDIOS,
   ALL_JOURNALS,
   ALL_REPORTS,
+  DELETE_AUDIO,
   DELETE_JOURNAL,
   LOGOUT,
   SET_CHILD,
@@ -33,9 +36,13 @@ export function login(child) {
         if (!data.error) {
           console.log("data:", data)
           localStorage.setItem("token", data.jwt)
+
           dispatch(setChild(data.child))
           dispatch(allJournals(data.child.journal_entries))
-          dispatch(allReports(data.child.journal_entries))
+          dispatch(allAudios(data.child.audio_entries))
+          dispatch(
+            allReports(data.child.journal_entries, data.child.audio_entries)
+          )
         } else {
           dispatch(setError(data.error))
         }
@@ -61,10 +68,14 @@ export function loginParent(parent) {
       .then((data) => {
         console.log("data:", data)
         localStorage.setItem("token", data.jwt)
+        let allJournalEntries =
+          data.parent.journal_entries + data.parent.audio_entries
+        console.log("ARRAY OF ALL JOURNAL ENTRIES: ", allJournalEntries)
         dispatch(setParent(data.parent))
         dispatch(setChild(data.parent.child))
         dispatch(allJournals(data.parent.journal_entries))
-        dispatch(allReports(data.parent.journal_entries))
+        dispatch(allAudios(data.parent.audio_entries))
+        dispatch(allReports(allJournalEntries))
       })
   }
 }
@@ -127,16 +138,50 @@ export function fetchReportsfromChild(child) {
       .then((childData) => {
         console.log("child data with reports:", childData)
         dispatch(setChild(childData))
+
         // dispatch(setReport())
-        dispatch(allReports(childData.journal_entries))
+        let arrayOfJournals = childData.journal_entries
+        let arrayOfAudios = childData.audio_entries
+        dispatch(allReports(arrayOfJournals, arrayOfAudios))
       })
   }
 }
 
-export function allReports(arrayOfJournals) {
-  let arrayOfReports = arrayOfJournals.map((journal) => journal.report)
-  console.log(arrayOfReports)
+export function allReports(arrayOfJournals, arrayOfAudios) {
+  console.log("Array of journals: ", arrayOfJournals)
+  let arrayOfJournalReports = arrayOfJournals.map((journal) => journal.report)
+  console.log("Array of journal reports:", arrayOfJournalReports)
+  let arrayOfAudioReports = arrayOfAudios.map((audio) => audio.audio_report)
+  console.log("Array of audios: ", arrayOfAudios)
+  console.log("Array of audio reports:", arrayOfAudioReports)
+  let arrayOfReports = [...arrayOfJournalReports, ...arrayOfAudioReports]
+  console.log("ARRAY OF REPORTS: ", arrayOfReports)
   return { type: ALL_REPORTS, payload: arrayOfReports }
+}
+
+export function allAudios(arrayOfAudios) {
+  return { type: ALL_AUDIOS, payload: arrayOfAudios }
+}
+
+export function addAudioToAllAudio(audioJournal) {
+  return { type: ADD_AUDIO, payload: audioJournal }
+}
+
+export function deleteAudio(journal) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/audio_entries/${journal.id}`, {
+      method: "DELETE",
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("deleted audio journal:", data)
+        dispatch(removeAudio(journal))
+      })
+  }
+}
+
+function removeAudio(journal) {
+  return { type: DELETE_AUDIO, payload: journal }
 }
 
 // export function setReport(report) {

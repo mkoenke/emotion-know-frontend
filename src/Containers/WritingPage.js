@@ -19,8 +19,6 @@ class WritingPage extends React.Component {
       title: this.state.title,
       content: this.state.content,
     }
-
-    console.log("Props:", this.props)
     this.props.dispatchJournal(journal)
     this.setState({ title: "", content: "" })
     /// redirect to written journal gallery

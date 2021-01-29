@@ -27,7 +27,8 @@ class ResourcesPage extends React.Component {
             Building Emotional Intelligence in Children
           </Header>
         </div>
-        <Grid centered celled="internally">
+
+        <Grid centered celled="internally" style={{ marginBottom: "100px" }}>
           <Grid.Row>
             <Grid.Column width={5}>
               <Header textAlign="center" size="huge" color="blue">
@@ -95,34 +96,8 @@ class ResourcesPage extends React.Component {
               </List>
             </Grid.Column>
           </Grid.Row>
-          {/* <Grid.Row>
-            <Grid.Column width={3}>
-              <Image src={resourceImage} />
-            </Grid.Column>
-            <Grid.Column width={10}>
-              <Header textAlign="center" size="huge" color="blue">
-                Child Resources
-              </Header>
-              <List bulleted>
-                <List.Item href="https://childhood101.com/which-emotion-am-i-exploring-emotions-guessing-game/">
-                  Which Emotion Am I? Exploring Emotions Guessing Game
-                </List.Item>
-                <List.Item href="https://childhood101.com/calm-down-bottle/">
-                  Slow Motion Calm Down Sensory Bottle
-                </List.Item>
-                <List.Item href="https://eqforchildren.com/cjs-kids-club/the-cj-kids-club/">
-                  The CJ Kids Club
-                </List.Item>
-                <List.Item href="https://gozen.com/ref/42/?campaign=Home">
-                  GoZen
-                </List.Item>
-                <List.Item href="https://thesocialinstitute.com/">
-                  The Social Institute
-                </List.Item>
-              </List>
-            </Grid.Column>
-          </Grid.Row> */}
         </Grid>
+        <div style={{ dispaly: "block", height: "300px" }} />
       </>
     )
   }

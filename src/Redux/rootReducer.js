@@ -1,8 +1,11 @@
 import { combineReducers } from "redux"
 import {
+  ADD_AUDIO,
   ADD_JOURNAL,
+  ALL_AUDIOS,
   ALL_JOURNALS,
   ALL_REPORTS,
+  DELETE_AUDIO,
   DELETE_JOURNAL,
   LOGOUT,
   SET_CHILD,
@@ -18,6 +21,7 @@ const defaultState = {
   allJournals: [],
   allReports: [],
   error: null,
+  allAudios: [],
 }
 
 function childReducer(prevState = defaultState.child, action) {
@@ -74,6 +78,26 @@ function journalArrayReducer(prevState = defaultState.allJournals, action) {
       return prevState
   }
 }
+
+function audioArrayReducer(prevState = defaultState.allAudios, action) {
+  switch (action.type) {
+    case ALL_AUDIOS:
+      console.log("All audio journals in reducer: ", action.payload)
+      return action.payload
+    case ADD_AUDIO:
+      console.log("Added audio journal in reducer: ", action.payload)
+      return prevState.concat(action.payload)
+    case DELETE_AUDIO:
+      let filteredArray = prevState.filter(
+        (journal) => journal.id !== action.payload.id
+      )
+      console.log("all audio journals after deleted: ", filteredArray)
+      return filteredArray
+    default:
+      return prevState
+  }
+}
+
 function reportArrayReducer(prevState = defaultState.allReports, action) {
   switch (action.type) {
     case ALL_REPORTS:
@@ -100,6 +124,7 @@ const rootReducer = combineReducers({
   journal: journalReducer,
   allJournals: journalArrayReducer,
   allReports: reportArrayReducer,
+  allAudios: audioArrayReducer,
   error: errorReducer,
 })
 
