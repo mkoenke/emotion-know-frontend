@@ -22,6 +22,18 @@ class ReportGalleryPage extends React.Component {
     })
   }
 
+  handleParentReportClick = (event) => {
+    console.log("target: ", event.target)
+    let clickedReport = this.props.parentsReports.find(
+      (report) => report.title === event.target.textContent
+    )
+    console.log("clicked report:", clickedReport)
+    this.setState({
+      beenClicked: !this.state.beenClicked,
+      clickedReport: clickedReport,
+    })
+  }
+
   renderReportGraph = () => {
     console.log("Report in render report graph: ", this.state.clickedReport)
     return <Graph report={this.state.clickedReport} />
@@ -29,20 +41,33 @@ class ReportGalleryPage extends React.Component {
 
   listOfReports = () => {
     return this.props.allReports.map((report) => {
-      if (report) {
-        return (
-          <List.Item alignItems="center" onClick={this.handleReportClick}>
-            {report.title}
-          </List.Item>
-        )
-      }
+      console.log("Report: ", report)
+      return (
+        <List.Item alignItems="center" onClick={this.handleReportClick}>
+          {report.title}
+        </List.Item>
+      )
+    })
+  }
+  listOfParentsReports = () => {
+    console.log("List of parents reports: ", this.props.parentsReports)
+    return this.props.parentsReports.map((report) => {
+      // if (report) {
+      console.log("Report: ", report)
+      return (
+        <List.Item alignItems="center" onClick={this.handleParentReportClick}>
+          {report.title}
+        </List.Item>
+      )
+      // }
     })
   }
 
   render() {
+    console.log("Props: ", this.props)
     return (
       <>
-        {this.props.child ? (
+        {this.props.child && !this.props.parent ? (
           <>
             <Segment raised padded>
               {this.props.child ? (
@@ -85,7 +110,7 @@ class ReportGalleryPage extends React.Component {
               </Segment>
               <Segment textAlign="center">
                 <Header>Individual Journal Data Reports</Header>
-                <List bulleted>{this.listOfReports()}</List>
+                <List bulleted>{this.listOfParentsReports()}</List>
                 <br />
                 {this.state.beenClicked ? this.renderReportGraph() : null}
               </Segment>
@@ -106,6 +131,7 @@ function mapStateToProps(state) {
     child: state.child,
     parent: state.parent,
     allReports: state.allReports,
+    parentsReports: state.parentsReports,
   }
 }
 

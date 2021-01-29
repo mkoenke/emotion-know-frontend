@@ -8,6 +8,7 @@ import {
   DELETE_AUDIO,
   DELETE_JOURNAL,
   LOGOUT,
+  PARENTS_REPORTS,
   SET_CHILD,
   SET_ERROR,
   SET_JOURNAL,
@@ -22,6 +23,7 @@ const defaultState = {
   allReports: [],
   error: null,
   allAudios: [],
+  parentsReports: [],
 }
 
 function childReducer(prevState = defaultState.child, action) {
@@ -108,6 +110,16 @@ function reportArrayReducer(prevState = defaultState.allReports, action) {
   }
 }
 
+function parentReportReducer(prevState = defaultState.parentsReports, action) {
+  switch (action.type) {
+    case PARENTS_REPORTS:
+      console.log("All parents reports in reducer: ", action.payload)
+      return action.payload
+    default:
+      return prevState
+  }
+}
+
 function errorReducer(prevState = defaultState.error, action) {
   switch (action.type) {
     case SET_ERROR:
@@ -125,6 +137,7 @@ const rootReducer = combineReducers({
   allJournals: journalArrayReducer,
   allReports: reportArrayReducer,
   allAudios: audioArrayReducer,
+  parentsReports: parentReportReducer,
   error: errorReducer,
 })
 

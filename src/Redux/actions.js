@@ -7,6 +7,7 @@ import {
   DELETE_AUDIO,
   DELETE_JOURNAL,
   LOGOUT,
+  PARENTS_REPORTS,
   SET_CHILD,
   SET_ERROR,
   SET_JOURNAL,
@@ -68,14 +69,9 @@ export function loginParent(parent) {
       .then((data) => {
         console.log("data:", data)
         localStorage.setItem("token", data.jwt)
-        let allJournalEntries =
-          data.parent.journal_entries + data.parent.audio_entries
-        console.log("ARRAY OF ALL JOURNAL ENTRIES: ", allJournalEntries)
         dispatch(setParent(data.parent))
         dispatch(setChild(data.parent.child))
-        dispatch(allJournals(data.parent.journal_entries))
-        dispatch(allAudios(data.parent.audio_entries))
-        dispatch(allReports(allJournalEntries))
+        dispatch(parentsReports(data.parent.reports, data.parent.audio_reports))
       })
   }
 }
@@ -157,6 +153,12 @@ export function allReports(arrayOfJournals, arrayOfAudios) {
   let arrayOfReports = [...arrayOfJournalReports, ...arrayOfAudioReports]
   console.log("ARRAY OF REPORTS: ", arrayOfReports)
   return { type: ALL_REPORTS, payload: arrayOfReports }
+}
+
+export function parentsReports(journalReports, audioReports) {
+  let arrayOfReports = [...journalReports, ...audioReports]
+  console.log("ARRAY OF PARENTS REPORTS: ", arrayOfReports)
+  return { type: PARENTS_REPORTS, payload: arrayOfReports }
 }
 
 export function allAudios(arrayOfAudios) {
