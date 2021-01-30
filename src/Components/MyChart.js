@@ -19,7 +19,7 @@ class MyChart extends React.Component {
         id: `${this.props.child}`,
       },
       xaxis: {
-        categories: ["Journal 1", "Journal 2", "Journal 3"],
+        categories: [],
       },
     },
     series: [],
@@ -28,29 +28,31 @@ class MyChart extends React.Component {
   xAxis = () => {
     if (this.props.allReports.length) {
       let xAxisCategories = this.props.allReports.map(
-        (report) => `Journal ${report.id}`
+        (report) => `${report.date}`
       )
       console.log("X-axis: ", xAxisCategories)
       this.setState({
         options: {
-          ...this.state.options,
+          // ...this.state.options,
           xaxis: {
-            ...this.state.options.xaxis,
+            // ...this.state.options.xaxis,
             categories: xAxisCategories,
+            // labels: xAxisCategories,
           },
         },
       })
     } else {
       let xAxisCategories = this.props.parentsReports.map(
-        (report) => `Journal ${report.id}`
+        (report) => `${report.date}`
       )
       console.log("X-axis: ", xAxisCategories)
       this.setState({
         options: {
-          ...this.state.options,
+          // ...this.state.options,
           xaxis: {
-            ...this.state.options.xaxis,
+            // ...this.state.options.xaxis,
             categories: xAxisCategories,
+            // labels: xAxisCategories,
           },
         },
       })
@@ -112,6 +114,7 @@ class MyChart extends React.Component {
 
   render() {
     console.log("Reports in chart:", this.props.allReports)
+    console.log("State in chart: ", this.state)
     return (
       <Chart
         options={this.state.options}

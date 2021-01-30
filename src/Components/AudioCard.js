@@ -6,7 +6,7 @@ import { connect } from "react-redux"
 import { Button, Card, Image, Popup } from "semantic-ui-react"
 import { deleteAudio } from "../Redux/actions"
 
-class JournalCard extends React.Component {
+class AudioCard extends React.Component {
   handleDeleteClick = () => {
     console.log("Delete Click")
     this.props.deleteAudio(this.props.cardObj)
@@ -38,13 +38,15 @@ class JournalCard extends React.Component {
               </Card>
             </FrontSide>
             <BackSide>
-              <Card centered>
-                <Card.Content>
-                  <Card.Description textAlign="center">
-                    {this.props.cardObj.content}
-                  </Card.Description>
-                </Card.Content>
-              </Card>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <audio controls src={this.props.cardObj.url} />
+              </div>
             </BackSide>
           </Flippy>
         </Animista>
@@ -59,4 +61,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(JournalCard)
+export default connect(null, mapDispatchToProps)(AudioCard)
