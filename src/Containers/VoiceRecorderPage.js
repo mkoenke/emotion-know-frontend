@@ -123,7 +123,7 @@ class VoiceRecorderPage extends React.Component {
     for (let value of journal.values()) {
       console.log(value)
     }
-    // this.props.dispatchJournal(journal)
+
     fetch("http://localhost:3000/audio_entries", {
       method: "POST",
       body: journal,
@@ -131,12 +131,12 @@ class VoiceRecorderPage extends React.Component {
       .then((resp) => resp.json())
       .then((data) => {
         console.log("returned audio journal:", data)
-        // dispatch(setJournal(data))
+
         // dispatch(addJournalToAllJournals(data))
       })
 
     // this.setState({ title: "", content: "" })
-    // /// redirect to written journal gallery
+    // /// redirect to audio journal gallery
     // /// fetch child again and set reports in state
     // this.props.dispatchReports(this.props.child)
   }

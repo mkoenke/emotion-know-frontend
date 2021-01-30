@@ -2,16 +2,18 @@ import React from "react"
 import Animista, { AnimistaTypes } from "react-animista"
 import Flippy, { BackSide, FrontSide } from "react-flippy"
 import { connect } from "react-redux"
-// import { NavLink } from "react-router-dom"
 import { Button, Card, Image, Popup } from "semantic-ui-react"
-import { deleteJournal } from "../Redux/actions"
+import { Player } from "video-react"
+import { deleteVideo } from "../Redux/actions"
 
-class JournalCard extends React.Component {
+class VideoCard extends React.Component {
   handleDeleteClick = () => {
     console.log("Delete Click")
-    this.props.deleteJournal(this.props.cardObj)
+    this.props.deleteAudio(this.props.cardObj)
   }
   render() {
+    console.log(this.props.cardObj)
+
     return (
       <>
         <Animista type={AnimistaTypes.SCALE_UP_CENTER}>
@@ -28,22 +30,24 @@ class JournalCard extends React.Component {
                     circular
                   />
                 </Card.Content>
-                {/* <Popup
-                  content="Warning!  This will delete this journal entry!"
-                  trigger={
-                    <Button icon="close" onClick={this.handleDeleteClick} />
-                  }
-                /> */}
               </Card>
             </FrontSide>
             <BackSide>
-              <Card centered>
-                <Card.Content>
-                  <Card.Description textAlign="center">
-                    {this.props.cardObj.content}
-                  </Card.Description>
-                </Card.Content>
-              </Card>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Player>
+                  <source src={this.props.cardObj.url} />
+                </Player>
+                {/* <iframe
+                  title={this.props.cardObj.id}
+                  src={this.props.cardObj.url}
+                /> */}
+              </div>
               <div
                 style={{
                   display: "flex",
@@ -68,8 +72,8 @@ class JournalCard extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    deleteJournal: (journal) => dispatch(deleteJournal(journal)),
+    deleteAudio: (journal) => dispatch(deleteVideo(journal)),
   }
 }
 
-export default connect(null, mapDispatchToProps)(JournalCard)
+export default connect(null, mapDispatchToProps)(VideoCard)

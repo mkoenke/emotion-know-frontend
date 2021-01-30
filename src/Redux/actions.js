@@ -1,11 +1,14 @@
 import {
   ADD_AUDIO,
   ADD_JOURNAL,
+  ADD_VIDEO,
   ALL_AUDIOS,
   ALL_JOURNALS,
   ALL_REPORTS,
+  ALL_VIDEOS,
   DELETE_AUDIO,
   DELETE_JOURNAL,
+  DELETE_VIDEO,
   LOGOUT,
   PARENTS_REPORTS,
   SET_CHILD,
@@ -41,6 +44,7 @@ export function login(child) {
           dispatch(setChild(data.child))
           dispatch(allJournals(data.child.journal_entries))
           dispatch(allAudios(data.child.audio_entries))
+          dispatch(allVideos(data.child.video_entries))
           dispatch(
             allReports(data.child.journal_entries, data.child.audio_entries)
           )
@@ -184,6 +188,31 @@ export function deleteAudio(journal) {
 
 function removeAudio(journal) {
   return { type: DELETE_AUDIO, payload: journal }
+}
+
+export function allVideos(arrayOfVideos) {
+  return { type: ALL_VIDEOS, payload: arrayOfVideos }
+}
+
+export function addVideoToAllVideos(videoJournal) {
+  return { type: ADD_VIDEO, payload: videoJournal }
+}
+
+export function deleteVideo(journal) {
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/video_entries/${journal.id}`, {
+      method: "DELETE",
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("deleted video journal:", data)
+        dispatch(removeVideo(journal))
+      })
+  }
+}
+
+function removeVideo(journal) {
+  return { type: DELETE_VIDEO, payload: journal }
 }
 
 // export function setReport(report) {

@@ -1,8 +1,18 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Header } from "semantic-ui-react"
+import { Grid, Header } from "semantic-ui-react"
+import VideoCard from "../Components/VideoCard"
 
 class VideoGalleryPage extends React.Component {
+  arrayOfJournals = () => {
+    return this.props.allVideos.map((card) => {
+      return (
+        <Grid.Column>
+          <VideoCard centered key={card.id} cardObj={card} />
+        </Grid.Column>
+      )
+    })
+  }
   render() {
     return (
       <>
@@ -17,9 +27,9 @@ class VideoGalleryPage extends React.Component {
           </Header>
         ) : null}
 
-        {/* <Grid centered columns="three">
+        <Grid centered columns="three">
           <Grid.Row>{this.arrayOfJournals()}</Grid.Row>
-        </Grid> */}
+        </Grid>
       </>
     )
   }
@@ -27,6 +37,7 @@ class VideoGalleryPage extends React.Component {
 function mapStateToProps(state) {
   return {
     child: state.child,
+    allVideos: state.allVideos,
   }
 }
 export default connect(mapStateToProps)(VideoGalleryPage)

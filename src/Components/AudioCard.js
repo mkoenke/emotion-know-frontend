@@ -2,7 +2,6 @@ import React from "react"
 import Animista, { AnimistaTypes } from "react-animista"
 import Flippy, { BackSide, FrontSide } from "react-flippy"
 import { connect } from "react-redux"
-// import { NavLink } from "react-router-dom"
 import { Button, Card, Image, Popup } from "semantic-ui-react"
 import { deleteAudio } from "../Redux/actions"
 
@@ -16,7 +15,7 @@ class AudioCard extends React.Component {
     return (
       <>
         <Animista type={AnimistaTypes.SCALE_UP_CENTER}>
-          <Flippy flipOnClick={true}>
+          <Flippy flipOnHover={true}>
             <FrontSide>
               <Card id={this.props.cardObj.id} centered>
                 <Card.Content>
@@ -29,12 +28,6 @@ class AudioCard extends React.Component {
                     circular
                   />
                 </Card.Content>
-                <Popup
-                  content="Warning!  This will delete this journal entry!"
-                  trigger={
-                    <Button icon="close" onClick={this.handleDeleteClick} />
-                  }
-                />
               </Card>
             </FrontSide>
             <BackSide>
@@ -46,6 +39,21 @@ class AudioCard extends React.Component {
                 }}
               >
                 <audio controls src={this.props.cardObj.url} />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "10px",
+                }}
+              >
+                <Popup
+                  content="Warning!  This will delete this journal entry!"
+                  trigger={
+                    <Button icon="close" onClick={this.handleDeleteClick} />
+                  }
+                />
               </div>
             </BackSide>
           </Flippy>
