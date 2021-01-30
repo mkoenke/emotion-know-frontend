@@ -1,15 +1,9 @@
-// import MicRecorder from "mic-recorder-to-mp3"
-// const Mp3Recorder = new MicRecorder({ bitRate: 128 })
 import AudioReactRecorder, { RecordState } from "audio-react-recorder"
 import React from "react"
 import { connect } from "react-redux"
-// import { Recorder } from "react-voice-recorder"
-import "react-voice-recorder/dist/index.css"
+// import "react-voice-recorder/dist/index.css"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
 import { postJournal } from "../Redux/actions"
-// import SpeechRecognition, {
-//   useSpeechRecognition,
-// } from "react-speech-recognition"
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition

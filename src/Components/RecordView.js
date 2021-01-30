@@ -47,6 +47,7 @@ class RecordView extends React.Component {
             ? JSON.parse(data) && console.log("returned video journal:", data)
             : {}
         )
+        ///send email
       })
       .catch((error) => {
         Promise.reject(error)
@@ -120,33 +121,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(RecordView)
-
-{
-  /* <div>
-<ReactMediaRecorder
-  video
-    whenStopped={(mediaUrl) => } save mediaBlob in state, post to db, send to sentiment API and save response in state and database
-  render={({
-    status,
-    startRecording,
-    stopRecording,
-    mediaBlob,
-    mediaUrl,
-  }) => (
-    <div>
-   <p>{status}</p> 
-      <video
-        height="620"
-        width="820"
-        src={mediaUrl}
-        controls
-        autoplay
-      />
-      <br />
-      <Button onClick={startRecording}>Start Recording</Button>
-      <Button onClick={stopRecording}>Stop Recording</Button>
-    </div>
-  )}
-/>
-</div>  */
-}
