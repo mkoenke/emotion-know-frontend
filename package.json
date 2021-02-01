@@ -9,6 +9,7 @@
     "activestorage": "^5.2.4-4",
     "apexcharts": "^3.23.1",
     "audio-react-recorder": "^1.0.4",
+    "emailjs-com": "^2.6.4",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-animista": "^1.0.2",

@@ -1,16 +1,17 @@
+import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
 import VideoRecorder from "react-video-recorder"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
-
+let CY
 class RecordView extends React.Component {
   state = {
-    //mediaBlob: null,
-    ////
     title: "",
     submittedTitle: "",
     videoBlob: null,
   }
+
+  componentDidMount() {}
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -48,6 +49,28 @@ class RecordView extends React.Component {
             : {}
         )
         ///send email
+        let templateParams = {
+          to_name: this.props.child.parent_email,
+          message:
+            "Your child just created a journal entry!  Log in to see the emotions they expressed!",
+          to_email: this.props.child.parent_email,
+          reply_to: "emotionknowteam@gmail.com",
+        }
+        emailjs
+          .sendForm(
+            "service_b4uxd6p",
+            "template_skc2xnu",
+            templateParams,
+            "user_CN4ma3aQ7rwUtwDJc9mdp"
+          )
+          .then(
+            (result) => {
+              console.log(result.text)
+            },
+            (error) => {
+              console.log(error.text)
+            }
+          )
       })
       .catch((error) => {
         Promise.reject(error)
@@ -121,3 +144,58 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(RecordView)
+
+// class ScriptLoader {
+//   static loadScript(url) {
+//     return new Promise((resolve) => {
+//       const script = document.createElement("script")
+//       script.type = "text/javascript"
+//       if (script.readyState) {
+//         //IE
+//         script.onreadystatechange = function () {
+//           if (
+//             script.readyState === "loaded" ||
+//             script.readyState === "complete"
+//           ) {
+//             script.onreadystatechange = null
+//             resolve()
+//           }
+//         }
+//       } else {
+//         //Others
+//         script.onload = function () {
+//           resolve()
+//         }
+//       }
+//       script.src = url
+//       document.getElementsByTagName("head")[0].appendChild(script)
+//     })
+//   }
+
+//   static downloadAiSDK() {
+//     if (ScriptLoader.p == null) {
+//       ScriptLoader.p = ScriptLoader.loadScript(
+//         "https://sdk.morphcast.com/mphtools/v1.0/mphtools.js"
+//       )
+//         .then(() =>
+//           ScriptLoader.loadScript(
+//             "https://ai-sdk.morphcast.com/v1.14/ai-sdk.js"
+//           )
+//         )
+//         .then(() => CY) // CY is a global var
+//     }
+//     return ScriptLoader.p
+//   }
+// }
+
+// ScriptLoader.downloadAiSDK().then((CY) => {
+//   // here, the local variable CY can be changed to everything else (eg. AI)
+//   CY.loader()
+//     .addModule(CY.modules().FACE_DETECTOR.name)
+//     .load()
+//     .then(({ start, stop }) => start())
+
+//   window.addEventListener(CY.modules().FACE_DETECTOR.eventName, (evt) => {
+//     console.log("Face detector result", evt.detail)
+//   })
+// })

@@ -38,6 +38,9 @@
   async
   src="//cdn.jsdelivr.net/npm/semantic-ui@${props.versions.sui}/dist/semantic.min.js"
 ></script>
+
+<meta name="mphtools-feature" content="compatibilityUI, cameraPrivacyPopup, compatibilityAutoCheck">
+
     <title>EmotionKnow</title>
   </head>
   <body>
@@ -53,5 +56,31 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://sdk.morphcast.com/mphtools/v1.0/mphtools.js"></script>
+<script src="https://ai-sdk.morphcast.com/v1.14/ai-sdk.js"></script>
+<script>
+// CY.loader()
+//   .addModule(CY.modules().FACE_DETECTOR.name)
+//   .addModule(CY.modules().FACE_EMOTION.name)
+
+//   .load()
+//   .then(({ start, stop }) => start());
+
+// window.addEventListener(CY.modules().FACE_DETECTOR.eventName, (evt) => {
+//   // console.log('Face detector result', evt.detail);
+// });
+// window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
+//       console.log("Emotion result", evt.detail.output.dominantEmotion)
+//       console.log("Emotion result", evt.detail.output.rawEmotion)
+//     })
+//     const FACE_EMOTION_EVENT = {
+//     output: {
+//       dominantEmotion: String,
+//       emotion: {Angry: Number, Disgust: Number, Fear: Number, Happy: Number, Neutral: Number, Sad: Number, Surprise: Number}
+//     }
+// }
+
+</script>
+
   </body>
 </html>

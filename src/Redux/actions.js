@@ -132,17 +132,18 @@ function removeJournal(journal) {
 }
 
 export function fetchReportsfromChild(child) {
+  console.log("CHILD: ", child)
   return (dispatch) => {
-    return fetch(`http://localhost:3000/children/${child.id}/`)
+    return fetch(`http://localhost:3000/children/${child.id}/reports`)
       .then((resp) => resp.json())
       .then((childData) => {
         console.log("child data with reports:", childData)
-        dispatch(setChild(childData))
+        // dispatch(setChild(childData))
 
-        // dispatch(setReport())
-        let arrayOfJournals = childData.journal_entries
-        let arrayOfAudios = childData.audio_entries
-        dispatch(allReports(arrayOfJournals, arrayOfAudios))
+        // // dispatch(setReport())
+        // let arrayOfJournals = childData.journal_entries
+        // let arrayOfAudios = childData.audio_entries
+        // dispatch(allReports(arrayOfJournals, arrayOfAudios))
       })
   }
 }
