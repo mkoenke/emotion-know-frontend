@@ -127,6 +127,7 @@ class VoiceRecorderPage extends React.Component {
         console.log("returned audio journal:", data)
 
         // dispatch(addJournalToAllJournals(data))
+        this.props.history.push("/audios")
       })
 
     // this.setState({ title: "", content: "" })

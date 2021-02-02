@@ -1,6 +1,5 @@
 /* global CY */
-// import ReactMediaRecorder from "@getapper/react-media-recorder"
-import emailjs from "emailjs-com"
+
 import React from "react"
 import { connect } from "react-redux"
 import VideoRecorder from "react-video-recorder"
@@ -75,55 +74,49 @@ class RecordView extends React.Component {
       method: "POST",
       body: journal,
     })
-      .then((response) => {
-        return response.text()
-      })
+      .then((resp) => resp.json())
       .then((data) => {
-        Promise.resolve(
-          data
-            ? JSON.parse(data) && console.log("returned video journal:", data)
-            : {}
-        )
-        ///send email
-        let templateParams = {
-          to_name: this.props.child.parent_email,
-          message:
-            "Your child just created a journal entry!  Log in to see the emotions they expressed!",
-          to_email: this.props.child.parent_email,
-          reply_to: "emotionknowteam@gmail.com",
-        }
-        emailjs
-          .sendForm(
-            "service_b4uxd6p",
-            "template_skc2xnu",
-            templateParams,
-            "user_CN4ma3aQ7rwUtwDJc9mdp"
-          )
-          .then(
-            (result) => {
-              console.log(result.text)
-            },
-            (error) => {
-              console.log(error.text)
-            }
-          )
-      })
-      .catch((error) => {
-        Promise.reject(error)
-      })
-    // .then((resp) => resp.json())
-    // .then((data) => {
-    //   console.log("returned video journal:", data)
+        console.log("returned video journal:", data)
+        this.postReport(data)
 
-    // dispatch(addJournalToAllJournals(data))
-    //fetch reports
-    // })
+        /// push to video gallery
+        this.props.history.push("/videos")
+        // dispatch(addJournalToAllJournals(data))
+      })
+
+      ///send email
+      // let templateParams = {
+      //   to_name: this.props.child.parent_email,
+      //   message:
+      //     "Your child just created a journal entry!  Log in to see the emotions they expressed!",
+      //   to_email: this.props.child.parent_email,
+      //   reply_to: "emotionknowteam@gmail.com",
+      // }
+      // emailjs
+      //   .sendForm(
+      //     "service_b4uxd6p",
+      //     "template_skc2xnu",
+      //     templateParams,
+      //     "user_CN4ma3aQ7rwUtwDJc9mdp"
+      //   )
+      //   .then(
+      //     (result) => {
+      //       console.log(result.text)
+      //     },
+      //     (error) => {
+      //       console.log(error.text)
+      //     }
+      //   )
+
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
-  postReport = () => {
+  postReport = (journal) => {
     let reportToPost = {
       title: this.state.submittedTitle,
-      // video_entry_id: returnedVideoJournal.id,
+      video_entry_id: journal.id,
       child_id: this.props.child.id,
       parent_id: this.props.child.parent.id,
       anger: this.state.angerAvg,
@@ -135,6 +128,19 @@ class RecordView extends React.Component {
     }
 
     console.log("Report before post: ", reportToPost)
+    return fetch("http://localhost:3000/video_reports", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(reportToPost),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("returned video report:", data)
+        ////dispatch to state???
+      })
   }
 
   getAverages = () => {
@@ -146,17 +152,14 @@ class RecordView extends React.Component {
     let joyAvg = average(joyData)
     let sadnessAvg = average(sadnessData)
     let surpriseAvg = average(surpriseData)
-    this.setState(
-      {
-        angerAvg,
-        fearAvg,
-        disgustAvg,
-        joyAvg,
-        sadnessAvg,
-        surpriseAvg,
-      },
-      this.postReport
-    )
+    this.setState({
+      angerAvg,
+      fearAvg,
+      disgustAvg,
+      joyAvg,
+      sadnessAvg,
+      surpriseAvg,
+    })
   }
 
   onRecordingComplete = (videoBlob) => {
@@ -197,7 +200,7 @@ class RecordView extends React.Component {
                     value={this.state.title}
                   />
                 </Form.Group>
-                <Form.Button>Set Audio Journal Title</Form.Button>
+                <Form.Button>Set Video Journal Title</Form.Button>
               </Form>
             </Grid>
           )}
@@ -211,26 +214,6 @@ class RecordView extends React.Component {
                 onRecordingComplete={this.onRecordingComplete}
                 onStartRecording={this.onStartRecording}
               />
-              <Button onClick={this.getAverages}>Get Averages</Button>
-              {/* <div>
-                <ReactMediaRecorder
-                  video
-                  render={({
-                    status,
-                    startRecording,
-                    stopRecording,
-                    mediaBlob,
-                    mediaUrl,
-                  }) => (
-                    <div>
-                      <p>{status}</p>
-                      <button onClick={startRecording}>Start Recording</button>
-                      <button onClick={stopRecording}>Stop Recording</button>
-                      <video id="sdkvideo" src={mediaUrl} controls />
-                    </div>
-                  )}
-                />
-              </div> */}
             </div>
           </Grid>
           <div
