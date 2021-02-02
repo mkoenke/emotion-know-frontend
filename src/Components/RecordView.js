@@ -1,9 +1,15 @@
+/* global CY */
 // import ReactMediaRecorder from "@getapper/react-media-recorder"
 import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
 import VideoRecorder from "react-video-recorder"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
+CY.loader()
+  .licenseKey(process.env.sdkLicense)
+  .addModule(CY.modules().FACE_EMOTION.name)
+  .load()
+  .then(({ start, stop }) => start())
 
 let angerData = []
 let fearData = []
@@ -13,31 +19,22 @@ let disgustData = []
 let sadnessData = []
 
 class RecordView extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      title: "",
-      submittedTitle: "",
-      videoBlob: null,
-      emo: "",
-      emoData: "",
-      isRecording: false,
-      angerAvg: "",
-      fearAvg: "",
-      joyAvg: "",
-      surpriseAvg: "",
-      disgustAvg: "",
-      sadnessAvg: "",
-    }
-    // if (document.getElementById("sdkvideo")) {
-    //   const customSource = CY.createSource.fromVideoElement(
-    //     document.getElementById("sdkvideo")
-    //   )
-    CY.loader()
-      // .source(customSource)
-      .addModule(CY.modules().FACE_EMOTION.name)
-      .load()
-      .then(({ start, stop }) => start())
+  state = {
+    title: "",
+    submittedTitle: "",
+    videoBlob: null,
+    emo: "",
+    emoData: "",
+    isRecording: false,
+    angerAvg: "",
+    fearAvg: "",
+    joyAvg: "",
+    surpriseAvg: "",
+    disgustAvg: "",
+    sadnessAvg: "",
+  }
+
+  componentDidMount() {
     window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
       this.setState({
         emo: evt.detail.output.dominantEmotion,
@@ -47,8 +44,9 @@ class RecordView extends React.Component {
         this.collectEmotionData(evt.detail.output.rawEmotion)
       }
     })
-    // }
   }
+
+  componentWillUnmount() {}
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -121,6 +119,24 @@ class RecordView extends React.Component {
     //fetch reports
     // })
   }
+
+  postReport = () => {
+    let reportToPost = {
+      title: this.state.submittedTitle,
+      // video_entry_id: returnedVideoJournal.id,
+      child_id: this.props.child.id,
+      parent_id: this.props.child.parent.id,
+      anger: this.state.angerAvg,
+      disgust: this.state.disgustAvg,
+      fear: this.state.fearAvg,
+      joy: this.state.joyAvg,
+      sadness: this.state.sadnessAvg,
+      surprise: this.state.surpriseAvg,
+    }
+
+    console.log("Report before post: ", reportToPost)
+  }
+
   getAverages = () => {
     const average = (arr) => arr.reduce((sume, el) => sume + el, 0) / arr.length
 
@@ -130,14 +146,17 @@ class RecordView extends React.Component {
     let joyAvg = average(joyData)
     let sadnessAvg = average(sadnessData)
     let surpriseAvg = average(surpriseData)
-    this.setState({
-      angerAvg,
-      fearAvg,
-      disgustAvg,
-      joyAvg,
-      sadnessAvg,
-      surpriseAvg,
-    })
+    this.setState(
+      {
+        angerAvg,
+        fearAvg,
+        disgustAvg,
+        joyAvg,
+        sadnessAvg,
+        surpriseAvg,
+      },
+      this.postReport
+    )
   }
 
   onRecordingComplete = (videoBlob) => {
@@ -185,12 +204,6 @@ class RecordView extends React.Component {
         </div>
         <div>
           <Grid centered>
-            <video
-              id="sdkvideo"
-              muted
-              playsInline
-              style={{ position: "absolute", width: "0px", height: "0px" }}
-            ></video>
             <div style={{ height: "620px", width: "800px" }}>
               <VideoRecorder
                 showReplayControls={true}
@@ -198,7 +211,7 @@ class RecordView extends React.Component {
                 onRecordingComplete={this.onRecordingComplete}
                 onStartRecording={this.onStartRecording}
               />
-              <Button onClick={this.getAverages}></Button>
+              <Button onClick={this.getAverages}>Get Averages</Button>
               {/* <div>
                 <ReactMediaRecorder
                   video
