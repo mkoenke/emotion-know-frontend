@@ -4,6 +4,7 @@ import React from "react"
 import { connect } from "react-redux"
 import VideoRecorder from "react-video-recorder"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
+
 CY.loader()
   .licenseKey(process.env.sdkLicense)
   .addModule(CY.modules().FACE_EMOTION.name)
@@ -18,32 +19,41 @@ let disgustData = []
 let sadnessData = []
 
 class RecordView extends React.Component {
-  state = {
-    title: "",
-    submittedTitle: "",
-    videoBlob: null,
-    emo: "",
-    emoData: "",
-    isRecording: false,
-    angerAvg: "",
-    fearAvg: "",
-    joyAvg: "",
-    surpriseAvg: "",
-    disgustAvg: "",
-    sadnessAvg: "",
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      title: "",
+      submittedTitle: "",
+      videoBlob: null,
+      emo: "",
+      emoData: "",
+      isRecording: false,
+      angerAvg: "",
+      fearAvg: "",
+      joyAvg: "",
+      surpriseAvg: "",
+      disgustAvg: "",
+      sadnessAvg: "",
+    }
+    // CY.loader()
+    //   .licenseKey(process.env.sdkLicense)
+    //   .addModule(CY.modules().FACE_EMOTION.name)
+    //   .load()
+    //   .then(({ start, stop }) => start())
   }
 
-  componentDidMount() {
-    window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
-      this.setState({
-        emo: evt.detail.output.dominantEmotion,
-        emoData: evt.detail.output.rawEmotion,
-      })
-      if (this.state.isRecording) {
-        this.collectEmotionData(evt.detail.output.rawEmotion)
-      }
-    })
-  }
+  // componentDidMount() {
+  //   window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
+  //     this.setState({
+  //       emo: evt.detail.output.dominantEmotion,
+  //       emoData: evt.detail.output.rawEmotion,
+  //     })
+  //     if (this.state.isRecording) {
+  //       this.collectEmotionData(evt.detail.output.rawEmotion)
+  //     }
+  //   })
+  // }
 
   componentWillUnmount() {}
 
@@ -166,7 +176,19 @@ class RecordView extends React.Component {
     this.setState({ videoBlob, isRecording: false }, this.getAverages)
   }
   onStartRecording = () => {
-    this.setState({ isRecording: true })
+    this.setState({ isRecording: true }, this.startSDK)
+  }
+
+  startSDK = () => {
+    window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
+      this.setState({
+        emo: evt.detail.output.dominantEmotion,
+        emoData: evt.detail.output.rawEmotion,
+      })
+      if (this.state.isRecording) {
+        this.collectEmotionData(evt.detail.output.rawEmotion)
+      }
+    })
   }
 
   collectEmotionData = (emotionObj) => {
@@ -214,6 +236,7 @@ class RecordView extends React.Component {
                 onRecordingComplete={this.onRecordingComplete}
                 onStartRecording={this.onStartRecording}
               />
+              {/* <VideoRecorder /> */}
             </div>
           </Grid>
           <div
