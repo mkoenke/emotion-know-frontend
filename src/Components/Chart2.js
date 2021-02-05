@@ -19,7 +19,7 @@ class MyChart extends React.Component {
         id: `${this.props.child}`,
       },
       xaxis: {
-        type: "category",
+        // type: "category",
         // categories: [],
       },
     },

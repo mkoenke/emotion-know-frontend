@@ -46,7 +46,11 @@ export function login(child) {
           dispatch(allAudios(data.child.audio_entries))
           dispatch(allVideos(data.child.video_entries))
           dispatch(
-            allReports(data.child.journal_entries, data.child.audio_entries)
+            allReports(
+              data.child.journal_entries,
+              data.child.audio_entries,
+              data.child.video_entries
+            )
           )
         } else {
           dispatch(setError(data.error))
@@ -75,7 +79,13 @@ export function loginParent(parent) {
         localStorage.setItem("token", data.jwt)
         dispatch(setParent(data.parent))
         dispatch(setChild(data.parent.child))
-        dispatch(parentsReports(data.parent.reports, data.parent.audio_reports))
+        dispatch(
+          parentsReports(
+            data.parent.reports,
+            data.parent.audio_reports,
+            data.parent.video_reports
+          )
+        )
       })
   }
 }
@@ -148,22 +158,35 @@ export function fetchReportsfromChild(child) {
   }
 }
 
-export function allReports(arrayOfJournals, arrayOfAudios) {
+export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
   console.log("Array of journals: ", arrayOfJournals)
   let arrayOfJournalReports = arrayOfJournals.map((journal) => journal.report)
   console.log("Array of journal reports:", arrayOfJournalReports)
   let arrayOfAudioReports = arrayOfAudios.map((audio) => audio.audio_report)
   console.log("Array of audios: ", arrayOfAudios)
   console.log("Array of audio reports:", arrayOfAudioReports)
-  let arrayOfReports = [...arrayOfJournalReports, ...arrayOfAudioReports]
-  console.log("ARRAY OF REPORTS: ", arrayOfReports)
-  return { type: ALL_REPORTS, payload: arrayOfReports }
+  let arrayOfVideoReports = arrayOfVideos.map((video) => video.video_report)
+  console.log("Array of Video reports: ", arrayOfVideoReports)
+  let arrayOfReports = [
+    ...arrayOfJournalReports,
+    ...arrayOfAudioReports,
+    ...arrayOfVideoReports,
+  ]
+  let sortedReports = arrayOfReports.sort(function (a, b) {
+    return new Date(b.created_at) - new Date(a.created_at)
+  })
+  console.log("Sorted reports: ", sortedReports)
+
+  return { type: ALL_REPORTS, payload: sortedReports }
 }
 
-export function parentsReports(journalReports, audioReports) {
-  let arrayOfReports = [...journalReports, ...audioReports]
-  console.log("ARRAY OF PARENTS REPORTS: ", arrayOfReports)
-  return { type: PARENTS_REPORTS, payload: arrayOfReports }
+export function parentsReports(journalReports, audioReports, videoReports) {
+  let arrayOfReports = [...journalReports, ...audioReports, ...videoReports]
+  let sortedReports = arrayOfReports.sort(function (a, b) {
+    return new Date(b.created_at) - new Date(a.created_at)
+  })
+  console.log("ARRAY OF SORTED PARENTS REPORTS: ", sortedReports)
+  return { type: PARENTS_REPORTS, payload: sortedReports }
 }
 
 export function allAudios(arrayOfAudios) {
