@@ -1,9 +1,8 @@
-// import Chart from "react-apexcharts"
 import { Line } from "@reactchartjs/react-chart.js"
 import React from "react"
 import { connect } from "react-redux"
 
-class MyChart extends React.Component {
+class Chart extends React.Component {
   componentDidMount() {
     this.chartData()
   }
@@ -163,4 +162,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(MyChart)
+export default connect(mapStateToProps)(Chart)

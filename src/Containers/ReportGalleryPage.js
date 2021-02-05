@@ -3,7 +3,8 @@ import { connect } from "react-redux"
 import { Header, List, Segment } from "semantic-ui-react"
 // import Chart from "../Components/Chart"
 import Chart2 from "../Components/Chart2"
-import Graph from "../Components/Graph"
+// import Graph from "../Components/Graph"
+import Graph2 from "../Components/Graph2"
 
 class ReportGalleryPage extends React.Component {
   state = {
@@ -37,7 +38,12 @@ class ReportGalleryPage extends React.Component {
 
   renderReportGraph = () => {
     console.log("Report in render report graph: ", this.state.clickedReport)
-    return <Graph report={this.state.clickedReport} />
+
+    let date = new Date(this.state.clickedReport.created_at)
+    let dateWithoutTime =
+      date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+
+    return <Graph2 report={this.state.clickedReport} date={dateWithoutTime} />
   }
 
   listOfReports = () => {
