@@ -2,9 +2,9 @@ import React from "react"
 import { connect } from "react-redux"
 import { Header, List, Segment } from "semantic-ui-react"
 // import Chart from "../Components/Chart"
-import Chart2 from "../Components/Chart2"
+import Chart from "../Components/Chart2"
 // import Graph from "../Components/Graph"
-import Graph2 from "../Components/Graph2"
+import Graph from "../Components/Graph2"
 
 class ReportGalleryPage extends React.Component {
   state = {
@@ -43,7 +43,7 @@ class ReportGalleryPage extends React.Component {
     let dateWithoutTime =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
 
-    return <Graph2 report={this.state.clickedReport} date={dateWithoutTime} />
+    return <Graph report={this.state.clickedReport} date={dateWithoutTime} />
   }
 
   listOfReports = () => {
@@ -59,14 +59,12 @@ class ReportGalleryPage extends React.Component {
   listOfParentsReports = () => {
     console.log("List of parents reports: ", this.props.parentsReports)
     return this.props.parentsReports.map((report) => {
-      // if (report) {
       console.log("Report: ", report)
       return (
         <List.Item alignItems="center" onClick={this.handleParentReportClick}>
           {report.title}
         </List.Item>
       )
-      // }
     })
   }
 
@@ -97,8 +95,7 @@ class ReportGalleryPage extends React.Component {
             <Segment textAlign="center">
               <Header>Data Reports over Time</Header>
               <br />
-              {/* <Chart /> */}
-              <Chart2 />
+              <Chart />
             </Segment>
           </>
         ) : (
@@ -125,8 +122,8 @@ class ReportGalleryPage extends React.Component {
               <Segment textAlign="center">
                 <Header>Data Reports over Time</Header>
                 <br />
-                {/* <Chart /> */}
-                <Chart2 />
+
+                <Chart />
               </Segment>
             </>
           )
