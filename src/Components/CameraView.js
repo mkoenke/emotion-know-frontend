@@ -4,6 +4,7 @@ import React from "react"
 import { connect } from "react-redux"
 import VideoRecorder from "react-video-recorder"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
+import { addReportToAllReports } from "../Redux/actions"
 
 // CY.loader()
 //   .licenseKey(process.env.sdkLicense)
@@ -36,11 +37,11 @@ class RecordView extends React.Component {
       disgustAvg: "",
       sadnessAvg: "",
     }
-    // CY.loader()
-    //   .licenseKey(process.env.sdkLicense)
-    //   .addModule(CY.modules().FACE_EMOTION.name)
-    //   .load()
-    //   .then(({ start, stop }) => start())
+    CY.loader()
+      .licenseKey(process.env.sdkLicense)
+      .addModule(CY.modules().FACE_EMOTION.name)
+      .load()
+      .then(({ start, stop }) => start())
   }
 
   componentDidMount() {
@@ -53,11 +54,11 @@ class RecordView extends React.Component {
     //     this.collectEmotionData(evt.detail.output.rawEmotion)
     //   }
     // })
-    CY.loader()
-      .licenseKey(process.env.sdkLicense)
-      .addModule(CY.modules().FACE_EMOTION.name)
-      .load()
-      .then(({ start, stop }) => start())
+    // CY.loader()
+    //   .licenseKey(process.env.sdkLicense)
+    //   .addModule(CY.modules().FACE_EMOTION.name)
+    //   .load()
+    //   .then(({ start, stop }) => start())
   }
 
   componentWillUnmount() {}
@@ -152,9 +153,9 @@ class RecordView extends React.Component {
       body: JSON.stringify(reportToPost),
     })
       .then((resp) => resp.json())
-      .then((data) => {
-        console.log("returned video report:", data)
-        ////dispatch to state???
+      .then((returnedReport) => {
+        console.log("returned video report:", returnedReport)
+        this.props.dispatchReport(returnedReport)
       })
   }
 
@@ -266,7 +267,13 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(RecordView)
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatchReport: (report) => dispatch(addReportToAllReports(report)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecordView)
 
 // const url = "https://ai-sdk.morphcast.com/v1.14/ai-sdk.js"
 // const script = document.createElement("script")

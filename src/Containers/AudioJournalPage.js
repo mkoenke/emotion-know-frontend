@@ -3,7 +3,7 @@ import React from "react"
 import { connect } from "react-redux"
 // import "react-voice-recorder/dist/index.css"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
-import { postJournal } from "../Redux/actions"
+import { addReportToAllReports } from "../Redux/actions"
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition
@@ -123,10 +123,10 @@ class VoiceRecorderPage extends React.Component {
       body: journal,
     })
       .then((resp) => resp.json())
-      .then((data) => {
-        console.log("returned audio journal:", data)
+      .then((journal) => {
+        console.log("returned audio journal:", journal)
 
-        // dispatch(addJournalToAllJournals(data))
+        this.props.dispatchReport(journal.audio_report)
         this.props.history.push("/audios")
       })
 
@@ -232,7 +232,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatchJournal: (journal) => dispatch(postJournal(journal)),
+    dispatchReport: (report) => dispatch(addReportToAllReports(report)),
   }
 }
 

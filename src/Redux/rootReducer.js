@@ -130,7 +130,8 @@ function reportArrayReducer(prevState = defaultState.allReports, action) {
       console.log("All reports in reducer: ", action.payload)
       return action.payload
     case ADD_REPORT:
-      let reportsWithAddition = [action.payload, ...prevState]
+      console.log("Reports before addtion: ", prevState)
+      let reportsWithAddition = [...prevState, action.payload]
       console.log("Reports with addition: ", reportsWithAddition)
       return reportsWithAddition
     default:

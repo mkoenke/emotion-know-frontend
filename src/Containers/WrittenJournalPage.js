@@ -13,7 +13,6 @@ class WritingPage extends React.Component {
   }
   handleFormSubmit = (event) => {
     event.preventDefault()
-    // console.log("journal submit")
     let journal = {
       child_id: this.props.child.id,
       title: this.state.title,
@@ -23,8 +22,6 @@ class WritingPage extends React.Component {
     this.setState({ title: "", content: "" })
     /// redirect to written journal gallery
     this.props.history.push("/journals")
-    /// fetch child again and set reports in state
-    // this.props.dispatchReports(this.props.child)
   }
   render() {
     console.log(this.state)
