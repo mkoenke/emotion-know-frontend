@@ -1,3 +1,4 @@
+import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
 import { Form, Grid, Header } from "semantic-ui-react"
@@ -20,9 +21,31 @@ class WritingPage extends React.Component {
     }
     this.props.dispatchJournal(journal)
     this.setState({ title: "", content: "" })
-    /// redirect to written journal gallery
+    this.sendEmail()
     this.props.history.push("/journals")
   }
+
+  sendEmail = () => {
+    emailjs
+      .send(
+        "service_b4uxd6p",
+        "template_skc2xnu",
+        {
+          parentEmail: this.props.child.parent_email,
+          replyEmail: "EmotionKnowTeam@gmail.com",
+        },
+        "user_CN4ma3aQ7rwUtwDJc9mdp"
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text)
+        },
+        function (error) {
+          console.log("FAILED...", error)
+        }
+      )
+  }
+
   render() {
     console.log(this.state)
     return (

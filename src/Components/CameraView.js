@@ -1,5 +1,6 @@
 /* global CY */
 
+import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
 import VideoRecorder from "react-video-recorder"
@@ -91,42 +92,37 @@ class RecordView extends React.Component {
       body: journal,
     })
       .then((resp) => resp.json())
-      .then((data) => {
-        console.log("returned video journal:", data)
-        this.postReport(data)
-
+      .then((returnedVideoJournal) => {
+        console.log("returned video journal:", returnedVideoJournal)
+        this.postReport(returnedVideoJournal)
+        this.sendEmail()
         /// push to video gallery
         this.props.history.push("/videos")
-        // dispatch(addJournalToAllJournals(data))
       })
-
-      ///send email
-      // let templateParams = {
-      //   to_name: this.props.child.parent_email,
-      //   message:
-      //     "Your child just created a journal entry!  Log in to see the emotions they expressed!",
-      //   to_email: this.props.child.parent_email,
-      //   reply_to: "emotionknowteam@gmail.com",
-      // }
-      // emailjs
-      //   .sendForm(
-      //     "service_b4uxd6p",
-      //     "template_skc2xnu",
-      //     templateParams,
-      //     "user_CN4ma3aQ7rwUtwDJc9mdp"
-      //   )
-      //   .then(
-      //     (result) => {
-      //       console.log(result.text)
-      //     },
-      //     (error) => {
-      //       console.log(error.text)
-      //     }
-      //   )
-
       .catch((error) => {
         console.log(error)
       })
+  }
+
+  sendEmail = () => {
+    emailjs
+      .send(
+        "service_b4uxd6p",
+        "template_skc2xnu",
+        {
+          parentEmail: this.props.child.parent_email,
+          replyEmail: "EmotionKnowTeam@gmail.com",
+        },
+        "user_CN4ma3aQ7rwUtwDJc9mdp"
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text)
+        },
+        function (error) {
+          console.log("FAILED...", error)
+        }
+      )
   }
 
   postReport = (journal) => {

@@ -1,4 +1,5 @@
 import AudioReactRecorder, { RecordState } from "audio-react-recorder"
+import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
 // import "react-voice-recorder/dist/index.css"
@@ -125,15 +126,31 @@ class VoiceRecorderPage extends React.Component {
       .then((resp) => resp.json())
       .then((journal) => {
         console.log("returned audio journal:", journal)
-
+        this.sendEmail()
         this.props.dispatchReport(journal.audio_report)
         this.props.history.push("/audios")
       })
+  }
 
-    // this.setState({ title: "", content: "" })
-    // /// redirect to audio journal gallery
-    // /// fetch child again and set reports in state
-    // this.props.dispatchReports(this.props.child)
+  sendEmail = () => {
+    emailjs
+      .send(
+        "service_b4uxd6p",
+        "template_skc2xnu",
+        {
+          parentEmail: this.props.child.parent_email,
+          replyEmail: "EmotionKnowTeam@gmail.com",
+        },
+        "user_CN4ma3aQ7rwUtwDJc9mdp"
+      )
+      .then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text)
+        },
+        function (error) {
+          console.log("FAILED...", error)
+        }
+      )
   }
 
   start = () => {
