@@ -1,6 +1,7 @@
 import {
   ADD_AUDIO,
   ADD_JOURNAL,
+  ADD_REPORT,
   ADD_VIDEO,
   ALL_AUDIOS,
   ALL_JOURNALS,
@@ -113,9 +114,28 @@ export function postJournal(journal) {
         console.log("returned journal:", data)
         dispatch(setJournal(data))
         dispatch(addJournalToAllJournals(data))
+        dispatch(fetchReportsfromJournal(data))
       })
   }
 }
+export function fetchReportsfromJournal(journal) {
+  console.log("Journal: ", journal)
+  return (dispatch) => {
+    return fetch(`http://localhost:3000/journal_entries/${journal.id}/report`)
+      .then((resp) => resp.json())
+      .then((report) => {
+        console.log("returned report from journal:", report)
+        dispatch(addReportToAllReports(report))
+        // dispatch(setChild(childData))
+
+        // // dispatch(setReport())
+        // let arrayOfJournals = childData.journal_entries
+        // let arrayOfAudios = childData.audio_entries
+        // dispatch(allReports(arrayOfJournals, arrayOfAudios))
+      })
+  }
+}
+
 export function allJournals(arrayOfJournals) {
   return { type: ALL_JOURNALS, payload: arrayOfJournals }
 }
@@ -178,6 +198,10 @@ export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
   console.log("Sorted reports: ", sortedReports)
 
   return { type: ALL_REPORTS, payload: sortedReports }
+}
+
+export function addReportToAllReports(report) {
+  return { type: ADD_REPORT, payload: report }
 }
 
 export function parentsReports(journalReports, audioReports, videoReports) {

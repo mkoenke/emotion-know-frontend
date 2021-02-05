@@ -2,6 +2,7 @@ import { combineReducers } from "redux"
 import {
   ADD_AUDIO,
   ADD_JOURNAL,
+  ADD_REPORT,
   ADD_VIDEO,
   ALL_AUDIOS,
   ALL_JOURNALS,
@@ -128,6 +129,10 @@ function reportArrayReducer(prevState = defaultState.allReports, action) {
     case ALL_REPORTS:
       console.log("All reports in reducer: ", action.payload)
       return action.payload
+    case ADD_REPORT:
+      let reportsWithAddition = [action.payload, ...prevState]
+      console.log("Reports with addition: ", reportsWithAddition)
+      return reportsWithAddition
     default:
       return prevState
   }

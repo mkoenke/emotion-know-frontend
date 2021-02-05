@@ -24,7 +24,7 @@ class WritingPage extends React.Component {
     /// redirect to written journal gallery
     this.props.history.push("/journals")
     /// fetch child again and set reports in state
-    this.props.dispatchReports(this.props.child)
+    // this.props.dispatchReports(this.props.child)
   }
   render() {
     console.log(this.state)
