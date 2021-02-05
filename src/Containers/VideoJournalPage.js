@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Header } from "semantic-ui-react"
-import RecordView from "../Components/RecordView"
+import RecordView from "../Components/CameraView"
 
 class CameraPage extends React.Component {
   render() {

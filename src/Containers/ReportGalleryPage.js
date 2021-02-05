@@ -1,8 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Header, List, Segment } from "semantic-ui-react"
+// import Chart from "../Components/Chart"
+import Chart2 from "../Components/Chart2"
 import Graph from "../Components/Graph"
-import MyChart from "../Components/MyChart"
 
 class ReportGalleryPage extends React.Component {
   state = {
@@ -90,7 +91,8 @@ class ReportGalleryPage extends React.Component {
             <Segment textAlign="center">
               <Header>Data Reports over Time</Header>
               <br />
-              <MyChart />
+              {/* <Chart /> */}
+              <Chart2 />
             </Segment>
           </>
         ) : (
@@ -117,7 +119,8 @@ class ReportGalleryPage extends React.Component {
               <Segment textAlign="center">
                 <Header>Data Reports over Time</Header>
                 <br />
-                <MyChart />
+                {/* <Chart /> */}
+                <Chart2 />
               </Segment>
             </>
           )

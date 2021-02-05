@@ -5,11 +5,11 @@ import { connect } from "react-redux"
 import VideoRecorder from "react-video-recorder"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
 
-CY.loader()
-  .licenseKey(process.env.sdkLicense)
-  .addModule(CY.modules().FACE_EMOTION.name)
-  .load()
-  .then(({ start, stop }) => start())
+// CY.loader()
+//   .licenseKey(process.env.sdkLicense)
+//   .addModule(CY.modules().FACE_EMOTION.name)
+//   .load()
+//   .then(({ start, stop }) => start())
 
 let angerData = []
 let fearData = []
@@ -43,17 +43,22 @@ class RecordView extends React.Component {
     //   .then(({ start, stop }) => start())
   }
 
-  // componentDidMount() {
-  //   window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
-  //     this.setState({
-  //       emo: evt.detail.output.dominantEmotion,
-  //       emoData: evt.detail.output.rawEmotion,
-  //     })
-  //     if (this.state.isRecording) {
-  //       this.collectEmotionData(evt.detail.output.rawEmotion)
-  //     }
-  //   })
-  // }
+  componentDidMount() {
+    // window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
+    //   this.setState({
+    //     emo: evt.detail.output.dominantEmotion,
+    //     emoData: evt.detail.output.rawEmotion,
+    //   })
+    //   if (this.state.isRecording) {
+    //     this.collectEmotionData(evt.detail.output.rawEmotion)
+    //   }
+    // })
+    CY.loader()
+      .licenseKey(process.env.sdkLicense)
+      .addModule(CY.modules().FACE_EMOTION.name)
+      .load()
+      .then(({ start, stop }) => start())
+  }
 
   componentWillUnmount() {}
 
@@ -176,7 +181,7 @@ class RecordView extends React.Component {
     this.setState({ videoBlob, isRecording: false }, this.getAverages)
   }
   onStartRecording = () => {
-    this.setState({ isRecording: true }, this.startSDK)
+    this.setState({ isRecording: true })
   }
 
   startSDK = () => {
@@ -235,8 +240,8 @@ class RecordView extends React.Component {
                 replayVideoAutoplayAndLoopOff={true}
                 onRecordingComplete={this.onRecordingComplete}
                 onStartRecording={this.onStartRecording}
+                onTurnOnCamera={this.startSDK}
               />
-              {/* <VideoRecorder /> */}
             </div>
           </Grid>
           <div

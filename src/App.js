@@ -4,15 +4,15 @@ import "semantic-ui-css/semantic.min.css"
 import "./App.css"
 import NavBar from "./Components/NavBar"
 import AudioGalleryPage from "./Containers/AudioGalleryPage"
-import CameraPage from "./Containers/CameraPage"
+import VoiceRecorderPage from "./Containers/AudioJournalPage"
 import Homepage from "./Containers/Homepage"
 import ReportGalleryPage from "./Containers/ReportGalleryPage"
 import ResourcesPage from "./Containers/ResourcesPage"
 import VideoGalleryPage from "./Containers/VideoGalleryPage"
-import VoiceRecorderPage from "./Containers/VoiceRecorderPage"
+import CameraPage from "./Containers/VideoJournalPage"
 import WelcomePageContainer from "./Containers/WelcomePageContainer"
-import WritingPage from "./Containers/WritingPage"
 import WrittenJournalGallery from "./Containers/WrittenJournalGallery"
+import WritingPage from "./Containers/WrittenJournalPage"
 
 function App() {
   return (

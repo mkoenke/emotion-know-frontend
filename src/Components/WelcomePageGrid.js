@@ -1,6 +1,6 @@
 import React from "react"
 import { Grid } from "semantic-ui-react"
-import CardClass from "./CardClass"
+import CardClass from "./WelcomeCard"
 
 class WelcomePageGrid extends React.Component {
   cardObjects = () => {
