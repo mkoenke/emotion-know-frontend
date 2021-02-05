@@ -173,7 +173,7 @@ export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
     ...arrayOfVideoReports,
   ]
   let sortedReports = arrayOfReports.sort(function (a, b) {
-    return new Date(b.created_at) - new Date(a.created_at)
+    return new Date(a.created_at) - new Date(b.created_at)
   })
   console.log("Sorted reports: ", sortedReports)
 
@@ -183,7 +183,7 @@ export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
 export function parentsReports(journalReports, audioReports, videoReports) {
   let arrayOfReports = [...journalReports, ...audioReports, ...videoReports]
   let sortedReports = arrayOfReports.sort(function (a, b) {
-    return new Date(b.created_at) - new Date(a.created_at)
+    return new Date(a.created_at) - new Date(b.created_at)
   })
   console.log("ARRAY OF SORTED PARENTS REPORTS: ", sortedReports)
   return { type: PARENTS_REPORTS, payload: sortedReports }

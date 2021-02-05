@@ -17,9 +17,12 @@ class MyChart extends React.Component {
 
   chartData = () => {
     if (this.props.allReports.length) {
-      let xAxisCategories = this.props.allReports.map(
-        (report) => `${new Date(report.created_at)}`
-      )
+      let xAxisCategories = this.props.allReports.map((report) => {
+        let date = new Date(report.created_at)
+        let dateWithoutTime =
+          date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+        return `${dateWithoutTime}`
+      })
       let angerData = this.props.allReports.map((report) => report.anger)
       let disgustData = this.props.allReports.map((report) => report.disgust)
       let fearData = this.props.allReports.map((report) => report.fear)
@@ -35,43 +38,43 @@ class MyChart extends React.Component {
               label: "Anger",
               data: angerData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(255, 0, 0)",
+              borderColor: "rgba(255, 0, 0, 0.2)",
             },
             {
               label: "Disgust",
               data: disgustData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(255, 128, 0)",
+              borderColor: "rgba(255, 128, 0, 0.2)",
             },
             {
               label: "Fear",
               data: fearData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(0, 255, 0)",
+              borderColor: "rgba(0, 255, 0, 0.2)",
             },
             {
               label: "Joy",
               data: joyData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(255, 255, 0)",
+              borderColor: "rgba(255, 255, 0, 0.2)",
             },
             {
               label: "Sadness",
               data: sadnessData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(0, 0, 255)",
+              borderColor: "rgba(0, 0, 255, 0.2)",
             },
             {
               label: "Surprise",
               data: surpriseData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(127, 0, 255)",
+              borderColor: "rgba(127, 0, 255, 0.2)",
             },
           ],
         },
@@ -101,43 +104,43 @@ class MyChart extends React.Component {
               label: "Anger",
               data: angerData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(255, 0, 0)",
+              borderColor: "rgba(255, 0, 0, 0.2)",
             },
             {
               label: "Disgust",
               data: disgustData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(255, 128, 0)",
+              borderColor: "rgba(255, 128, 0, 0.2)",
             },
             {
               label: "Fear",
               data: fearData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(0, 255, 0)",
+              borderColor: "rgba(0, 255, 0, 0.2)",
             },
             {
               label: "Joy",
               data: joyData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(255, 255, 0)",
+              borderColor: "rgba(255, 255, 0, 0.2)",
             },
             {
               label: "Sadness",
               data: sadnessData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(0, 0, 255)",
+              borderColor: "rgba(0, 0, 255, 0.2)",
             },
             {
               label: "Surprise",
               data: surpriseData,
               fill: false,
-              backgroundColor: "rgb(255, 99, 132)",
-              borderColor: "rgba(255, 99, 132, 0.2)",
+              backgroundColor: "rgb(127, 0, 255)",
+              borderColor: "rgba(127, 0, 255, 0.2)",
             },
           ],
         },
