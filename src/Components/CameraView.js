@@ -3,9 +3,9 @@
 import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
-import VideoRecorder from "react-video-recorder"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
-import { addReportToAllReports } from "../Redux/actions"
+import { addReportToAllReports, addVideoToAllVideos } from "../Redux/actions"
+import Video from "./VideoRecorder"
 
 // CY.loader()
 //   .licenseKey(process.env.sdkLicense)
@@ -21,45 +21,50 @@ let disgustData = []
 let sadnessData = []
 
 class RecordView extends React.Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    this.state = {
-      title: "",
-      submittedTitle: "",
-      videoBlob: null,
-      emo: "",
-      emoData: "",
-      isRecording: false,
-      angerAvg: "",
-      fearAvg: "",
-      joyAvg: "",
-      surpriseAvg: "",
-      disgustAvg: "",
-      sadnessAvg: "",
-    }
+  //   this.state = {
+  //     title: "",
+  //     submittedTitle: "",
+  //     videoBlob: null,
+  //     emo: "",
+  //     emoData: "",
+  //     isRecording: false,
+  //     angerAvg: "",
+  //     fearAvg: "",
+  //     joyAvg: "",
+  //     surpriseAvg: "",
+  //     disgustAvg: "",
+  //     sadnessAvg: "",
+  //   }
+  //   CY.loader()
+  //     .licenseKey(process.env.sdkLicense)
+  //     .addModule(CY.modules().FACE_EMOTION.name)
+  //     .load()
+  //     .then(({ start, stop }) => start())
+  // }
+  state = {
+    title: "",
+    submittedTitle: "",
+    videoBlob: null,
+    emo: "",
+    emoData: "",
+    isRecording: false,
+    angerAvg: "",
+    fearAvg: "",
+    joyAvg: "",
+    surpriseAvg: "",
+    disgustAvg: "",
+    sadnessAvg: "",
+  }
+
+  componentDidMount() {
     CY.loader()
       .licenseKey(process.env.sdkLicense)
       .addModule(CY.modules().FACE_EMOTION.name)
       .load()
       .then(({ start, stop }) => start())
-  }
-
-  componentDidMount() {
-    // window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
-    //   this.setState({
-    //     emo: evt.detail.output.dominantEmotion,
-    //     emoData: evt.detail.output.rawEmotion,
-    //   })
-    //   if (this.state.isRecording) {
-    //     this.collectEmotionData(evt.detail.output.rawEmotion)
-    //   }
-    // })
-    // CY.loader()
-    //   .licenseKey(process.env.sdkLicense)
-    //   .addModule(CY.modules().FACE_EMOTION.name)
-    //   .load()
-    //   .then(({ start, stop }) => start())
   }
 
   componentWillUnmount() {}
@@ -94,6 +99,7 @@ class RecordView extends React.Component {
       .then((resp) => resp.json())
       .then((returnedVideoJournal) => {
         console.log("returned video journal:", returnedVideoJournal)
+        this.props.dispatchVideo(returnedVideoJournal)
         this.postReport(returnedVideoJournal)
         this.sendEmail()
         /// push to video gallery
@@ -194,8 +200,6 @@ class RecordView extends React.Component {
   }
 
   collectEmotionData = (emotionObj) => {
-    console.log("Emo Obj in Collection: ", emotionObj)
-
     angerData = [...angerData, emotionObj.Angry]
     fearData = [...fearData, emotionObj.Fear]
     disgustData = [...fearData, emotionObj.Disgust]
@@ -232,9 +236,7 @@ class RecordView extends React.Component {
         <div>
           <Grid centered>
             <div style={{ height: "620px", width: "800px" }}>
-              <VideoRecorder
-                showReplayControls={true}
-                replayVideoAutoplayAndLoopOff={true}
+              <Video
                 onRecordingComplete={this.onRecordingComplete}
                 onStartRecording={this.onStartRecording}
                 onTurnOnCamera={this.startSDK}
@@ -266,6 +268,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     dispatchReport: (report) => dispatch(addReportToAllReports(report)),
+    dispatchVideo: (journal) => dispatch(addVideoToAllVideos(journal)),
   }
 }
 

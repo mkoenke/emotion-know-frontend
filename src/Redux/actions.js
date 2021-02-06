@@ -110,11 +110,11 @@ export function postJournal(journal) {
       body: JSON.stringify(journal),
     })
       .then((resp) => resp.json())
-      .then((data) => {
-        console.log("returned journal:", data)
-        dispatch(setJournal(data))
-        dispatch(addJournalToAllJournals(data))
-        dispatch(addReportToAllReports(data.report))
+      .then((journal) => {
+        console.log("returned journal:", journal)
+        dispatch(setJournal(journal))
+        dispatch(addJournalToAllJournals(journal))
+        dispatch(addReportToAllReports(journal.report))
       })
   }
 }
@@ -144,22 +144,22 @@ function removeJournal(journal) {
   return { type: DELETE_JOURNAL, payload: journal }
 }
 
-export function fetchReportsfromChild(child) {
-  console.log("CHILD: ", child)
-  return (dispatch) => {
-    return fetch(`http://localhost:3000/children/${child.id}/reports`)
-      .then((resp) => resp.json())
-      .then((childData) => {
-        console.log("child data with reports:", childData)
-        // dispatch(setChild(childData))
+// export function fetchReportsfromChild(child) {
+//   console.log("CHILD: ", child)
+//   return (dispatch) => {
+//     return fetch(`http://localhost:3000/children/${child.id}/reports`)
+//       .then((resp) => resp.json())
+//       .then((childData) => {
+//         console.log("child data with reports:", childData)
+//         // dispatch(setChild(childData))
 
-        // // dispatch(setReport())
-        // let arrayOfJournals = childData.journal_entries
-        // let arrayOfAudios = childData.audio_entries
-        // dispatch(allReports(arrayOfJournals, arrayOfAudios))
-      })
-  }
-}
+//         // // dispatch(setReport())
+//         // let arrayOfJournals = childData.journal_entries
+//         // let arrayOfAudios = childData.audio_entries
+//         // dispatch(allReports(arrayOfJournals, arrayOfAudios))
+//       })
+//   }
+// }
 
 export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
   console.log("Array of journals: ", arrayOfJournals)

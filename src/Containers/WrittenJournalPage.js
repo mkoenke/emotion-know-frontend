@@ -2,7 +2,7 @@ import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
 import { Form, Grid, Header } from "semantic-ui-react"
-import { fetchReportsfromChild, postJournal } from "../Redux/actions"
+import { postJournal } from "../Redux/actions"
 
 class WritingPage extends React.Component {
   state = {
@@ -48,6 +48,7 @@ class WritingPage extends React.Component {
 
   render() {
     console.log(this.state)
+    console.log("Props in written journal page: ", this.props)
     return (
       <>
         {this.props.child ? (
@@ -102,7 +103,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatchJournal: (journal) => dispatch(postJournal(journal)),
-  dispatchReports: (child) => dispatch(fetchReportsfromChild(child)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WritingPage)

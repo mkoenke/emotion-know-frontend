@@ -5,6 +5,7 @@ import RecordView from "../Components/CameraView"
 
 class CameraPage extends React.Component {
   render() {
+    console.log("Props: ", this.props)
     return (
       <>
         {this.props.child ? (
@@ -18,7 +19,7 @@ class CameraPage extends React.Component {
           </Header>
         ) : null}
 
-        <RecordView />
+        <RecordView history={this.props.history} />
       </>
     )
   }

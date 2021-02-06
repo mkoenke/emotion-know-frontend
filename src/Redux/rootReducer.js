@@ -74,6 +74,10 @@ function journalArrayReducer(prevState = defaultState.allJournals, action) {
       return action.payload
     case ADD_JOURNAL:
       console.log("Added journal in reducer: ", action.payload)
+      console.log(
+        "All journals after added journal: ",
+        prevState.concat(action.payload)
+      )
       return prevState.concat(action.payload)
     case DELETE_JOURNAL:
       let filteredArray = prevState.filter(
