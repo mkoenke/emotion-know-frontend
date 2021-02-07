@@ -2,10 +2,13 @@
 
 import emailjs from "emailjs-com"
 import React from "react"
+// import { ReactMediaRecorder } from "react-media-recorder"
 import { connect } from "react-redux"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
 import { addReportToAllReports, addVideoToAllVideos } from "../Redux/actions"
 import Video from "./VideoRecorder"
+
+// import MediaRecorder from "./UseMediaRecorder"
 
 // CY.loader()
 //   .licenseKey(process.env.sdkLicense)
@@ -60,9 +63,14 @@ class RecordView extends React.Component {
   }
 
   componentDidMount() {
+    let source = CY.getUserMediaCameraFactory().createCamera({
+      video: document.getElementById("video"),
+    })
+
     CY.loader()
       .licenseKey(process.env.sdkLicense)
       .addModule(CY.modules().FACE_EMOTION.name)
+      .source(source)
       .load()
       .then(({ start, stop }) => start())
   }
@@ -184,7 +192,8 @@ class RecordView extends React.Component {
     this.setState({ videoBlob, isRecording: false }, this.getAverages)
   }
   onStartRecording = () => {
-    this.setState({ isRecording: true })
+    console.log("HERE")
+    this.setState({ isRecording: true }, this.startSDK)
   }
 
   startSDK = () => {
@@ -241,6 +250,31 @@ class RecordView extends React.Component {
                 onStartRecording={this.onStartRecording}
                 onTurnOnCamera={this.startSDK}
               />
+              {/* <div>
+                <ReactMediaRecorder
+                  video
+                  render={({
+                    status,
+                    startRecording,
+                    stopRecording,
+                    mediaBlobUrl,
+                  }) => (
+                    <div onClick={this.onStartRecording}>
+                      <p>{status}</p>
+                      <button onClick={startRecording}>Start Recording</button>
+                      <button onClick={stopRecording}>Stop Recording</button>
+                      <video
+                        id="video"
+                        src={mediaBlobUrl}
+                        controls
+                        autoplay
+                        loop
+                      />
+                    </div>
+                  )}
+                />
+              </div> */}
+              {/* <MediaRecorder onStartRecording={this.onStartRecording} /> */}
             </div>
           </Grid>
           <div
