@@ -62,6 +62,14 @@ class WelcomePageGrid extends React.Component {
         description: "Check out how you have been feeling lately!",
         url: "./reports",
       },
+      {
+        id: 8,
+        header: "Fun with Emotions",
+        image:
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F360%2F461%2Foriginal%2Fvector-different-emotion-of-kids.jpg&f=1&nofb=1",
+        description: "Lets see what emotions you are expressing!",
+        url: "./fun",
+      },
     ]
   }
   arrayOfCards = () => {
