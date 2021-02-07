@@ -8,7 +8,7 @@ import { Button, Form, Grid, Header } from "semantic-ui-react"
 import { addReportToAllReports, addVideoToAllVideos } from "../Redux/actions"
 import Video from "./VideoRecorder"
 
-// import MediaRecorder from "./UseMediaRecorder"
+// import MediaRecorder from ".HoldComponents/UseMediaRecorder"
 
 // CY.loader()
 //   .licenseKey(process.env.sdkLicense)
