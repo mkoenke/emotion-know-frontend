@@ -11,7 +11,9 @@ class NavBar extends React.Component {
     activeItem: "home",
   }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name })
+  }
 
   handleLoginClick = () => {
     if (!this.props.child) {

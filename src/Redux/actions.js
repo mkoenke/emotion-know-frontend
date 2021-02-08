@@ -115,13 +115,13 @@ export function logout() {
 
 export function postJournal(journal) {
   return (dispatch) => {
-    const token = localStorage.getItem("token")
+    // const token = localStorage.getItem("token")
     return fetch("http://localhost:3000/journal_entries", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(journal),
     })

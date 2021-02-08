@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Header, List, Segment } from "semantic-ui-react"
+import { Header, List, Popup, Segment } from "semantic-ui-react"
 // import Chart from "../Components/HoldComponents/Chart"
 import Chart from "../Components/Chart"
 // import Graph from "../Components/HoldComponents/Graph"
@@ -113,18 +113,50 @@ class ReportGalleryPage extends React.Component {
                   </Header>
                 ) : null}
               </Segment>
-              <Segment textAlign="center">
-                <Header>Individual Journal Data Reports</Header>
-                <List bulleted>{this.listOfParentsReports()}</List>
-                <br />
-                {this.state.beenClicked ? this.renderReportGraph() : null}
-              </Segment>
-              <Segment textAlign="center">
-                <Header>Data Reports over Time</Header>
-                <br />
+              {!this.props.parentsReports.length ? (
+                <Popup
+                  trigger={
+                    <Segment textAlign="center">
+                      <Header>Individual Journal Data Reports</Header>
+                      <List bulleted>{this.listOfParentsReports()}</List>
 
-                <Chart />
-              </Segment>
+                      <br />
+                      {this.state.beenClicked ? this.renderReportGraph() : null}
+                    </Segment>
+                  }
+                  content="When your child starts using EmotionKnow and creates a journal entry, their individual journal entry data charts will appear here!"
+                />
+              ) : (
+                <Segment textAlign="center">
+                  <Header>Individual Journal Data Reports</Header>
+                  <List bulleted>{this.listOfParentsReports()}</List>
+
+                  <br />
+                  {this.state.beenClicked ? this.renderReportGraph() : null}
+                </Segment>
+              )}
+              {!this.props.parentsReports.length ? (
+                <Popup
+                  trigger={
+                    <Segment textAlign="center">
+                      <Header>Data Reports over Time</Header>
+
+                      <br />
+
+                      <Chart />
+                    </Segment>
+                  }
+                  content="Your child's journal entry data over time will appear here!"
+                />
+              ) : (
+                <Segment textAlign="center">
+                  <Header>Data Reports over Time</Header>
+
+                  <br />
+
+                  <Chart />
+                </Segment>
+              )}
             </>
           )
         )}
