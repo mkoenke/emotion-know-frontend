@@ -35,12 +35,12 @@ class SignUpModal extends React.Component {
       body: JSON.stringify(parentData),
     })
       .then((response) => response.json())
-      .then((returnedParentObj) => {
-        console.log("Success new parent:", returnedParentObj)
+      .then((data) => {
+        console.log("Success new parent:", data.parent)
         let childData = {
           username: this.state.username,
           password: this.state.password,
-          parent_id: returnedParentObj.id,
+          parent_id: data.parent.id,
         }
         console.log("child data:", childData)
         fetch("http://localhost:3000/children", {
