@@ -2,24 +2,26 @@ import React from "react"
 import { connect } from "react-redux"
 import { NavLink, Redirect } from "react-router-dom"
 import { Menu } from "semantic-ui-react"
-import { logout } from "../Redux/actions"
+import { logout, setModal, setParentModal } from "../Redux/actions"
 import LoginModal from "./LoginModal"
 import ParentLoginModal from "./ParentLoginModal"
 
 class NavBar extends React.Component {
   state = {
-    modalView: false,
-    parentModalView: false,
     activeItem: "home",
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   handleLoginClick = () => {
-    this.setState({ modalView: !this.state.modalView })
+    if (!this.props.child) {
+      this.props.dispatchModal(true)
+    }
   }
   handleParentLoginClick = () => {
-    this.setState({ parentModalView: !this.state.parentModalView })
+    if (!this.props.parent) {
+      this.props.dispatchParentModal(true)
+    }
   }
 
   handleLogOutClick = () => {
@@ -29,6 +31,8 @@ class NavBar extends React.Component {
 
   render() {
     console.log("Child in nav bar:", this.props.child)
+    console.log("props: ", this.props)
+    console.log("state: ", this.state)
     const { activeItem } = this.state
 
     return (
@@ -92,12 +96,12 @@ class NavBar extends React.Component {
               </>
             ) : null}
 
-            {this.state.parentModalView && (
+            {this.props.parentModalOpen && (
               <ParentLoginModal
-                handleLoginClick={this.handleParentLoginClick}
+                handleParentLoginClick={this.handleParentLoginClick}
               />
             )}
-            {this.state.modalView && (
+            {this.props.modalOpen && (
               <LoginModal handleLoginClick={this.handleLoginClick} />
             )}
             {this.props.child || this.props.parent ? (
@@ -123,12 +127,16 @@ function mapStateToProps(state) {
   return {
     child: state.child,
     parent: state.parent,
+    modalOpen: state.modalOpen,
+    parentModalOpen: state.parentModalOpen,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     logout: () => dispatch(logout()),
+    dispatchModal: (value) => dispatch(setModal(value)),
+    dispatchParentModal: (value) => dispatch(setParentModal(value)),
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

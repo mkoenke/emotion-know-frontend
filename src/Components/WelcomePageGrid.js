@@ -1,6 +1,6 @@
 import React from "react"
 import { Grid } from "semantic-ui-react"
-import CardClass from "./WelcomeCard"
+import WelcomeCard from "./WelcomeCard"
 
 class WelcomePageGrid extends React.Component {
   cardObjects = () => {
@@ -75,8 +75,8 @@ class WelcomePageGrid extends React.Component {
   arrayOfCards = () => {
     return this.cardObjects().map((card) => {
       return (
-        <Grid.Column>
-          <CardClass centered key={card.id} cardObj={card} />
+        <Grid.Column centered>
+          <WelcomeCard key={card.id} cardObj={card} />
         </Grid.Column>
       )
     })
@@ -84,7 +84,7 @@ class WelcomePageGrid extends React.Component {
   render() {
     return (
       <Grid centered columns="three">
-        <Grid.Row>{this.arrayOfCards()}</Grid.Row>
+        <Grid.Row centered>{this.arrayOfCards()}</Grid.Row>
       </Grid>
     )
   }

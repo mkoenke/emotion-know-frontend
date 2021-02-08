@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Button, Form, Modal } from "semantic-ui-react"
-import { loginParent } from "../Redux/actions"
+import { Button, Form, Message, Modal } from "semantic-ui-react"
+import { loginParent, setError, setParentModal } from "../Redux/actions"
 
 class ParentLoginModal extends React.Component {
   state = {
@@ -10,8 +10,8 @@ class ParentLoginModal extends React.Component {
     password: "",
   }
   handleCancel = () => {
-    this.setState({ isOpen: false })
-    this.props.handleLoginClick()
+    this.props.dispatchParentModal(false)
+    this.props.dispatchError(null)
   }
   handleFormChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -27,7 +27,7 @@ class ParentLoginModal extends React.Component {
     console.log("Parent in submit: ", parent)
     console.log("Props:", this.props)
     this.props.loginParent(parent)
-    this.props.handleLoginClick()
+    this.props.handleParentLoginClick()
   }
 
   render() {
@@ -42,6 +42,11 @@ class ParentLoginModal extends React.Component {
       >
         <Modal.Header>Welcome back!</Modal.Header>
         <Modal.Content>
+          {this.props.error ? (
+            <Message negative>
+              <Message.Header>{this.props.error}</Message.Header>
+            </Message>
+          ) : null}
           <Form onSubmit={this.handleFormSubmit}>
             <Form.Field required>
               <label>Email</label>
@@ -74,8 +79,14 @@ class ParentLoginModal extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  loginParent: (parentInfo) => dispatch(loginParent(parentInfo)),
+const mapStateToProps = (state) => ({
+  error: state.error,
 })
 
-export default connect(null, mapDispatchToProps)(ParentLoginModal)
+const mapDispatchToProps = (dispatch) => ({
+  loginParent: (parentInfo) => dispatch(loginParent(parentInfo)),
+  dispatchParentModal: (value) => dispatch(setParentModal(value)),
+  dispatchError: (value) => dispatch(setError(value)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParentLoginModal)

@@ -11,12 +11,21 @@ import {
   DELETE_JOURNAL,
   DELETE_VIDEO,
   LOGOUT,
+  MODAL_OPEN,
   PARENTS_REPORTS,
+  PARENT_MODAL_OPEN,
   SET_CHILD,
   SET_ERROR,
-  SET_JOURNAL,
   SET_PARENT,
 } from "./actionTypes"
+
+export function setModal(value) {
+  return { type: MODAL_OPEN, payload: value }
+}
+
+export function setParentModal(value) {
+  return { type: PARENT_MODAL_OPEN, payload: value }
+}
 
 export function setChild(child) {
   return { type: SET_CHILD, payload: child }
@@ -43,6 +52,8 @@ export function login(child) {
           localStorage.setItem("token", data.jwt)
 
           dispatch(setChild(data.child))
+          dispatch(setModal(false))
+          dispatch(setError(null))
           dispatch(allJournals(data.child.journal_entries))
           dispatch(allAudios(data.child.audio_entries))
           dispatch(allVideos(data.child.video_entries))
@@ -76,17 +87,24 @@ export function loginParent(parent) {
     })
       .then((resp) => resp.json())
       .then((data) => {
-        console.log("data:", data)
-        localStorage.setItem("token", data.jwt)
-        dispatch(setParent(data.parent))
-        dispatch(setChild(data.parent.child))
-        dispatch(
-          parentsReports(
-            data.parent.reports,
-            data.parent.audio_reports,
-            data.parent.video_reports
+        if (!data.error) {
+          console.log("data:", data)
+          localStorage.setItem("token", data.jwt)
+
+          dispatch(setParent(data.parent))
+          dispatch(setChild(data.parent.child))
+          dispatch(setParentModal(false))
+          dispatch(setError(null))
+          dispatch(
+            parentsReports(
+              data.parent.reports,
+              data.parent.audio_reports,
+              data.parent.video_reports
+            )
           )
-        )
+        } else {
+          dispatch(setError(data.error))
+        }
       })
   }
 }
@@ -95,25 +113,21 @@ export function logout() {
   return { type: LOGOUT }
 }
 
-///remove??
-export function setJournal(journal) {
-  return { type: SET_JOURNAL, payload: journal }
-}
-
 export function postJournal(journal) {
   return (dispatch) => {
+    const token = localStorage.getItem("token")
     return fetch("http://localhost:3000/journal_entries", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(journal),
     })
       .then((resp) => resp.json())
       .then((journal) => {
         console.log("returned journal:", journal)
-        dispatch(setJournal(journal))
         dispatch(addJournalToAllJournals(journal))
         dispatch(addReportToAllReports(journal.report))
       })

@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Button, Form, Message, Modal } from "semantic-ui-react"
-import { login } from "../Redux/actions"
+import { login, setError, setModal } from "../Redux/actions"
 
 class LoginModal extends React.Component {
   state = {
@@ -10,8 +10,8 @@ class LoginModal extends React.Component {
     password: "",
   }
   handleCancel = () => {
-    this.setState({ isOpen: false })
-    this.props.handleLoginClick()
+    this.props.dispatchModal(false)
+    this.props.dispatchError(null)
   }
   handleFormChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
@@ -84,6 +84,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   login: (childInfo) => dispatch(login(childInfo)),
+  dispatchModal: (value) => dispatch(setModal(value)),
+  dispatchError: (value) => dispatch(setError(value)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginModal)

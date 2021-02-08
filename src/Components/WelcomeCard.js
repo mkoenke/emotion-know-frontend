@@ -12,7 +12,10 @@ class CardClass extends React.Component {
             <Card
               id={this.props.cardObj.id}
               centered
-              style={{ boxShadow: "10px 10px 5px grey", margin: "20px" }}
+              style={{
+                boxShadow: "10px 10px 5px grey",
+                margin: "20px",
+              }}
             >
               <Image src={this.props.cardObj.image} wrapped ui={false} />
               <Card.Content>
