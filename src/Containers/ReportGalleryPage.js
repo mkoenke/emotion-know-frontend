@@ -1,9 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Header, List, Popup, Segment } from "semantic-ui-react"
-// import Chart from "../Components/HoldComponents/Chart"
+import { Header, Icon, Menu, Popup, Segment, Table } from "semantic-ui-react"
 import Chart from "../Components/Chart"
-// import Graph from "../Components/HoldComponents/Graph"
 import Graph from "../Components/Graph"
 
 class ReportGalleryPage extends React.Component {
@@ -13,11 +11,9 @@ class ReportGalleryPage extends React.Component {
   }
 
   handleReportClick = (event) => {
-    console.log("target: ", event.target)
     let clickedReport = this.props.allReports.find(
-      (report) => report.title === event.target.textContent
+      (report) => report.created_at === event.target.closest("tr").id
     )
-    console.log("clicked report:", clickedReport)
     this.setState({
       beenClicked: !this.state.beenClicked,
       clickedReport: clickedReport,
@@ -27,7 +23,7 @@ class ReportGalleryPage extends React.Component {
   handleParentReportClick = (event) => {
     console.log("target: ", event.target)
     let clickedReport = this.props.parentsReports.find(
-      (report) => report.title === event.target.textContent
+      (report) => report.created_at === event.target.closest("tr").id
     )
     console.log("clicked report:", clickedReport)
     this.setState({
@@ -48,28 +44,37 @@ class ReportGalleryPage extends React.Component {
 
   listOfReports = () => {
     return this.props.allReports.map((report) => {
-      console.log("Report: ", report)
+      let date = new Date(report.created_at)
+      let dateWithoutTime =
+        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
       return (
-        <List.Item alignItems="center" onClick={this.handleReportClick}>
-          {report.title}
-        </List.Item>
+        <Table.Row id={report.created_at} onClick={this.handleReportClick}>
+          <Table.Cell>{report.title}</Table.Cell>
+          <Table.Cell>{dateWithoutTime}</Table.Cell>
+        </Table.Row>
       )
     })
   }
   listOfParentsReports = () => {
-    console.log("List of parents reports: ", this.props.parentsReports)
     return this.props.parentsReports.map((report) => {
-      console.log("Report: ", report)
+      let date = new Date(report.created_at)
+      let dateWithoutTime =
+        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
       return (
-        <List.Item alignItems="center" onClick={this.handleParentReportClick}>
-          {report.title}
-        </List.Item>
+        <Table.Row
+          id={report.created_at}
+          onClick={this.handleParentReportClick}
+        >
+          <Table.Cell>{report.title}</Table.Cell>
+          <Table.Cell>{dateWithoutTime}</Table.Cell>
+        </Table.Row>
       )
     })
   }
 
   render() {
     console.log("Props: ", this.props)
+
     return (
       <>
         {this.props.child && !this.props.parent ? (
@@ -88,7 +93,32 @@ class ReportGalleryPage extends React.Component {
             </Segment>
             <Segment textAlign="center">
               <Header>Individual Journal Data Reports</Header>
-              <List bulleted>{this.listOfReports()}</List>
+              <Table celled>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Title</Table.HeaderCell>
+                    <Table.HeaderCell>Date</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>{this.listOfReports()}</Table.Body>
+
+                <Table.Footer>
+                  <Table.Row>
+                    <Table.HeaderCell colSpan="3">
+                      <Menu floated="right" pagination>
+                        <Menu.Item as="a" icon>
+                          <Icon name="chevron left" />
+                        </Menu.Item>
+
+                        <Menu.Item as="a" icon>
+                          <Icon name="chevron right" />
+                        </Menu.Item>
+                      </Menu>
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Footer>
+              </Table>
+
               <br />
               {this.state.beenClicked ? this.renderReportGraph() : null}
             </Segment>
@@ -118,7 +148,6 @@ class ReportGalleryPage extends React.Component {
                   trigger={
                     <Segment textAlign="center">
                       <Header>Individual Journal Data Reports</Header>
-                      <List bulleted>{this.listOfParentsReports()}</List>
 
                       <br />
                       {this.state.beenClicked ? this.renderReportGraph() : null}
@@ -129,7 +158,32 @@ class ReportGalleryPage extends React.Component {
               ) : (
                 <Segment textAlign="center">
                   <Header>Individual Journal Data Reports</Header>
-                  <List bulleted>{this.listOfParentsReports()}</List>
+
+                  <Table celled>
+                    <Table.Header>
+                      <Table.Row>
+                        <Table.HeaderCell>Title</Table.HeaderCell>
+                        <Table.HeaderCell>Date</Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Header>
+                    <Table.Body>{this.listOfParentsReports()}</Table.Body>
+
+                    <Table.Footer>
+                      <Table.Row>
+                        <Table.HeaderCell colSpan="3">
+                          <Menu floated="right" pagination>
+                            <Menu.Item as="a" icon>
+                              <Icon name="chevron left" />
+                            </Menu.Item>
+
+                            <Menu.Item as="a" icon>
+                              <Icon name="chevron right" />
+                            </Menu.Item>
+                          </Menu>
+                        </Table.HeaderCell>
+                      </Table.Row>
+                    </Table.Footer>
+                  </Table>
 
                   <br />
                   {this.state.beenClicked ? this.renderReportGraph() : null}
