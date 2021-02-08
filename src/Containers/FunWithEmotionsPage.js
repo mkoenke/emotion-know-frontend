@@ -12,14 +12,21 @@ class FunWithEmotionsPage extends React.Component {
   componentDidMount() {
     CY.loader()
       .licenseKey(process.env.sdkLicense)
-      .addModule(CY.modules().FACE_EMOTION.name)
+      // .addModule(CY.modules().FACE_EMOTION.name)
+      .addModule(CY.modules().FACE_AROUSAL_VALENCE.eventName)
       .load()
       .then(({ start, stop }) => start())
-    window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
-      this.setState({
-        emo: evt.detail.output.dominantEmotion,
-      })
-    })
+    // window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
+    //   this.setState({
+    //     emo: evt.detail.output.dominantEmotion,
+    //   })
+    // })
+    window.addEventListener(
+      CY.modules().FACE_AROUSAL_VALENCE.eventName,
+      (evt) => {
+        console.log("Face arousal valence result", evt.detail)
+      }
+    )
   }
 
   render() {
