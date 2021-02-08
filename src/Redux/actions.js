@@ -95,6 +95,7 @@ export function logout() {
   return { type: LOGOUT }
 }
 
+///remove??
 export function setJournal(journal) {
   return { type: SET_JOURNAL, payload: journal }
 }
@@ -143,23 +144,6 @@ export function deleteJournal(journal) {
 function removeJournal(journal) {
   return { type: DELETE_JOURNAL, payload: journal }
 }
-
-// export function fetchReportsfromChild(child) {
-//   console.log("CHILD: ", child)
-//   return (dispatch) => {
-//     return fetch(`http://localhost:3000/children/${child.id}/reports`)
-//       .then((resp) => resp.json())
-//       .then((childData) => {
-//         console.log("child data with reports:", childData)
-//         // dispatch(setChild(childData))
-
-//         // // dispatch(setReport())
-//         // let arrayOfJournals = childData.journal_entries
-//         // let arrayOfAudios = childData.audio_entries
-//         // dispatch(allReports(arrayOfJournals, arrayOfAudios))
-//       })
-//   }
-// }
 
 export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
   console.log("Array of journals: ", arrayOfJournals)
@@ -245,7 +229,3 @@ export function deleteVideo(journal) {
 function removeVideo(journal) {
   return { type: DELETE_VIDEO, payload: journal }
 }
-
-// export function setReport(report) {
-//   return { type: SET_REPORT, payload: report }
-// }

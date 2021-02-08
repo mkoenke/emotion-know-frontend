@@ -36,6 +36,7 @@ class VoiceRecorderPage extends React.Component {
       },
       this.handleListen
     )
+    // setTimeout(this.start(), 5000)
   }
 
   stopListen = () => {
@@ -155,10 +156,10 @@ class VoiceRecorderPage extends React.Component {
   }
 
   start = () => {
-    // this.startListen()
     this.setState({
       recordState: RecordState.START,
     })
+    // setTimeout(this.startListen(), 5000)
   }
 
   stop = () => {
@@ -232,11 +233,6 @@ class VoiceRecorderPage extends React.Component {
         <div style={container}>
           <div id="interim" style={interim}></div>
           <div id="final" style={final}></div>
-          {/* <textarea
-            onChange={this.changeHandler}
-            value={this.state.finalTranscript}
-          >
-          </textarea> */}
         </div>
       </>
     )

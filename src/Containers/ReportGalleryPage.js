@@ -1,10 +1,10 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Header, List, Segment } from "semantic-ui-react"
-// import Chart from "../Components/Chart"
-import Chart from "../Components/Chart2"
-// import Graph from "../Components/Graph"
-import Graph from "../Components/Graph2"
+// import Chart from "../Components/HoldComponents/Chart"
+import Chart from "../Components/Chart"
+// import Graph from "../Components/HoldComponents/Graph"
+import Graph from "../Components/Graph"
 
 class ReportGalleryPage extends React.Component {
   state = {

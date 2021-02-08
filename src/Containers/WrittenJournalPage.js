@@ -47,8 +47,6 @@ class WritingPage extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-    console.log("Props in written journal page: ", this.props)
     return (
       <>
         {this.props.child ? (
@@ -91,18 +89,16 @@ class WritingPage extends React.Component {
     )
   }
 }
-// function mapStateToProps(state) {
-//     return {
-//       child: state.child,
-//     }
-//   }
+function mapStateToProps(state) {
+  return {
+    child: state.child,
+  }
+}
 
-const mapStateToProps = (state) => ({
-  child: state.child,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  dispatchJournal: (journal) => dispatch(postJournal(journal)),
-})
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatchJournal: (journal) => dispatch(postJournal(journal)),
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(WritingPage)
