@@ -18,29 +18,6 @@ let disgustData = []
 let sadnessData = []
 
 class RecordView extends React.Component {
-  // constructor(props) {
-  //   super(props)
-
-  //   this.state = {
-  //     title: "",
-  //     submittedTitle: "",
-  //     videoBlob: null,
-  //     emo: "",
-  //     emoData: "",
-  //     isRecording: false,
-  //     angerAvg: "",
-  //     fearAvg: "",
-  //     joyAvg: "",
-  //     surpriseAvg: "",
-  //     disgustAvg: "",
-  //     sadnessAvg: "",
-  //   }
-  //   CY.loader()
-  //     .licenseKey(process.env.sdkLicense)
-  //     .addModule(CY.modules().FACE_EMOTION.name)
-  //     .load()
-  //     .then(({ start, stop }) => start())
-  // }
   state = {
     title: "",
     submittedTitle: "",
@@ -57,20 +34,23 @@ class RecordView extends React.Component {
   }
 
   componentDidMount() {
-    let source = CY.getUserMediaCameraFactory().createCamera({
-      video: document.getElementById("video"),
-    })
+    // let source = CY.getUserMediaCameraFactory().createCamera({
+    //   video: document.getElementById("video"),
+    // })
 
     CY.loader()
       .licenseKey(process.env.sdkLicense)
       .addModule(CY.modules().FACE_EMOTION.name)
-      .source(source)
+      // .source(source)
       .load()
-      .then(({ start, stop }) => start())
+      .then(({ start, stop }) => {
+        this.startSDK = start
+        this.stopSDK = stop
+      })
   }
 
   componentWillUnmount() {
-    //stop or terminate SDK
+    this.stopSDK()
   }
 
   changeHandler = (e) => {
@@ -181,12 +161,15 @@ class RecordView extends React.Component {
 
   onRecordingComplete = (videoBlob) => {
     this.setState({ videoBlob, isRecording: false }, this.getAverages)
+    this.stopSDK()
   }
   onStartRecording = () => {
-    this.setState({ isRecording: true }, this.startSDK)
+    // this.startSDK()
+    this.setState({ isRecording: true }, this.startListening)
   }
 
-  startSDK = () => {
+  startListening = () => {
+    this.startSDK()
     window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
       this.setState({
         emo: evt.detail.output.dominantEmotion,
