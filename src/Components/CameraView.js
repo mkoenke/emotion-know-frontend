@@ -184,10 +184,10 @@ class RecordView extends React.Component {
   collectEmotionData = (emotionObj) => {
     angerData = [...angerData, emotionObj.Angry]
     fearData = [...fearData, emotionObj.Fear]
-    disgustData = [...fearData, emotionObj.Disgust]
-    joyData = [...fearData, emotionObj.Happy]
-    sadnessData = [...fearData, emotionObj.Sad]
-    surpriseData = [...fearData, emotionObj.Surprise]
+    disgustData = [...disgustData, emotionObj.Disgust]
+    joyData = [...joyData, emotionObj.Happy]
+    sadnessData = [...sadnessData, emotionObj.Sad]
+    surpriseData = [...surpriseData, emotionObj.Surprise]
   }
 
   render() {

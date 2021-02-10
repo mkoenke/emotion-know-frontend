@@ -1,5 +1,6 @@
 /* global CY */
 
+import { Bar } from "@reactchartjs/react-chart.js"
 import React from "react"
 import { connect } from "react-redux"
 import Webcam from "react-webcam"
@@ -32,6 +33,12 @@ class FunWithEmotionsPage extends React.Component {
     window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
       this.setState({
         emo: evt.detail.output.dominantEmotion,
+        anger: evt.detail.output.rawEmotion.Angry,
+        disgust: evt.detail.output.rawEmotion.Disgust,
+        fear: evt.detail.output.rawEmotion.Fear,
+        joy: evt.detail.output.rawEmotion.Happy,
+        sadness: evt.detail.output.rawEmotion.Sad,
+        surprise: evt.detail.output.rawEmotion.Surprise,
       })
     })
     window.addEventListener(
@@ -310,6 +317,40 @@ class FunWithEmotionsPage extends React.Component {
       facingMode: "user",
     }
 
+    let data = {
+      labels: ["Anger", "Disgust", "Fear", "Joy", "Sadness", "Surprise"],
+      datasets: [
+        {
+          label: `What does your face show?`,
+          data: [
+            parseFloat(this.state.anger),
+            parseFloat(this.state.disgust),
+            parseFloat(this.state.fear),
+            parseFloat(this.state.joy),
+            parseFloat(this.state.sadness),
+            parseFloat(this.state.surprise),
+          ],
+          backgroundColor: [
+            "rgb(255, 0, 0)",
+            "rgb(255, 128, 0)",
+            "rgb(0, 255, 0)",
+            "rgb(255, 255, 0)",
+            "rgb(0, 0, 255)",
+            "rgb(127, 0, 255)",
+          ],
+          borderColor: [
+            "rgba(255, 0, 0, 0.2)",
+            "rgba(255, 128, 0, 0.2)",
+            "rgba(0, 255, 0, 0.2)",
+            "rgba(255, 255, 0, 0.2)",
+            "rgba(0, 0, 255, 0.2)",
+            "rgba(127, 0, 255, 0.2)",
+          ],
+          borderWidth: 1,
+        },
+      ],
+    }
+
     return (
       <>
         {!this.props.parent && this.props.child ? (
@@ -336,6 +377,7 @@ class FunWithEmotionsPage extends React.Component {
             >
               {this.state.emo ? this.state.emo : null}
             </Header>
+            <Bar data={data} />
             <Header
               className="h1"
               size="huge"
