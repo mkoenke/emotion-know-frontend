@@ -92,7 +92,7 @@ class ReportGalleryPage extends React.Component {
               ) : null}
             </Segment>
             <Segment textAlign="center">
-              <Header>Individual Journal Data Reports</Header>
+              <Header>Individual Journal Emotional Reports</Header>
               <Table celled>
                 <Table.Header>
                   <Table.Row>
@@ -123,7 +123,7 @@ class ReportGalleryPage extends React.Component {
               {this.state.beenClicked ? this.renderReportGraph() : null}
             </Segment>
             <Segment textAlign="center">
-              <Header>Data Reports over Time</Header>
+              <Header>Emotional Reports over Time</Header>
               <br />
               <Chart />
             </Segment>
@@ -147,17 +147,17 @@ class ReportGalleryPage extends React.Component {
                 <Popup
                   trigger={
                     <Segment textAlign="center">
-                      <Header>Individual Journal Data Reports</Header>
+                      <Header>Individual Journal Emotional Reports</Header>
 
                       <br />
                       {this.state.beenClicked ? this.renderReportGraph() : null}
                     </Segment>
                   }
-                  content="When your child starts using EmotionKnow and creates a journal entry, their individual journal entry data charts will appear here!"
+                  content="When your child starts using EmotionKnow and creates a journal entry, their individual journal entry emotional charts will appear here!"
                 />
               ) : (
                 <Segment textAlign="center">
-                  <Header>Individual Journal Data Reports</Header>
+                  <Header>Individual Journal Emotional Reports</Header>
 
                   <Table celled>
                     <Table.Header>
@@ -193,18 +193,18 @@ class ReportGalleryPage extends React.Component {
                 <Popup
                   trigger={
                     <Segment textAlign="center">
-                      <Header>Data Reports over Time</Header>
+                      <Header>Emotional Reports over Time</Header>
 
                       <br />
 
                       <Chart />
                     </Segment>
                   }
-                  content="Your child's journal entry data over time will appear here!"
+                  content="Your child's emotions over time will appear here!"
                 />
               ) : (
                 <Segment textAlign="center">
-                  <Header>Data Reports over Time</Header>
+                  <Header>Emotional Reports over Time</Header>
 
                   <br />
 
