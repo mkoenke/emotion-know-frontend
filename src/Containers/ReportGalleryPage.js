@@ -90,6 +90,12 @@ class ReportGalleryPage extends React.Component {
 
   render() {
     console.log("Props: ", this.props)
+    const customLabels = {
+      first: "<<",
+      last: ">>",
+      previous: "<",
+      next: ">",
+    }
 
     return (
       <>
@@ -125,6 +131,7 @@ class ReportGalleryPage extends React.Component {
                         <JwPagination
                           items={this.state.items}
                           onChangePage={this.onChangePage}
+                          labels={customLabels}
                         />
                       </Menu>
                     </Table.HeaderCell>
@@ -188,6 +195,7 @@ class ReportGalleryPage extends React.Component {
                             <JwPagination
                               items={this.state.items}
                               onChangePage={this.onChangePage}
+                              labels={customLabels}
                             />
                           </Menu>
                         </Table.HeaderCell>
