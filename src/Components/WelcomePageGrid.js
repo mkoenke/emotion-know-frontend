@@ -9,7 +9,7 @@ class WelcomePageGrid extends React.Component {
         id: 1,
         header: "Record a Video Journal",
         image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.l9T2fA4HUL7SB4NNRDG2lAHaHa%26pid%3DApi&f=1",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.MSrtoPrH9kHv-BZZN0lxaQHaFj%26pid%3DApi&f=1",
         description: "Express Yourself!  Record a Video Journal!",
         url: "./webcam",
       },
@@ -17,7 +17,7 @@ class WelcomePageGrid extends React.Component {
         id: 2,
         header: "Record an Audio Journal",
         image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.1gHLVwGFlV82VbreeTh_OQHaHa%26pid%3DApi&f=1",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.DQLG4El8ZHT8TBEfZVCKDQHaFH%26pid%3DApi&f=1",
         description: "Express Yourself!  Record an Audio Journal!",
         url: "./audio",
       },
@@ -25,7 +25,7 @@ class WelcomePageGrid extends React.Component {
         id: 3,
         header: "Write a Journal Entry",
         image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.fGHvS_YFT4u5MXXA_s2fDAHaHa%26pid%3DApi&f=1",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.H3VicDrGYoO-AEAprbGwWwHaE9%26pid%3DApi&f=1",
         description:
           "Express Yourself!  Write a Journal Entry the old school way!",
         url: "./write",
@@ -34,7 +34,7 @@ class WelcomePageGrid extends React.Component {
         id: 4,
         header: "Video Gallery",
         image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.cZ_jqhXaUIp-_uUroQahIAHaHa%26pid%3DApi&f=1",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.PfS5CXHFtJh9BfxiKwWb5AHaE8%26pid%3DApi&f=1",
         description: "See all the videos you have recorded in the past!",
         url: "./videos",
       },
@@ -42,7 +42,7 @@ class WelcomePageGrid extends React.Component {
         id: 5,
         header: "Audio Gallery",
         image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.CZskoeFaP2XeH3Rqd1ceiAHaHa%26pid%3DApi&f=1",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.IgctWLSfyfBsO1tTLDLGrQHaE8%26pid%3DApi&f=1",
         description: "See all the audios you have recorded in the past!",
         url: "./audios",
       },
@@ -50,7 +50,7 @@ class WelcomePageGrid extends React.Component {
         id: 6,
         header: "Written Journal Gallery",
         image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ikkJdaCOvsuuwHSUIvT4FQHaHa%26pid%3DApi&f=1",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.Isk3IG02axUKbCPGog6eFAHaFl%26pid%3DApi&f=1",
         description: "See all the journals you have written in the past!",
         url: "./journals",
       },
@@ -58,7 +58,7 @@ class WelcomePageGrid extends React.Component {
         id: 7,
         header: "Report Gallery",
         image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.jyH3x6SEemM9C7Yys7DDpQHaHa%26pid%3DApi&f=1",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.gbexKwEXOxemYUHalc97HwHaE6%26pid%3DApi&f=1",
         description: "Check out how you have been feeling lately!",
         url: "./reports",
       },
@@ -66,7 +66,7 @@ class WelcomePageGrid extends React.Component {
         id: 8,
         header: "Fun with Emotions",
         image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F360%2F461%2Foriginal%2Fvector-different-emotion-of-kids.jpg&f=1&nofb=1",
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.7Uu6X_8FavpM--P0p6U9pAAAAA%26pid%3DApi&f=1",
         description: "Lets see what emotions you are expressing!",
         url: "./fun",
       },

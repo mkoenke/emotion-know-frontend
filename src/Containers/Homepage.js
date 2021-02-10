@@ -43,7 +43,7 @@ class Homepage extends React.Component {
           <Header
             size="medium"
             style={{
-              color: "rgb(171, 238, 245)",
+              color: "rgb(10, 157, 174)",
               marginLeft: "100px",
               marginRight: "100px",
             }}

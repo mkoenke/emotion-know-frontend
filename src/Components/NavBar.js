@@ -42,7 +42,7 @@ class NavBar extends React.Component {
         <Menu
           pointing
           secondary
-          style={{ backgroundColor: "rgb(171, 218, 225)" }}
+          style={{ backgroundColor: "rgb(8, 126, 139)" }}
         >
           {this.props.child ? (
             <NavLink to="/welcome">

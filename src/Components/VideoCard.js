@@ -25,9 +25,8 @@ class VideoCard extends React.Component {
                     {this.props.cardObj.title}
                   </Card.Header>
                   <Image
-                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.mhaYy171K74k3WtSxfBZaQHaHJ%26pid%3DApi&f=1"
+                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.CB4J5t2sbJUeNqeHhNcovQHaEK%26pid%3DApi&f=1"
                     size="medium"
-                    circular
                   />
                 </Card.Content>
               </Card>
