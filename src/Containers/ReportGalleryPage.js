@@ -1,6 +1,7 @@
+import JwPagination from "jw-react-pagination"
 import React from "react"
 import { connect } from "react-redux"
-import { Header, Icon, Menu, Popup, Segment, Table } from "semantic-ui-react"
+import { Header, Menu, Popup, Segment, Table } from "semantic-ui-react"
 import Chart from "../Components/Chart"
 import Graph from "../Components/Graph"
 
@@ -8,6 +9,16 @@ class ReportGalleryPage extends React.Component {
   state = {
     beenClicked: false,
     clickedReport: {},
+    items: [],
+    pageOfItems: [],
+  }
+
+  componentDidMount() {
+    if (this.props.allReports.length) {
+      this.setState({ items: this.props.allReports })
+    } else if (this.props.parentsReports.length) {
+      this.setState({ items: this.props.parentsReports })
+    }
   }
 
   handleReportClick = (event) => {
@@ -32,6 +43,11 @@ class ReportGalleryPage extends React.Component {
     })
   }
 
+  onChangePage = (pageOfItems) => {
+    // update local state with new page of items
+    this.setState({ pageOfItems })
+  }
+
   renderReportGraph = () => {
     console.log("Report in render report graph: ", this.state.clickedReport)
 
@@ -42,51 +58,8 @@ class ReportGalleryPage extends React.Component {
     return <Graph report={this.state.clickedReport} date={dateWithoutTime} />
   }
 
-  // getPager(totalItems, currentPage, pageSize) {
-  //   currentPage = currentPage || 1
-  //   pageSize = pageSize || 10
-  //   let totalPages = Math.ceil(totalItems / pageSize)
-  //   let startPage, endPage
-
-  //   if (totalPages <= 10) {
-  //     startPage = 1
-  //     endPage = totalPages
-  //   } else {
-  //     if (currentPage <= 6) {
-  //       startPage = 1
-  //       endPage = 10
-  //     } else if (currentPage + 4 >= totalPages) {
-  //       startPage = totalPages - 9
-  //       endPage = totalPages
-  //     } else {
-  //       startPage = currentPage - 5
-  //       endPage = currentPage + 4
-  //     }
-  //   }
-
-  //   let startIndex = (currentPage - 1) * pageSize
-
-  //   let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1)
-
-  //   let pages = [...Array(endPage + 1 - startPage).keys()].map(
-  //     (i) => startPage + i
-  //   )
-
-  //   return {
-  //     totalItems: totalItems,
-  //     currentPage: currentPage,
-  //     pageSize: pageSize,
-  //     totalPages: totalPages,
-  //     startPage: startPage,
-  //     endPage: endPage,
-  //     startIndex: startIndex,
-  //     endIndex: endIndex,
-  //     pages: pages,
-  //   }
-  // }
-
   listOfReports = () => {
-    return this.props.allReports.map((report) => {
+    return this.state.pageOfItems.map((report) => {
       let date = new Date(report.created_at)
       let dateWithoutTime =
         date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
@@ -99,7 +72,7 @@ class ReportGalleryPage extends React.Component {
     })
   }
   listOfParentsReports = () => {
-    return this.props.parentsReports.map((report) => {
+    return this.state.pageOfItems.map((report) => {
       let date = new Date(report.created_at)
       let dateWithoutTime =
         date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
@@ -148,14 +121,11 @@ class ReportGalleryPage extends React.Component {
                 <Table.Footer>
                   <Table.Row>
                     <Table.HeaderCell colSpan="3">
-                      <Menu floated="right" pagination>
-                        <Menu.Item as="a" icon>
-                          <Icon name="chevron left" />
-                        </Menu.Item>
-
-                        <Menu.Item as="a" icon>
-                          <Icon name="chevron right" />
-                        </Menu.Item>
+                      <Menu floated="right">
+                        <JwPagination
+                          items={this.state.items}
+                          onChangePage={this.onChangePage}
+                        />
                       </Menu>
                     </Table.HeaderCell>
                   </Table.Row>
@@ -214,20 +184,16 @@ class ReportGalleryPage extends React.Component {
                     <Table.Footer>
                       <Table.Row>
                         <Table.HeaderCell colSpan="3">
-                          <Menu floated="right" pagination>
-                            <Menu.Item as="a" icon>
-                              <Icon name="chevron left" />
-                            </Menu.Item>
-
-                            <Menu.Item as="a" icon>
-                              <Icon name="chevron right" />
-                            </Menu.Item>
+                          <Menu floated="right">
+                            <JwPagination
+                              items={this.state.items}
+                              onChangePage={this.onChangePage}
+                            />
                           </Menu>
                         </Table.HeaderCell>
                       </Table.Row>
                     </Table.Footer>
                   </Table>
-
                   <br />
                   {this.state.beenClicked ? this.renderReportGraph() : null}
                 </Segment>
