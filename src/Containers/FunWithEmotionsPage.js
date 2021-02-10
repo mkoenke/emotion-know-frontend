@@ -11,6 +11,12 @@ class FunWithEmotionsPage extends React.Component {
     arousal: "",
     valence: "",
     mood: "",
+    anger: "",
+    disgust: "",
+    fear: "",
+    joy: "",
+    sadness: "",
+    surprise: "",
   }
   componentDidMount() {
     CY.loader()
@@ -49,237 +55,240 @@ class FunWithEmotionsPage extends React.Component {
   }
 
   findEmotion = (valence, arousal) => {
+    console.log("Finding emotions:")
     if (
-      valence <= 0.06 &&
-      valence >= -0.04 &&
-      arousal <= -0.95 &&
-      arousal >= -1.05
+      valence <= 0.11 &&
+      valence >= -0.09 &&
+      arousal <= -0.9 &&
+      arousal >= -1.1
     ) {
       this.setState({ mood: "Sleepy and Tired" })
     } else if (
-      valence <= -0.07 &&
-      valence >= -0.17 &&
-      arousal <= 0.84 &&
-      arousal >= 0.74
+      valence <= -0.02 &&
+      valence >= -0.22 &&
+      arousal <= 0.89 &&
+      arousal >= 0.69
     ) {
       this.setState({ mood: "Afraid" })
     } else if (
-      valence <= -0.35 &&
-      valence >= -0.45 &&
-      arousal <= 0.84 &&
-      arousal >= 0.74
+      valence <= -0.3 &&
+      valence >= -0.5 &&
+      arousal <= 0.89 &&
+      arousal >= 0.69
     ) {
       this.setState({ mood: "Angry" })
     } else if (
-      valence <= 0.83 &&
-      valence >= 0.73 &&
-      arousal <= -0.63 &&
-      arousal >= -0.73
+      valence <= 0.88 &&
+      valence >= 0.68 &&
+      arousal <= -0.58 &&
+      arousal >= -0.78
     ) {
       this.setState({ mood: "Calm" })
     } else if (
-      valence <= 0.76 &&
-      valence >= 0.66 &&
-      arousal <= -0.6 &&
-      arousal >= -0.7
+      valence <= 0.81 &&
+      valence >= 0.61 &&
+      arousal <= -0.55 &&
+      arousal >= -0.75
     ) {
       this.setState({ mood: "Relaxed" })
     } else if (
-      valence <= 0.86 &&
-      valence >= 0.76 &&
-      arousal <= -0.5 &&
-      arousal >= -0.6
+      valence <= 0.91 &&
+      valence >= 0.71 &&
+      arousal <= -0.45 &&
+      arousal >= -0.65
     ) {
       this.setState({ mood: "Content" })
     } else if (
-      valence <= -0.76 &&
-      valence >= -0.86 &&
-      arousal <= -0.43 &&
-      arousal >= -0.53
+      valence <= -0.71 &&
+      valence >= -0.91 &&
+      arousal <= -0.38 &&
+      arousal >= -0.58
     ) {
       this.setState({ mood: "Depressed" })
     } else if (
-      valence <= -0.63 &&
-      valence >= -0.73 &&
-      arousal <= -0.27 &&
-      arousal >= -0.37
+      valence <= -0.58 &&
+      valence >= -0.78 &&
+      arousal <= -0.22 &&
+      arousal >= -0.42
     ) {
       this.setState({ mood: "Discontent" })
     } else if (
-      valence <= 0.78 &&
-      valence >= 0.68 &&
-      arousal <= 0.31 &&
-      arousal >= 0.21
+      valence <= 0.83 &&
+      valence >= 0.63 &&
+      arousal <= 0.36 &&
+      arousal >= 0.16
     ) {
       this.setState({ mood: "Determined" })
     } else if (
-      valence <= 0.94 &&
-      valence >= 0.84 &&
-      arousal <= 0.22 &&
-      arousal >= 0.12
+      valence <= 0.99 &&
+      valence >= 0.79 &&
+      arousal <= 0.27 &&
+      arousal >= 0.07
     ) {
       this.setState({ mood: "Happy" })
     } else if (
-      valence <= -0.67 &&
-      valence >= -0.77 &&
-      arousal <= -0.75 &&
-      arousal >= -0.85
+      valence <= -0.62 &&
+      valence >= -0.82 &&
+      arousal <= -0.7 &&
+      arousal >= -0.9
     ) {
       this.setState({ mood: "Anxious" })
     } else if (
-      valence <= 0.95 &&
-      valence >= 0.85 &&
-      arousal <= -0.03 &&
-      arousal >= -0.13
+      valence <= 1 &&
+      valence >= 0.8 &&
+      arousal <= 0.02 &&
+      arousal >= -0.18
     ) {
       this.setState({ mood: "Good" })
     } else if (
-      valence <= 0.08 &&
-      valence >= -0.02 &&
-      arousal <= -0.55 &&
-      arousal >= -0.65
+      valence <= 0.13 &&
+      valence >= -0.07 &&
+      arousal <= -0.5 &&
+      arousal >= -0.7
     ) {
       this.setState({ mood: "Pensive" })
     } else if (
-      valence <= 0.44 &&
-      valence >= 0.34 &&
-      arousal <= -0.01 &&
-      arousal >= -0.11
+      valence <= 0.49 &&
+      valence >= 0.29 &&
+      arousal <= 0.04 &&
+      arousal >= -0.16
     ) {
       this.setState({ mood: "Impressed" })
     } else if (
-      valence <= -0.55 &&
-      valence >= -0.65 &&
-      arousal <= 0.45 &&
-      arousal >= 0.55
+      valence <= -0.5 &&
+      valence >= -0.7 &&
+      arousal <= 0.5 &&
+      arousal >= 0.3
     ) {
       this.setState({ mood: "Frustrated" })
     } else if (
-      valence <= -0.75 &&
-      valence >= -0.85 &&
-      arousal <= 0.02 &&
-      arousal >= -0.08
+      valence <= -0.7 &&
+      valence >= -0.9 &&
+      arousal <= 0.07 &&
+      arousal >= -0.13
     ) {
       this.setState({ mood: "Disapointed" })
     } else if (
-      valence <= -0.3 &&
-      valence >= -0.4 &&
-      arousal <= -0.73 &&
-      arousal >= -0.83
+      valence <= -0.25 &&
+      valence >= -0.45 &&
+      arousal <= -0.68 &&
+      arousal >= -0.88
     ) {
       this.setState({ mood: "Bored" })
     } else if (
-      valence <= -0.39 &&
-      valence >= -0.49 &&
-      arousal <= 0.81 &&
-      arousal >= 0.71
+      valence <= -0.34 &&
+      valence >= -0.54 &&
+      arousal <= 0.86 &&
+      arousal >= 0.66
     ) {
       this.setState({ mood: "Annoyed" })
     } else if (
-      valence <= -0.13 &&
-      valence >= -0.23 &&
-      arousal <= 0.88 &&
-      arousal >= 0.78
+      valence <= -0.08 &&
+      valence >= -0.28 &&
+      arousal <= 0.93 &&
+      arousal >= 0.73
     ) {
       this.setState({ mood: "Enraged" })
     } else if (
-      valence <= 0.75 &&
-      valence >= 0.65 &&
-      arousal <= 0.76 &&
-      arousal >= 0.66
+      valence <= 0.8 &&
+      valence >= 0.6 &&
+      arousal <= 0.81 &&
+      arousal >= 0.61
     ) {
       this.setState({ mood: "Excited" })
     } else if (
-      valence <= 0 &&
-      valence >= -0.1 &&
-      arousal <= -0.6 &&
-      arousal >= -0.7
+      valence <= 0.05 &&
+      valence >= -0.15 &&
+      arousal <= -0.55 &&
+      arousal >= -0.75
     ) {
       this.setState({ mood: "Melancholy" })
     } else if (
-      valence <= 0.82 &&
-      valence >= 0.72 &&
-      arousal <= -0.58 &&
-      arousal >= -0.68
+      valence <= 0.87 &&
+      valence >= 0.67 &&
+      arousal <= -0.53 &&
+      arousal >= -0.73
     ) {
       this.setState({ mood: "Satisfied" })
     } else if (
-      valence <= -0.66 &&
-      valence >= -0.76 &&
-      arousal <= 0.6 &&
-      arousal >= 0.5
+      valence <= -0.61 &&
+      valence >= -0.81 &&
+      arousal <= 0.65 &&
+      arousal >= 0.45
     ) {
       this.setState({ mood: "Distressed" })
     } else if (
-      valence <= -0.63 &&
-      valence >= -0.73 &&
-      arousal <= -0.32 &&
-      arousal >= -0.42
+      valence <= -0.58 &&
+      valence >= -0.78 &&
+      arousal <= -0.27 &&
+      arousal >= -0.47
     ) {
       this.setState({ mood: "Uncomfortable" })
     } else if (
-      valence <= -0.02 &&
-      valence >= -0.12 &&
-      arousal <= -0.27 &&
-      arousal >= -0.37
+      valence <= 0.03 &&
+      valence >= -0.17 &&
+      arousal <= -0.22 &&
+      arousal >= -0.42
     ) {
       this.setState({ mood: "Worried" })
     } else if (
-      valence <= 0.6 &&
-      valence >= 0.5 &&
-      arousal <= 0.24 &&
-      arousal >= 0.14
+      valence <= 0.65 &&
+      valence >= 0.45 &&
+      arousal <= 0.29 &&
+      arousal >= 0.09
     ) {
       this.setState({ mood: "Amused" })
     } else if (
-      valence <= -0.15 &&
-      valence >= -0.25 &&
-      arousal <= -0.07 &&
-      arousal >= -0.17
+      valence <= -0.1 &&
+      valence >= -0.3 &&
+      arousal <= -0.02 &&
+      arousal >= -0.22
     ) {
       this.setState({ mood: "Apathetic" })
     } else if (
-      valence <= 0.6 &&
-      valence >= 0.5 &&
-      arousal <= -0.75 &&
-      arousal >= -0.85
+      valence <= 0.65 &&
+      valence >= 0.45 &&
+      arousal <= -0.7 &&
+      arousal >= -0.9
     ) {
       this.setState({ mood: "Peaceful" })
     } else if (
-      valence <= 0.63 &&
-      valence >= 0.53 &&
-      arousal <= -0.55 &&
-      arousal >= -0.65
+      valence <= 0.68 &&
+      valence >= 0.48 &&
+      arousal <= -0.5 &&
+      arousal >= -0.7
     ) {
       this.setState({ mood: "Contemplative" })
     } else if (
-      valence <= -0.26 &&
-      valence >= -0.36 &&
-      arousal <= -0.55 &&
-      arousal >= -0.65
+      valence <= -0.21 &&
+      valence >= -0.41 &&
+      arousal <= -0.5 &&
+      arousal >= -0.7
     ) {
       this.setState({ mood: "Embarrassed" })
     } else if (
-      valence <= -0.76 &&
-      valence >= -0.86 &&
-      arousal <= -0.35 &&
-      arousal >= -0.45
+      valence <= -0.71 &&
+      valence >= -0.91 &&
+      arousal <= -0.3 &&
+      arousal >= -0.5
     ) {
       this.setState({ mood: "Sad" })
     } else if (
-      valence <= 0.66 &&
-      valence >= 0.56 &&
-      arousal <= -0.25 &&
-      arousal >= -0.35
+      valence <= 0.71 &&
+      valence >= 0.51 &&
+      arousal <= -0.2 &&
+      arousal >= -0.4
     ) {
       this.setState({ mood: "Hopeful" })
     } else if (
-      valence <= 0.94 &&
-      valence >= 0.84 &&
-      arousal <= -0.05 &&
-      arousal >= -0.15
+      valence <= 0.99 &&
+      valence >= 0.79 &&
+      arousal <= 0 &&
+      arousal >= -0.2
     ) {
       this.setState({ mood: "Pleased" })
+    } else {
+      this.setState({ mood: "" })
     }
   }
 
@@ -326,6 +335,14 @@ class FunWithEmotionsPage extends React.Component {
               style={{ color: "rgb(171, 218, 225)" }}
             >
               {this.state.emo ? this.state.emo : null}
+            </Header>
+            <Header
+              className="h1"
+              size="huge"
+              textAlign="center"
+              style={{ color: "rgb(171, 218, 225)" }}
+            >
+              {this.state.mood ? this.state.mood : null}
             </Header>
             <div style={{ dispaly: "block", height: "300px" }} />
           </>
