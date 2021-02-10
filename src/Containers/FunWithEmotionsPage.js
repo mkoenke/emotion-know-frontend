@@ -4,7 +4,7 @@ import { Bar } from "@reactchartjs/react-chart.js"
 import React from "react"
 import { connect } from "react-redux"
 import Webcam from "react-webcam"
-import { Grid, Header } from "semantic-ui-react"
+import { Grid, Header, Loader, Message } from "semantic-ui-react"
 
 class FunWithEmotionsPage extends React.Component {
   state = {
@@ -44,7 +44,6 @@ class FunWithEmotionsPage extends React.Component {
     window.addEventListener(
       CY.modules().FACE_AROUSAL_VALENCE.eventName,
       (evt) => {
-        // console.log("Face arousal valence result", evt.detail)
         this.setState({
           arousal: evt.detail.output.arousalvalence.arousal,
           valence: evt.detail.output.arousalvalence.valence,
@@ -375,20 +374,37 @@ class FunWithEmotionsPage extends React.Component {
               textAlign="center"
               style={{ color: "rgb(171, 218, 225)" }}
             >
-              {this.state.emo ? this.state.emo : null}
+              {this.state.emo ? (
+                `Dominant Emotion: ${this.state.emo} `
+              ) : (
+                <>
+                  <p>Please wait a moment...</p> <Loader active inline />
+                </>
+              )}
             </Header>
             <Bar data={data} />
-            <Header
+            {/* <Header
               className="h1"
               size="huge"
               textAlign="center"
               style={{ color: "rgb(171, 218, 225)" }}
             >
               {this.state.mood ? this.state.mood : null}
-            </Header>
+            </Header> */}
             <div style={{ dispaly: "block", height: "300px" }} />
           </>
         ) : null}
+        <Message positive>
+          <Message.Header>Your privacy is important to us!</Message.Header>
+          <p>
+            MorphCast is a patented technology using facial analysis to adapt
+            content to the viewer in real-time whilst protecting their privacy.
+            The software runs directly in your browser and emotions are found
+            based on Deep Neural Network AI, able to analyse facial expressions.
+            The only data that is stored, is what you choose to store when you
+            upload!
+          </p>
+        </Message>
       </>
     )
   }

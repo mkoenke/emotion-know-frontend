@@ -2,7 +2,6 @@ import AudioReactRecorder, { RecordState } from "audio-react-recorder"
 import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
-// import "react-voice-recorder/dist/index.css"
 import { Button, Form, Grid, Header } from "semantic-ui-react"
 import { addAudioToAllAudio, addReportToAllReports } from "../Redux/actions"
 
@@ -214,12 +213,15 @@ class VoiceRecorderPage extends React.Component {
         <div style={recorderContainer}>
           <AudioReactRecorder state={recordState} onStop={this.onStop} />
           <div style={container}>
-            <Button onClick={this.start}>Start Recording</Button>
-            <Button onClick={this.startListen}>Start Listening</Button>
+            <Button onClick={this.startListen}>Get Ready...</Button>
+            <Button onClick={this.start}>Get Set...</Button>
           </div>
           <div style={container}>
+            <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
+              Just say "Stop Listening!" when you are finished and press...
+            </Header>
             <Button onClick={this.stop}>Stop Recording</Button>
-            <Button onClick={this.stopListen}>Stop Listening</Button>
+            {/* <Button onClick={this.stopListen}>Stop Listening</Button> */}
           </div>
         </div>
         {this.state.blobUrl ? (

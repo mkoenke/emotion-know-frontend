@@ -3,12 +3,9 @@
 import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
-import { Button, Form, Grid, Header } from "semantic-ui-react"
+import { Button, Form, Grid, Header, Message } from "semantic-ui-react"
 import { addReportToAllReports, addVideoToAllVideos } from "../Redux/actions"
 import Video from "./VideoRecorder"
-
-// import { ReactMediaRecorder } from "react-media-recorder"
-// import MediaRecorder from "./HoldComponents/UseMediaRecorder"
 
 let angerData = []
 let fearData = []
@@ -164,7 +161,6 @@ class RecordView extends React.Component {
     this.stopSDK()
   }
   onStartRecording = () => {
-    // this.startSDK()
     this.setState({ isRecording: true }, this.startListening)
   }
 
@@ -223,31 +219,6 @@ class RecordView extends React.Component {
                 onStartRecording={this.onStartRecording}
                 onTurnOnCamera={this.startSDK}
               />
-              {/* <div>
-                <ReactMediaRecorder
-                  video
-                  render={({
-                    status,
-                    startRecording,
-                    stopRecording,
-                    mediaBlobUrl,
-                  }) => (
-                    <div onClick={this.onStartRecording}>
-                      <p>{status}</p>
-                      <button onClick={startRecording}>Start Recording</button>
-                      <button onClick={stopRecording}>Stop Recording</button>
-                      <video
-                        id="video"
-                        src={mediaBlobUrl}
-                        controls
-                        autoplay
-                        loop
-                      />
-                    </div>
-                  )}
-                />
-              </div> */}
-              {/* <MediaRecorder onStartRecording={this.onStartRecording} /> */}
             </div>
           </Grid>
           <div
@@ -261,6 +232,17 @@ class RecordView extends React.Component {
             <Button onClick={this.handleUploadClick}>Upload Video</Button>
           </div>
         </div>
+        <Message positive>
+          <Message.Header>Your privacy is important to us!</Message.Header>
+          <p>
+            MorphCast is a patented technology using facial analysis to adapt
+            content to the viewer in real-time whilst protecting their privacy.
+            The software runs directly in your browser and emotions are found
+            based on Deep Neural Network AI, able to analyse facial expressions.
+            The only data that is stored, is what you choose to store when you
+            upload!
+          </p>
+        </Message>
       </>
     )
   }

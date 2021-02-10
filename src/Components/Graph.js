@@ -38,12 +38,6 @@ class Graph extends React.Component {
       ],
     },
   }
-  //   date = () => {
-  //     let date = new Date(this.props.report.created_at)
-  //     let dateWithoutTime =
-  //       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-  //     return `${dateWithoutTime}`
-  //   }
 
   render() {
     console.log("Props in graph: ", this.props)

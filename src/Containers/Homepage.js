@@ -37,8 +37,32 @@ class Homepage extends React.Component {
               EmotionKnow
             </Parallax>
           </span>
-          <Header style={{ color: "rgb(171, 218, 225)" }}>
+          <Header style={{ color: "rgb(171, 218, 225)" }} size="large">
             Building Emotional Intelligence in Children
+          </Header>
+          <Header
+            size="medium"
+            style={{
+              color: "rgb(171, 238, 245)",
+              marginLeft: "100px",
+              marginRight: "100px",
+            }}
+          >
+            EmotionKnow is an online journaling application for children with
+            written, audio, and video journaling methods providing feedback on
+            universal emotions to children and parents. Input from the child is
+            evaluated by MorphCast SDK or TwinWord API reporting data in graph
+            form on emotional states expressed. <br />
+            <br />
+            Children and parents have separate portals so children have access
+            to a history of their recordings and the corresponding graphical
+            representation of emotions whereas parents only have access to the
+            graphical representation.
+            <br /> <br />
+            EmotionKnow is intended to help children grow in emotional
+            intelligence and help parents stay attuned to their child’s
+            wellbeing, providing an overall sense of connectedness and advanced
+            communication during pivotal stages of development.
           </Header>
         </div>
         <ParallaxBanner
