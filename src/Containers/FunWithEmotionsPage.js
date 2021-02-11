@@ -381,12 +381,14 @@ class FunWithEmotionsPage extends React.Component {
             </Header>
             <div className=" background">
               <Container>
+                {/* <div className="bargraph"> */}
                 <Bar
                   data={data}
                   width={600}
                   height={400}
                   options={{ maintainAspectRatio: false }}
                 />
+                {/* </div> */}
               </Container>
             </div>
             {/* <Header

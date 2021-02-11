@@ -79,6 +79,19 @@
   width: 800px;
 }
 .bargraph {
-  height: 400px;
-  width: 600px;
+  /* height: 400px;
+  width: 600px; */
+  background-color: white;
+  box-shadow: 10px 10px 5px grey !important;
+}
+.table {
+  box-shadow: 10px 10px 5px grey !important;
+}
+/* .tableHeader {
+  text-align: center;
+  font-size: 20px;
+} */
+.reportHeader {
+  /* font-size: 30px; */
+  font-weight: 100 !important;
 }
