@@ -114,7 +114,7 @@ class ReportGalleryPage extends React.Component {
               <Container>
                 {this.props.child ? (
                   <Header
-                    className="h1 pageHeader"
+                    className=" pageHeader"
                     size="huge"
                     textAlign="center"
                   >
@@ -172,7 +172,7 @@ class ReportGalleryPage extends React.Component {
                 <Container>
                   {this.props.child ? (
                     <Header
-                      className="h1 pageHeader"
+                      className=" pageHeader"
                       size="huge"
                       textAlign="center"
                       // style={{ color: "rgb(171, 218, 225)" }}

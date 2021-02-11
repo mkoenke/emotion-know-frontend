@@ -16,20 +16,22 @@ class AudioGalleryPage extends React.Component {
   render() {
     return (
       <>
-        {this.props.child ? (
-          <Header
-            className="h1"
-            size="huge"
-            textAlign="center"
-            style={{ color: "rgb(171, 218, 225)" }}
-          >
-            {this.props.child.username}'s Audio Journals
-          </Header>
-        ) : null}
+        <div className="background">
+          {this.props.child ? (
+            <Header
+              className="pageHeader"
+              size="huge"
+              textAlign="center"
+              style={{ color: "rgb(171, 218, 225)" }}
+            >
+              {this.props.child.username}'s Audio Journals
+            </Header>
+          ) : null}
 
-        <Grid centered columns="three">
-          <Grid.Row>{this.arrayOfJournals()}</Grid.Row>
-        </Grid>
+          <Grid centered columns="three">
+            <Grid.Row>{this.arrayOfJournals()}</Grid.Row>
+          </Grid>
+        </div>
       </>
     )
   }

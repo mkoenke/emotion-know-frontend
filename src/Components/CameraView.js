@@ -192,7 +192,9 @@ class RecordView extends React.Component {
       <>
         <div style={{ margin: "50px" }}>
           {this.state.submittedTitle ? (
-            <Header textAlign="center">{this.state.submittedTitle}</Header>
+            <Header as="h1" className="content" textAlign="center">
+              {this.state.submittedTitle}
+            </Header>
           ) : (
             <Grid centered>
               <Form onSubmit={this.handleTitleSubmit}>
@@ -200,13 +202,13 @@ class RecordView extends React.Component {
                   <Form.Input
                     style={{ width: "300px" }}
                     fluid
-                    placeholder="Title"
+                    placeholder="Create Title"
                     onChange={this.changeHandler}
                     name="title"
                     value={this.state.title}
                   />
                 </Form.Group>
-                <Form.Button>Set Video Journal Title</Form.Button>
+                <Form.Button>Set Title</Form.Button>
               </Form>
             </Grid>
           )}

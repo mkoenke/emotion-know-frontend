@@ -6,7 +6,6 @@ class Video extends React.Component {
     return (
       <>
         <VideoRecorder
-          //   id="video"
           showReplayControls={true}
           replayVideoAutoplayAndLoopOff={true}
           onRecordingComplete={this.props.onRecordingComplete}

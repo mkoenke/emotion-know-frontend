@@ -1,8 +1,8 @@
 import React from "react"
 import { Parallax, ParallaxBanner } from "react-scroll-parallax"
 import { Grid, Header, List } from "semantic-ui-react"
-import resourceImage from "../assets/images/handsWithSmiley.jpg"
-// import Background1 from "../assets/images/profileBackground2.jpeg"
+import resourceImage2 from "../assets/images/kidsPaperFamily.jpg"
+import resourceImage from "../assets/images/paperFamily.jpg"
 
 class ResourcesPage extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class ResourcesPage extends React.Component {
               amount: 0.3,
             },
           ]}
-          style={{ height: "500px" }}
+          style={{ height: "400px" }}
         ></ParallaxBanner>
         <div className="root">
           <span className={`copy h1`}>
@@ -106,6 +106,19 @@ class ResourcesPage extends React.Component {
           style={{ dispaly: "block", height: "300px" }}
           className="resources"
         />
+        <ParallaxBanner
+          layers={[
+            {
+              image: resourceImage2,
+              amount: 0.3,
+            },
+          ]}
+          style={{ height: "400px" }}
+        ></ParallaxBanner>
+        {/* <div
+          style={{ dispaly: "block", height: "300px" }}
+          className="resources"
+        /> */}
       </>
     )
   }

@@ -355,7 +355,7 @@ class FunWithEmotionsPage extends React.Component {
         {!this.props.parent && this.props.child ? (
           <>
             <Header
-              className="h1 pageHeader"
+              className="pageHeader"
               size="huge"
               textAlign="center"
               style={{ color: "rgb(171, 218, 225)" }}
@@ -366,7 +366,7 @@ class FunWithEmotionsPage extends React.Component {
               <Webcam className="webcam" videoConstraints={videoConstraints} />
             </Grid>
             <Header
-              className="h1 pageHeader"
+              className="pageHeader"
               size="huge"
               textAlign="center"
               style={{ color: "rgb(171, 218, 225)" }}

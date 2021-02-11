@@ -49,42 +49,45 @@ class WritingPage extends React.Component {
   render() {
     return (
       <>
-        {this.props.child ? (
-          <Header
-            className="h1"
-            size="huge"
-            textAlign="center"
-            style={{ color: "rgb(171, 218, 225)" }}
-          >
-            How are you feeling today, {this.props.child.username}?
-          </Header>
-        ) : null}
-        <br />
-        <Grid centered>
-          <Form onSubmit={this.handleFormSubmit}>
-            <Form.Group widths="equal">
-              <Form.Input
-                fluid
-                label="Title"
-                placeholder="Title"
+        <div className="background">
+          {this.props.child ? (
+            <Header
+              className="pageHeader"
+              size="huge"
+              textAlign="center"
+              style={{ color: "rgb(171, 218, 225)" }}
+            >
+              How are you feeling today, {this.props.child.username}?
+            </Header>
+          ) : null}
+          <br />
+          <Grid centered>
+            <Form className="content" onSubmit={this.handleFormSubmit}>
+              <Form.Group widths="equal">
+                <Form.Input
+                  fluid
+                  label="Title"
+                  placeholder="Title"
+                  onChange={this.changeHandler}
+                  name="title"
+                  value={this.state.title}
+                />
+              </Form.Group>
+
+              <Form.TextArea
+                label="Today I feel..."
+                placeholder="Get it all out..."
+                style={{ height: "600px", width: "500px" }}
                 onChange={this.changeHandler}
-                name="title"
-                value={this.state.title}
+                name="content"
+                value={this.state.content}
               />
-            </Form.Group>
 
-            <Form.TextArea
-              label="Today I feel..."
-              placeholder="Get it all out..."
-              style={{ height: "600px", width: "500px" }}
-              onChange={this.changeHandler}
-              name="content"
-              value={this.state.content}
-            />
-
-            <Form.Button>Submit</Form.Button>
-          </Form>
-        </Grid>
+              <Form.Button>Submit</Form.Button>
+            </Form>
+          </Grid>
+          <div className="footer"></div>
+        </div>
       </>
     )
   }

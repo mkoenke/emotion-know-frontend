@@ -10,7 +10,7 @@ class CardClass extends React.Component {
         <Animista type={AnimistaTypes.ROTATE_SCALE_DOWN}>
           <NavLink to={this.props.cardObj.url}>
             <Card
-              className="welcomeCard"
+              className="welcomeCard cardSize "
               fluid
               id={this.props.cardObj.id}
               centered
@@ -18,9 +18,8 @@ class CardClass extends React.Component {
               <Image
                 className="cardImage"
                 src={this.props.cardObj.image}
-                wrapped
-                ui={false}
-                // style={{ height: "400px", width: "400px" }}
+                // wrapped
+                // ui={false}
               />
               <Card.Content className="content">
                 <Card.Header textAlign="center" className="content">

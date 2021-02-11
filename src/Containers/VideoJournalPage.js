@@ -8,18 +8,20 @@ class CameraPage extends React.Component {
     console.log("Props: ", this.props)
     return (
       <>
-        {this.props.child ? (
-          <Header
-            className="h1"
-            size="huge"
-            textAlign="center"
-            style={{ color: "rgb(171, 218, 225)" }}
-          >
-            How are you feeling today, {this.props.child.username}?
-          </Header>
-        ) : null}
+        <div className="background">
+          {this.props.child ? (
+            <Header
+              className="pageHeader"
+              size="huge"
+              textAlign="center"
+              style={{ color: "rgb(171, 218, 225)" }}
+            >
+              How are you feeling today, {this.props.child.username}?
+            </Header>
+          ) : null}
 
-        <RecordView history={this.props.history} />
+          <RecordView history={this.props.history} />
+        </div>
       </>
     )
   }

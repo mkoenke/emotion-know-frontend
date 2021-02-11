@@ -25,7 +25,7 @@
 .h1 {
   font-size: 5em;
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   letter-spacing: 0.3em;
   color: rgb(10, 157, 174);
 }
@@ -60,8 +60,8 @@
   margin: 40px !important;
 }
 .cardImage {
-  min-height: 100% !important;
-  /* width: 200px !important; */
+  max-height: 70% !important;
+  min-height: 70% !important;
 }
 .content {
   font-family: "Comic Sans MS", "Comic Sans" !important;
@@ -79,18 +79,13 @@
   width: 800px;
 }
 .bargraph {
-  /* height: 400px;
-  width: 600px; */
   background-color: white;
   box-shadow: 10px 10px 5px grey !important;
 }
 .table {
   box-shadow: 10px 10px 5px grey !important;
 }
-/* .tableHeader {
-  text-align: center;
-  font-size: 20px;
-} */
+
 .reportHeader {
   /* font-size: 30px; */
   font-weight: 100 !important;
@@ -99,4 +94,8 @@
   font-family: "Comic Sans MS", "Comic Sans" !important;
   color: rgb(10, 157, 174) !important;
   font-size: 20px !important;
+}
+.cardSize {
+  height: 400px !important;
+  width: 350px !important;
 }
