@@ -50,7 +50,8 @@ class NavBar extends React.Component {
                 name="home"
                 active={activeItem === "home"}
                 onClick={this.handleItemClick}
-                className="navbar"
+                className="navbar navitem"
+                color="white"
               />
             </NavLink>
           ) : (

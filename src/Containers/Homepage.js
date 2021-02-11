@@ -1,9 +1,9 @@
 import React from "react"
 import { Parallax, ParallaxBanner } from "react-scroll-parallax"
-import { Header } from "semantic-ui-react"
-import Background1 from "../assets/images/background1mod5.jpeg"
-import Background2 from "../assets/images/background2mod5.jpeg"
-import Background3 from "../assets/images/background3mod5.jpeg"
+import { Container, Header } from "semantic-ui-react"
+import handWithBlock from "../assets/images/handWithBlock.jpg"
+import handWithBlocks from "../assets/images/handWithBlocks.jpg"
+import handWithVerticalBlocks from "../assets/images/handWithVerticalBlocks.jpg"
 import SignUpModal from "../Components/SignUpModal"
 
 class Homepage extends React.Component {
@@ -25,7 +25,7 @@ class Homepage extends React.Component {
         <ParallaxBanner
           layers={[
             {
-              image: Background1,
+              image: handWithBlock,
               amount: 0.3,
             },
           ]}
@@ -37,15 +37,20 @@ class Homepage extends React.Component {
               EmotionKnow
             </Parallax>
           </span>
-          <Header style={{ color: "rgb(171, 218, 225)" }} size="large">
+          <Header
+            style={{ color: "rgb(171, 218, 225)", fontFamily: "Comic Sans MS" }}
+            size="large"
+          >
             Building Emotional Intelligence in Children
           </Header>
-          <Header
-            size="medium"
+          <Container
             style={{
               color: "rgb(10, 157, 174)",
-              marginLeft: "100px",
-              marginRight: "100px",
+              // marginLeft: "500px",
+              // marginRight: "500px",
+              padding: "30px",
+              fontSize: "20px",
+              fontFamily: "Comic Sans MS",
             }}
           >
             EmotionKnow is an online journaling application for children with
@@ -63,12 +68,12 @@ class Homepage extends React.Component {
             intelligence and help parents stay attuned to their child’s
             wellbeing, providing an overall sense of connectedness and advanced
             communication during pivotal stages of development.
-          </Header>
+          </Container>
         </div>
         <ParallaxBanner
           layers={[
             {
-              image: Background2,
+              image: handWithBlocks,
               amount: 0.3,
             },
           ]}
@@ -89,7 +94,7 @@ class Homepage extends React.Component {
         <ParallaxBanner
           layers={[
             {
-              image: Background3,
+              image: handWithVerticalBlocks,
               amount: 0.3,
             },
           ]}

@@ -1,5 +1,6 @@
 import React from "react"
 import { Grid } from "semantic-ui-react"
+import funWithEmotions from "../assets/images/funWithEmotions.jpg"
 import WelcomeCard from "./WelcomeCard"
 
 class WelcomePageGrid extends React.Component {
@@ -65,8 +66,7 @@ class WelcomePageGrid extends React.Component {
       {
         id: 8,
         header: "Fun with Emotions",
-        image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.7Uu6X_8FavpM--P0p6U9pAAAAA%26pid%3DApi&f=1",
+        image: funWithEmotions,
         description: "Lets see what emotions you are expressing!",
         url: "./fun",
       },
@@ -83,7 +83,11 @@ class WelcomePageGrid extends React.Component {
   }
   render() {
     return (
-      <Grid centered columns="three">
+      <Grid
+        centered
+        columns="three"
+        style={{ backgroundColor: "rgb(158, 241, 250)" }}
+      >
         <Grid.Row centered>{this.arrayOfCards()}</Grid.Row>
       </Grid>
     )

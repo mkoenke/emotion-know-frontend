@@ -1,8 +1,8 @@
 import React from "react"
 import { Parallax, ParallaxBanner } from "react-scroll-parallax"
 import { Grid, Header, List } from "semantic-ui-react"
-// import resourceImage from "../assets/images/profilebackground.jpeg"
-import Background1 from "../assets/images/profileBackground2.jpeg"
+import resourceImage from "../assets/images/handsWithSmiley.jpg"
+// import Background1 from "../assets/images/profileBackground2.jpeg"
 
 class ResourcesPage extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class ResourcesPage extends React.Component {
         <ParallaxBanner
           layers={[
             {
-              image: Background1,
+              image: resourceImage,
               amount: 0.3,
             },
           ]}
@@ -23,15 +23,20 @@ class ResourcesPage extends React.Component {
               EmotionKnow Resources
             </Parallax>
           </span>
-          <Header style={{ color: "rgb(171, 218, 225)" }}>
+          <Header style={{ color: "rgb(171, 218, 225)" }} className="resources">
             Building Emotional Intelligence in Children
           </Header>
         </div>
 
-        <Grid centered celled="internally" style={{ marginBottom: "100px" }}>
+        <Grid
+          centered
+          celled="internally"
+          // style={{ marginBottom: "100px" }}
+          className="resources"
+        >
           <Grid.Row>
             <Grid.Column width={5}>
-              <Header textAlign="center" size="huge" color="blue">
+              <Header textAlign="center" size="huge" className="resources">
                 Child Resources
               </Header>
               <List bulleted>
@@ -62,7 +67,7 @@ class ResourcesPage extends React.Component {
               </List>
             </Grid.Column>
             <Grid.Column width={5}>
-              <Header textAlign="center" size="huge" color="blue">
+              <Header textAlign="center" size="huge" className="resources">
                 Parent Resources
               </Header>
               <List bulleted>
@@ -97,7 +102,10 @@ class ResourcesPage extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <div style={{ dispaly: "block", height: "300px" }} />
+        <div
+          style={{ dispaly: "block", height: "300px" }}
+          className="resources"
+        />
       </>
     )
   }

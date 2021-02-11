@@ -9,6 +9,8 @@
   justify-content: center;
   align-items: center;
   height: 50vh;
+  background-color: rgb(248, 245, 242);
+  margin: 30;
 }
 
 .copy {
@@ -18,17 +20,25 @@
 
 .letter {
   display: inline-block;
+  font-family: "Comic Sans MS", "Comic Sans";
 }
 .h1 {
   font-size: 5em;
   font-weight: 700;
   font-style: italic;
   letter-spacing: 0.3em;
-  color: rgb(171, 218, 225);
+  color: rgb(10, 157, 174);
 }
 .navbar {
   font-size: 24px;
+  font-family: "Comic Sans MS", "Comic Sans";
+  color: rgb(248, 245, 242) !important ;
 }
 .link {
   cursor: pointer;
+}
+.resources {
+  background-color: rgb(248, 245, 242);
+  font-family: "Comic Sans MS", "Comic Sans" !important;
+  color: rgb(10, 157, 174) !important;
 }
