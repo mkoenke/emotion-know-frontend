@@ -86,6 +86,7 @@ class ReportGalleryPage extends React.Component {
         date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
       return (
         <Table.Row
+          className="link"
           id={report.created_at}
           onClick={this.handleParentReportClick}
         >
@@ -167,84 +168,113 @@ class ReportGalleryPage extends React.Component {
         ) : (
           this.props.parent && (
             <>
-              <Container raised padded>
-                {this.props.child ? (
-                  <Header
-                    className="h1"
-                    size="huge"
-                    textAlign="center"
-                    style={{ color: "rgb(171, 218, 225)" }}
-                  >
-                    {this.props.child.username}'s Reports
-                  </Header>
-                ) : null}
-              </Container>
-              {!this.props.parentsReports.length ? (
-                <Popup
-                  trigger={
-                    <Container textAlign="center">
-                      <Header>Individual Journal Emotional Reports</Header>
-
-                      <br />
-                      {this.state.beenClicked ? this.renderReportGraph() : null}
-                    </Container>
-                  }
-                  content="When your child starts using EmotionKnow and creates a journal entry, their individual journal entry emotional charts will appear here!"
-                />
-              ) : (
-                <Container textAlign="center">
-                  <Header>Individual Journal Emotional Reports</Header>
-
-                  <Table celled>
-                    <Table.Header>
-                      <Table.Row>
-                        <Table.HeaderCell>Title</Table.HeaderCell>
-                        <Table.HeaderCell>Date</Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Header>
-                    <Table.Body>{this.listOfParentsReports()}</Table.Body>
-
-                    <Table.Footer>
-                      <Table.Row>
-                        <Table.HeaderCell colSpan="3">
-                          <Menu floated="right">
-                            <JwPagination
-                              items={this.state.items}
-                              onChangePage={this.onChangePage}
-                              labels={customLabels}
-                            />
-                          </Menu>
-                        </Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Footer>
-                  </Table>
-                  <br />
-                  {this.state.beenClicked ? this.renderReportGraph() : null}
+              <div className="background">
+                <Container>
+                  {this.props.child ? (
+                    <Header
+                      className="h1 pageHeader"
+                      size="huge"
+                      textAlign="center"
+                      // style={{ color: "rgb(171, 218, 225)" }}
+                    >
+                      {this.props.child.username}'s Reports
+                    </Header>
+                  ) : null}
                 </Container>
-              )}
-              {!this.props.parentsReports.length ? (
-                <Popup
-                  trigger={
-                    <Container textAlign="center">
-                      <Header>Emotional Reports over Time</Header>
+                {!this.props.parentsReports.length ? (
+                  <Popup
+                    trigger={
+                      <Container textAlign="center">
+                        <Header
+                          as="h2"
+                          className="content"
+                          style={{ margin: "30px" }}
+                        >
+                          Individual Journal Emotional Reports
+                        </Header>
 
-                      <br />
+                        <br />
+                        {this.state.beenClicked
+                          ? this.renderReportGraph()
+                          : null}
+                      </Container>
+                    }
+                    content="When your child starts using EmotionKnow and creates a journal entry, their individual journal entry emotional charts will appear here!"
+                  />
+                ) : (
+                  <Container textAlign="center">
+                    <Header
+                      as="h2"
+                      className="content"
+                      style={{ margin: "30px" }}
+                    >
+                      Individual Journal Emotional Reports
+                    </Header>
 
+                    <Table celled className="table content">
+                      <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCell>Title</Table.HeaderCell>
+                          <Table.HeaderCell>Date</Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Header>
+                      <Table.Body>{this.listOfParentsReports()}</Table.Body>
+
+                      <Table.Footer>
+                        <Table.Row>
+                          <Table.HeaderCell colSpan="3">
+                            <Menu floated="right">
+                              <JwPagination
+                                items={this.state.items}
+                                onChangePage={this.onChangePage}
+                                labels={customLabels}
+                              />
+                            </Menu>
+                          </Table.HeaderCell>
+                        </Table.Row>
+                      </Table.Footer>
+                    </Table>
+                    <br />
+                    {this.state.beenClicked ? this.renderReportGraph() : null}
+                  </Container>
+                )}
+                {!this.props.parentsReports.length ? (
+                  <Popup
+                    trigger={
+                      <Container textAlign="center">
+                        <Header
+                          as="h2"
+                          className="content"
+                          style={{ margin: "30px" }}
+                        >
+                          Emotional Reports over Time
+                        </Header>
+
+                        <br />
+
+                        <Chart />
+                      </Container>
+                    }
+                    content="Your child's emotions over time will appear here!"
+                  />
+                ) : (
+                  <Container textAlign="center">
+                    <Header
+                      as="h2"
+                      className="content"
+                      style={{ margin: "30px" }}
+                    >
+                      Emotional Reports over Time
+                    </Header>
+
+                    <br />
+                    <div className="bargraph">
                       <Chart />
-                    </Container>
-                  }
-                  content="Your child's emotions over time will appear here!"
-                />
-              ) : (
-                <Container textAlign="center">
-                  <Header>Emotional Reports over Time</Header>
-
-                  <br />
-
-                  <Chart />
-                </Container>
-              )}
-              <div className="footer"></div>
+                    </div>
+                  </Container>
+                )}
+                <div className="footer"></div>
+              </div>
             </>
           )
         )}

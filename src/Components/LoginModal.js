@@ -39,8 +39,10 @@ class LoginModal extends React.Component {
         closeOnDimmerClick={false}
         dimmer="blurring"
       >
-        <Modal.Header>Welcome back!</Modal.Header>
-        <Modal.Content>
+        <Modal.Header className="background pageHeader">
+          Welcome back!
+        </Modal.Header>
+        <Modal.Content className="background">
           {this.props.error ? (
             <Message negative>
               <Message.Header>{this.props.error}</Message.Header>
@@ -48,7 +50,7 @@ class LoginModal extends React.Component {
           ) : null}
           <Form onSubmit={this.handleFormSubmit}>
             <Form.Field required>
-              <label>Username</label>
+              <label className="formLabel">Username</label>
               <input
                 name="username"
                 value={this.state.username}
@@ -57,7 +59,7 @@ class LoginModal extends React.Component {
               />
             </Form.Field>
             <Form.Field required>
-              <label>Password</label>
+              <label className="formLabel">Password</label>
               <input
                 type="password"
                 name="password"

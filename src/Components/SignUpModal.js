@@ -78,11 +78,13 @@ class SignUpModal extends React.Component {
         closeOnDimmerClick={false}
         dimmer="blurring"
       >
-        <Modal.Header>Welcome</Modal.Header>
-        <Modal.Content>
+        <Modal.Header className="background pageHeader">
+          Welcome to EmotionKnow!
+        </Modal.Header>
+        <Modal.Content className="background">
           <Form onSubmit={this.handleFormSubmit}>
             <Form.Field required>
-              <label>Username</label>
+              <label className="formLabel">Username</label>
               <input
                 name="username"
                 value={this.state.username}
@@ -91,7 +93,7 @@ class SignUpModal extends React.Component {
               />
             </Form.Field>
             <Form.Field required>
-              <label>Password</label>
+              <label className="formLabel">Password</label>
               <input
                 name="password"
                 type="password"
@@ -101,7 +103,7 @@ class SignUpModal extends React.Component {
               />
             </Form.Field>
             <Form.Field required>
-              <label>Parent's email</label>
+              <label className="formLabel">Parent's email</label>
               <input
                 name="email"
                 value={this.state.email}
@@ -110,7 +112,7 @@ class SignUpModal extends React.Component {
               />
             </Form.Field>{" "}
             <Form.Field required>
-              <label>Parent's Password</label>
+              <label className="formLabel">Parent's Password</label>
               <input
                 name="parentPassword"
                 type="password"

@@ -40,8 +40,10 @@ class ParentLoginModal extends React.Component {
         closeOnDimmerClick={false}
         dimmer="blurring"
       >
-        <Modal.Header>Welcome back!</Modal.Header>
-        <Modal.Content>
+        <Modal.Header className="background pageHeader">
+          Welcome back!
+        </Modal.Header>
+        <Modal.Content className="background">
           {this.props.error ? (
             <Message negative>
               <Message.Header>{this.props.error}</Message.Header>
@@ -49,7 +51,7 @@ class ParentLoginModal extends React.Component {
           ) : null}
           <Form onSubmit={this.handleFormSubmit}>
             <Form.Field required>
-              <label>Email</label>
+              <label className="formLabel">Email</label>
               <input
                 name="email"
                 value={this.state.email}
@@ -58,7 +60,7 @@ class ParentLoginModal extends React.Component {
               />
             </Form.Field>
             <Form.Field required>
-              <label>Password</label>
+              <label className="formLabel">Password</label>
               <input
                 type="password"
                 name="password"
