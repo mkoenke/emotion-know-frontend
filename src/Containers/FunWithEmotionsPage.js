@@ -4,7 +4,7 @@ import { Bar } from "@reactchartjs/react-chart.js"
 import React from "react"
 import { connect } from "react-redux"
 import Webcam from "react-webcam"
-import { Grid, Header, Loader, Message } from "semantic-ui-react"
+import { Container, Grid, Header, Loader, Message } from "semantic-ui-react"
 
 class FunWithEmotionsPage extends React.Component {
   state = {
@@ -355,21 +355,18 @@ class FunWithEmotionsPage extends React.Component {
         {!this.props.parent && this.props.child ? (
           <>
             <Header
-              className="h1"
+              className="h1 pageHeader"
               size="huge"
               textAlign="center"
               style={{ color: "rgb(171, 218, 225)" }}
             >
               Let's make some funny faces, {this.props.child.username}!
             </Header>
-            <Grid centered style={{ margin: "50px" }}>
-              <Webcam
-                style={{ height: "620px", width: "800px" }}
-                videoConstraints={videoConstraints}
-              />
+            <Grid centered className="videoGrid background">
+              <Webcam className="webcam" videoConstraints={videoConstraints} />
             </Grid>
             <Header
-              className="h1"
+              className="h1 pageHeader"
               size="huge"
               textAlign="center"
               style={{ color: "rgb(171, 218, 225)" }}
@@ -382,7 +379,16 @@ class FunWithEmotionsPage extends React.Component {
                 </>
               )}
             </Header>
-            <Bar data={data} />
+            <div className=" background">
+              <Container>
+                <Bar
+                  data={data}
+                  width={600}
+                  height={400}
+                  options={{ maintainAspectRatio: false }}
+                />
+              </Container>
+            </div>
             {/* <Header
               className="h1"
               size="huge"
@@ -391,7 +397,7 @@ class FunWithEmotionsPage extends React.Component {
             >
               {this.state.mood ? this.state.mood : null}
             </Header> */}
-            <div style={{ dispaly: "block", height: "300px" }} />
+            <div className="footer background" />
           </>
         ) : null}
         <Message positive>

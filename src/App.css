@@ -67,3 +67,18 @@
   font-family: "Comic Sans MS", "Comic Sans" !important;
   color: rgb(10, 157, 174) !important;
 }
+.footer {
+  display: block;
+  height: 300px;
+}
+.videoGrid {
+  margin: 50px;
+}
+.webcam {
+  height: 620px;
+  width: 800px;
+}
+.bargraph {
+  height: 400px;
+  width: 600px;
+}
