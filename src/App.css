@@ -42,3 +42,28 @@
   font-family: "Comic Sans MS", "Comic Sans" !important;
   color: rgb(10, 157, 174) !important;
 }
+.pageHeader {
+  background-color: rgb(248, 245, 242);
+  font-family: "Comic Sans MS", "Comic Sans" !important;
+  color: rgb(10, 157, 174) !important;
+  font-size: 42px !important;
+  margin: 0 !important;
+  padding: 30px !important;
+  font-weight: 100 !important;
+  text-shadow: 2px 2px 2px grey;
+}
+.background {
+  background-color: rgb(248, 245, 242) !important;
+}
+.welcomeCard {
+  box-shadow: 10px 10px 5px grey !important;
+  margin: 40px !important;
+}
+.cardImage {
+  min-height: 100% !important;
+  /* width: 200px !important; */
+}
+.content {
+  font-family: "Comic Sans MS", "Comic Sans" !important;
+  color: rgb(10, 157, 174) !important;
+}
