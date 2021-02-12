@@ -124,3 +124,31 @@
   margin-bottom: 200px;
   padding-top: 20px;
 }
+.audioContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+}
+.recorderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 50px;
+}
+.interim {
+  color: grey;
+  border: #ccc 1px solid;
+  padding: 1em;
+  margin: 1em;
+  width: 300px;
+}
+.final {
+  color: black;
+  border: #ccc 1px solid;
+  padding: 1em;
+  margin: 1em;
+  width: 300px;
+}

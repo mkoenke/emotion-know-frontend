@@ -3,14 +3,20 @@ import Animista, { AnimistaTypes } from "react-animista"
 import Flippy, { BackSide, FrontSide } from "react-flippy"
 import { connect } from "react-redux"
 import { Button, Card, Image, Popup } from "semantic-ui-react"
+import image1 from "../assets/images/writtenGallery1.jpg"
+import image2 from "../assets/images/writtenGallery2.jpg"
+import image3 from "../assets/images/writtenGallery3.jpg"
+import image4 from "../assets/images/writtenGallery4.jpg"
+import image5 from "../assets/images/writtenGallery5.jpg"
+import image6 from "../assets/images/writtenGallery6.jpg"
 import { deleteJournal } from "../Redux/actions"
 
 class JournalCard extends React.Component {
   handleDeleteClick = () => {
-    console.log("Delete Click")
     this.props.deleteJournal(this.props.cardObj)
   }
   render() {
+    const imageArray = [image1, image2, image3, image4, image5, image6]
     return (
       <>
         <Animista type={AnimistaTypes.SCALE_UP_CENTER}>
@@ -22,7 +28,9 @@ class JournalCard extends React.Component {
                     {this.props.cardObj.title}
                   </Card.Header>
                   <Image
-                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.mhaYy171K74k3WtSxfBZaQHaHJ%26pid%3DApi&f=1"
+                    src={
+                      imageArray[Math.floor(Math.random() * imageArray.length)]
+                    }
                     size="medium"
                     circular
                   />

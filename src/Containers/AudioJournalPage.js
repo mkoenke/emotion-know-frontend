@@ -212,9 +212,9 @@ class VoiceRecorderPage extends React.Component {
                 </Form>
               </Grid>
             )}
-            <div style={recorderContainer}>
+            <div className="recorderContainer">
               <AudioReactRecorder state={recordState} onStop={this.onStop} />
-              <div style={container}>
+              <div className="audioContainer">
                 <Button className="audioButton" onClick={this.start}>
                   Get Ready...
                 </Button>
@@ -222,7 +222,7 @@ class VoiceRecorderPage extends React.Component {
                   Get Set...
                 </Button>
               </div>
-              <div style={container}>
+              <div className="audioContainer">
                 <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
                   Just say "Stop Listening!" when you are finished and press...
                 </Header>
@@ -231,16 +231,16 @@ class VoiceRecorderPage extends React.Component {
               </div>
             </div>
             {this.state.blobUrl ? (
-              <div style={container}>
+              <div className="audioContainer">
                 <Header>Replay Before Upload</Header>
                 <audio src={this.state.blobUrl} controls />
                 <Button onClick={this.handleUploadClick}>Upload</Button>
               </div>
             ) : null}
 
-            <div style={container}>
-              <div id="interim" style={interim}></div>
-              <div id="final" style={final}></div>
+            <div className="audioContainer">
+              <div id="interim" className="interim"></div>
+              <div id="final" className="final"></div>
             </div>
           </div>
           <div className="footer"></div>
@@ -263,37 +263,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VoiceRecorderPage)
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
-    margin: "10px",
-  },
-  recorderContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
-    margin: "50px",
-    // border: "#ccc 1px solid",
-  },
-  interim: {
-    color: "gray",
-    border: "#ccc 1px solid",
-    padding: "1em",
-    margin: "1em",
-    width: "300px",
-  },
-  final: {
-    color: "black",
-    border: "#ccc 1px solid",
-    padding: "1em",
-    margin: "1em",
-    width: "300px",
-  },
-}
-
-const { container, interim, final, recorderContainer } = styles
