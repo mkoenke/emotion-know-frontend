@@ -43,31 +43,26 @@ class Homepage extends React.Component {
           >
             Building Emotional Intelligence in Children
           </Header>
-          <Container
-            style={{
-              color: "rgb(10, 157, 174)",
-              // marginLeft: "500px",
-              // marginRight: "500px",
-              padding: "30px",
-              fontSize: "20px",
-              fontFamily: "Comic Sans MS",
-            }}
-          >
-            EmotionKnow is an online journaling application for children with
-            written, audio, and video journaling methods providing feedback on
-            universal emotions to children and parents. Input from the child is
-            evaluated by MorphCast SDK or TwinWord API reporting data in graph
-            form on emotional states expressed. <br />
-            <br />
-            Children and parents have separate portals so children have access
-            to a history of their recordings and the corresponding graphical
-            representation of emotions whereas parents only have access to the
-            graphical representation.
-            <br /> <br />
-            EmotionKnow is intended to help children grow in emotional
-            intelligence and help parents stay attuned to their child’s
-            wellbeing, providing an overall sense of connectedness and advanced
-            communication during pivotal stages of development.
+          <Container className="homepageContainer">
+            <div className="homepageText">
+              EmotionKnow is an online journaling application for children with
+              written, audio, and video journaling methods providing feedback on
+              universal emotions to children and parents. Input from the child
+              is evaluated by MorphCast SDK or TwinWord API reporting data in
+              graph form on emotional states expressed.
+            </div>
+            <div className="homepageText">
+              Children and parents have separate portals so children have access
+              to a history of their recordings and the corresponding graphical
+              representation of emotions whereas parents only have access to the
+              graphical representation.
+            </div>
+            <div className="homepageText">
+              EmotionKnow is intended to help children grow in emotional
+              intelligence and help parents stay attuned to their child’s
+              wellbeing, providing an overall sense of connectedness and
+              advanced communication during pivotal stages of development.
+            </div>
           </Container>
         </div>
         <ParallaxBanner

@@ -19,6 +19,7 @@ class WelcomePageContainer extends React.Component {
             >
               Welcome to EmotionKnow, {this.props.child.username}!
             </Header>
+
             <WelcomePageGrid />
           </>
         ) : null}

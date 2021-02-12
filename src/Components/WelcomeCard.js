@@ -10,7 +10,7 @@ class CardClass extends React.Component {
         <Animista type={AnimistaTypes.ROTATE_SCALE_DOWN}>
           <NavLink to={this.props.cardObj.url}>
             <Card
-              className="welcomeCard cardSize "
+              className="welcomeCard cardSize grow"
               fluid
               id={this.props.cardObj.id}
               centered

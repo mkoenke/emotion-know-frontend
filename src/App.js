@@ -1,3 +1,4 @@
+/* global CY */
 import React from "react"
 import { Route, Switch } from "react-router-dom"
 import "semantic-ui-css/semantic.min.css"
@@ -15,10 +16,20 @@ import WelcomePageContainer from "./Containers/WelcomePageContainer"
 import WrittenJournalGallery from "./Containers/WrittenJournalGallery"
 import WritingPage from "./Containers/WrittenJournalPage"
 
+// CY.loader()
+//   .licenseKey(process.env.sdkLicense)
+//   .addModule(CY.modules().FACE_EMOTION.name)
+//   .addModule(CY.modules().FACE_AROUSAL_VALENCE.name)
+//   .load()
+//   .then(({ start, stop }) => {
+
+//   })
+
 function App() {
   return (
     <>
       <NavBar />
+
       <Switch>
         <Route path="/resources" component={ResourcesPage} />
         <Route path="/welcome" component={WelcomePageContainer} />

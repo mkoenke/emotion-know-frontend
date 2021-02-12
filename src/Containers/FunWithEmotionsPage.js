@@ -5,6 +5,7 @@ import React from "react"
 import { connect } from "react-redux"
 import Webcam from "react-webcam"
 import { Container, Grid, Header, Loader, Message } from "semantic-ui-react"
+// import { startSDK, stopSDK } from "../App"
 
 class FunWithEmotionsPage extends React.Component {
   state = {
@@ -29,6 +30,7 @@ class FunWithEmotionsPage extends React.Component {
         start()
         this.stopSDK = stop
       })
+    // startSDK()
 
     window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
       this.setState({
@@ -57,7 +59,8 @@ class FunWithEmotionsPage extends React.Component {
   }
 
   componentWillUnmount() {
-    this.stopSDK()
+    // this.stopSDK()
+    stopSDK()
   }
 
   findEmotion = (valence, arousal) => {
