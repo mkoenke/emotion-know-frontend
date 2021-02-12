@@ -99,3 +99,28 @@
   height: 400px !important;
   width: 350px !important;
 }
+.journal {
+  background-color: white;
+  box-shadow: 10px 10px 5px grey !important;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+}
+.journalForm {
+  padding: 20px;
+}
+
+.audioJournal {
+  margin-left: 300px;
+  margin-right: 300px;
+  padding-top: 50px;
+}
+.audioButton {
+  margin: 10px !important;
+}
+.videoJournal {
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 200px;
+  padding-top: 20px;
+}

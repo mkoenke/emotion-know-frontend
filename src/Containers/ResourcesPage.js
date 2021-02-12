@@ -20,7 +20,12 @@ class ResourcesPage extends React.Component {
         <div className="root">
           <span className={`copy h1`}>
             <Parallax x={[-80, 80]} className="letter">
-              EmotionKnow Resources
+              EmotionKnow
+            </Parallax>
+          </span>
+          <span className={`copy h1`} style={{ marginTop: "40px" }}>
+            <Parallax x={[-80, 80]} className="letter">
+              Resources
             </Parallax>
           </span>
           <Header style={{ color: "rgb(171, 218, 225)" }} className="resources">

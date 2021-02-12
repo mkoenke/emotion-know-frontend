@@ -2,6 +2,12 @@ import React from "react"
 import { connect } from "react-redux"
 import { Grid, Header } from "semantic-ui-react"
 import VideoCard from "../Components/VideoCard"
+// import image1 from "../assets/images/videoGallery1"
+// import image2 from "../assets/images/videoGallery2"
+// import image3 from "../assets/images/videoGallery3"
+// import image4 from "../assets/images/videoGallery4"
+// import image5 from "../assets/images/videoGallery5"
+// import image6 from "../assets/images/videoGallery6"
 
 class VideoGalleryPage extends React.Component {
   arrayOfJournals = () => {

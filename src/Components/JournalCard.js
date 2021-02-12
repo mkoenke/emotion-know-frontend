@@ -2,7 +2,6 @@ import React from "react"
 import Animista, { AnimistaTypes } from "react-animista"
 import Flippy, { BackSide, FrontSide } from "react-flippy"
 import { connect } from "react-redux"
-// import { NavLink } from "react-router-dom"
 import { Button, Card, Image, Popup } from "semantic-ui-react"
 import { deleteJournal } from "../Redux/actions"
 
@@ -28,12 +27,6 @@ class JournalCard extends React.Component {
                     circular
                   />
                 </Card.Content>
-                {/* <Popup
-                  content="Warning!  This will delete this journal entry!"
-                  trigger={
-                    <Button icon="close" onClick={this.handleDeleteClick} />
-                  }
-                /> */}
               </Card>
             </FrontSide>
             <BackSide>

@@ -192,50 +192,56 @@ class VoiceRecorderPage extends React.Component {
             </Header>
           ) : null}
 
-          {this.state.submittedTitle ? (
-            <Header textAlign="center">{this.state.submittedTitle}</Header>
-          ) : (
-            <Grid centered>
-              <Form onSubmit={this.handleTitleSubmit}>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    style={{ width: "300px" }}
-                    fluid
-                    placeholder="Title"
-                    onChange={this.changeHandler}
-                    name="title"
-                    value={this.state.title}
-                  />
-                </Form.Group>
-                <Form.Button>Set Audio Journal Title</Form.Button>
-              </Form>
-            </Grid>
-          )}
-          <div style={recorderContainer}>
-            <AudioReactRecorder state={recordState} onStop={this.onStop} />
-            <div style={container}>
-              <Button onClick={this.startListen}>Get Ready...</Button>
-              <Button onClick={this.start}>Get Set...</Button>
+          <div className="journal audioJournal">
+            {this.state.submittedTitle ? (
+              <Header textAlign="center">{this.state.submittedTitle}</Header>
+            ) : (
+              <Grid centered>
+                <Form onSubmit={this.handleTitleSubmit}>
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      style={{ width: "300px" }}
+                      fluid
+                      placeholder="Title"
+                      onChange={this.changeHandler}
+                      name="title"
+                      value={this.state.title}
+                    />
+                  </Form.Group>
+                  <Form.Button>Set Title</Form.Button>
+                </Form>
+              </Grid>
+            )}
+            <div style={recorderContainer}>
+              <AudioReactRecorder state={recordState} onStop={this.onStop} />
+              <div style={container}>
+                <Button className="audioButton" onClick={this.start}>
+                  Get Ready...
+                </Button>
+                <Button className="audioButton" onClick={this.startListen}>
+                  Get Set...
+                </Button>
+              </div>
+              <div style={container}>
+                <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
+                  Just say "Stop Listening!" when you are finished and press...
+                </Header>
+                <Button onClick={this.stop}>Stop Recording</Button>
+                {/* <Button onClick={this.stopListen}>Stop Listening</Button> */}
+              </div>
             </div>
-            <div style={container}>
-              <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
-                Just say "Stop Listening!" when you are finished and press...
-              </Header>
-              <Button onClick={this.stop}>Stop Recording</Button>
-              {/* <Button onClick={this.stopListen}>Stop Listening</Button> */}
-            </div>
-          </div>
-          {this.state.blobUrl ? (
-            <div style={container}>
-              <Header>Replay Before Upload</Header>
-              <audio src={this.state.blobUrl} controls />
-              <Button onClick={this.handleUploadClick}>Upload</Button>
-            </div>
-          ) : null}
+            {this.state.blobUrl ? (
+              <div style={container}>
+                <Header>Replay Before Upload</Header>
+                <audio src={this.state.blobUrl} controls />
+                <Button onClick={this.handleUploadClick}>Upload</Button>
+              </div>
+            ) : null}
 
-          <div style={container}>
-            <div id="interim" style={interim}></div>
-            <div id="final" style={final}></div>
+            <div style={container}>
+              <div id="interim" style={interim}></div>
+              <div id="final" style={final}></div>
+            </div>
           </div>
           <div className="footer"></div>
         </div>
@@ -272,7 +278,7 @@ const styles = {
     alignItems: "center",
     textAlign: "center",
     margin: "50px",
-    border: "#ccc 1px solid",
+    // border: "#ccc 1px solid",
   },
   interim: {
     color: "gray",

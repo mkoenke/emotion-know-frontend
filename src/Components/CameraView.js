@@ -190,48 +190,50 @@ class RecordView extends React.Component {
     console.log("State: ", this.state)
     return (
       <>
-        <div style={{ margin: "50px" }}>
-          {this.state.submittedTitle ? (
-            <Header as="h1" className="content" textAlign="center">
-              {this.state.submittedTitle}
-            </Header>
-          ) : (
+        <div className="journal videoJournal">
+          <div style={{ margin: "50px" }}>
+            {this.state.submittedTitle ? (
+              <Header as="h1" className="content" textAlign="center">
+                {this.state.submittedTitle}
+              </Header>
+            ) : (
+              <Grid centered>
+                <Form onSubmit={this.handleTitleSubmit}>
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      style={{ width: "300px" }}
+                      fluid
+                      placeholder="Create Title"
+                      onChange={this.changeHandler}
+                      name="title"
+                      value={this.state.title}
+                    />
+                  </Form.Group>
+                  <Form.Button>Set Title</Form.Button>
+                </Form>
+              </Grid>
+            )}
+          </div>
+          <div>
             <Grid centered>
-              <Form onSubmit={this.handleTitleSubmit}>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    style={{ width: "300px" }}
-                    fluid
-                    placeholder="Create Title"
-                    onChange={this.changeHandler}
-                    name="title"
-                    value={this.state.title}
-                  />
-                </Form.Group>
-                <Form.Button>Set Title</Form.Button>
-              </Form>
+              <div style={{ height: "620px", width: "800px" }}>
+                <Video
+                  onRecordingComplete={this.onRecordingComplete}
+                  onStartRecording={this.onStartRecording}
+                  onTurnOnCamera={this.startSDK}
+                />
+              </div>
             </Grid>
-          )}
-        </div>
-        <div>
-          <Grid centered>
-            <div style={{ height: "620px", width: "800px" }}>
-              <Video
-                onRecordingComplete={this.onRecordingComplete}
-                onStartRecording={this.onStartRecording}
-                onTurnOnCamera={this.startSDK}
-              />
+            <div
+              style={{
+                margin: "50px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Button onClick={this.handleUploadClick}>Upload Video</Button>
             </div>
-          </Grid>
-          <div
-            style={{
-              margin: "50px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Button onClick={this.handleUploadClick}>Upload Video</Button>
           </div>
         </div>
         <Message positive>

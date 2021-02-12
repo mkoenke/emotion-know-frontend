@@ -17,7 +17,6 @@ class WrittenJournalGallery extends React.Component {
     })
   }
   render() {
-    // console.log(this.props.child.journal_entries)
     return (
       <>
         <div className="background">

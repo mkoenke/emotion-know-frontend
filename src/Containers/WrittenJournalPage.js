@@ -62,29 +62,39 @@ class WritingPage extends React.Component {
           ) : null}
           <br />
           <Grid centered>
-            <Form className="content" onSubmit={this.handleFormSubmit}>
-              <Form.Group widths="equal">
-                <Form.Input
-                  fluid
-                  label="Title"
-                  placeholder="Title"
-                  onChange={this.changeHandler}
-                  name="title"
-                  value={this.state.title}
-                />
-              </Form.Group>
+            <div className="journal">
+              <Form
+                className="content journalForm"
+                onSubmit={this.handleFormSubmit}
+              >
+                <Form.Group widths="equal">
+                  <Form.Field>
+                    <label className="formLabel journalForm">Title</label>
+                    <input
+                      placeholder="Title"
+                      onChange={this.changeHandler}
+                      name="title"
+                      value={this.state.title}
+                    ></input>
+                  </Form.Field>
+                </Form.Group>
+                <Form.Field>
+                  <label className="formLabel journalForm">
+                    Today I feel...
+                  </label>
+                  <textarea
+                    placeholder="Get it all out..."
+                    // type="text"
+                    style={{ height: "800px", width: "500px" }}
+                    onChange={this.changeHandler}
+                    name="content"
+                    value={this.state.content}
+                  ></textarea>
+                </Form.Field>
 
-              <Form.TextArea
-                label="Today I feel..."
-                placeholder="Get it all out..."
-                style={{ height: "600px", width: "500px" }}
-                onChange={this.changeHandler}
-                name="content"
-                value={this.state.content}
-              />
-
-              <Form.Button>Submit</Form.Button>
-            </Form>
+                <Form.Button>Submit</Form.Button>
+              </Form>
+            </div>
           </Grid>
           <div className="footer"></div>
         </div>

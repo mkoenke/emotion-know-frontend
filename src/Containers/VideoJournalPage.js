@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Header } from "semantic-ui-react"
-import RecordView from "../Components/CameraView"
+import CameraView from "../Components/CameraView"
 
 class CameraPage extends React.Component {
   render() {
@@ -20,7 +20,7 @@ class CameraPage extends React.Component {
             </Header>
           ) : null}
 
-          <RecordView history={this.props.history} />
+          <CameraView history={this.props.history} />
         </div>
       </>
     )
