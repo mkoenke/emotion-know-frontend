@@ -1,7 +1,15 @@
 import JwPagination from "jw-react-pagination"
 import React from "react"
 import { connect } from "react-redux"
-import { Container, Grid, Header, Menu, Popup, Table } from "semantic-ui-react"
+import {
+  Card,
+  Container,
+  Grid,
+  Header,
+  Menu,
+  Popup,
+  Table,
+} from "semantic-ui-react"
 import { BigPlayButton, ControlBar, LoadingSpinner, Player } from "video-react"
 import Chart from "../Components/Chart"
 import Graph from "../Components/Graph"
@@ -88,25 +96,38 @@ class ReportGalleryPage extends React.Component {
       <Grid centered columns="two">
         <Grid.Row>
           <Grid.Column>
-            <div className="bargraph">
+            <div
+              className="bargraph smallGraph"
+              style={{ paddingTop: "117px" }}
+            >
               <Graph report={this.state.clickedReport} date={dateWithoutTime} />
             </div>
           </Grid.Column>
           <Grid.Column>
-            <div className="bargraph">
-              <div>{this.state.clickedJournal.title}</div>
+            <div className="bargraph smallGraph">
+              <Header textAlign="center" className="reportHeader">
+                {this.state.clickedJournal.title}
+              </Header>
 
               {this.state.clickedJournal.clip ? (
-                <audio src={this.state.clickedJournal.url} controls></audio>
+                <div className="smallAudio">
+                  <audio src={this.state.clickedJournal.url} controls></audio>
+                </div>
               ) : this.state.clickedJournal.video ? (
-                <Player style={{ height: "80%", width: "80%" }}>
+                <Player>
                   <source src={this.state.clickedJournal.url} />
                   <ControlBar autoHide={false} />
                   <LoadingSpinner />
                   <BigPlayButton position="center" />
                 </Player>
               ) : (
-                <div>{this.state.clickedJournal.content}</div>
+                <Card centered>
+                  <Card.Content>
+                    <Card.Description textAlign="center">
+                      {this.state.clickedJournal.content}
+                    </Card.Description>
+                  </Card.Content>
+                </Card>
               )}
             </div>
           </Grid.Column>

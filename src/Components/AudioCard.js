@@ -52,7 +52,7 @@ class AudioCard extends React.Component {
                     <Button
                       icon="close"
                       onClick={this.handleDeleteClick}
-                      className="cardbutton"
+                      className="cardbutton delete"
                     />
                   }
                 />
