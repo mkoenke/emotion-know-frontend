@@ -34,6 +34,7 @@ class AudioCard extends React.Component {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  marginTop: "120px",
                 }}
               >
                 <audio controls src={this.props.cardObj.url} />

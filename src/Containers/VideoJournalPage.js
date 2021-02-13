@@ -8,7 +8,7 @@ class CameraPage extends React.Component {
     console.log("Props: ", this.props)
     return (
       <>
-        <div className="background">
+        <div className="pattern">
           {this.props.child ? (
             <Header
               className="pageHeader"
@@ -19,8 +19,9 @@ class CameraPage extends React.Component {
               How are you feeling today, {this.props.child.username}?
             </Header>
           ) : null}
-
-          <CameraView history={this.props.history} />
+          <div>
+            <CameraView history={this.props.history} />
+          </div>
         </div>
       </>
     )

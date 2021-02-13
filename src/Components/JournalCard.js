@@ -29,7 +29,7 @@ class JournalCard extends React.Component {
               </Card>
             </FrontSide>
             <BackSide>
-              <Card centered>
+              <Card centered className="cardContent">
                 <Card.Content>
                   <Card.Description textAlign="center">
                     {this.props.cardObj.content}
@@ -41,7 +41,6 @@ class JournalCard extends React.Component {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  // position: "relative",
                 }}
               >
                 <Popup

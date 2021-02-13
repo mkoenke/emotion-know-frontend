@@ -49,7 +49,7 @@ class WritingPage extends React.Component {
   render() {
     return (
       <>
-        <div className="background">
+        <div className="pattern">
           {this.props.child ? (
             <Header
               className="pageHeader"

@@ -181,72 +181,69 @@ class VoiceRecorderPage extends React.Component {
     return (
       <>
         <div className="pattern">
-          <div className="">
-            {this.props.child ? (
-              <Header
-                className="pageHeader"
-                size="huge"
-                textAlign="center"
-                style={{ color: "rgb(171, 218, 225)", margin: "50px" }}
-              >
-                How are you feeling today, {this.props.child.username}?
-              </Header>
-            ) : null}
+          {this.props.child ? (
+            <Header
+              className="pageHeader"
+              size="huge"
+              textAlign="center"
+              style={{ color: "rgb(171, 218, 225)", margin: "50px" }}
+            >
+              How are you feeling today, {this.props.child.username}?
+            </Header>
+          ) : null}
 
-            <div className="journal audioJournal">
-              {this.state.submittedTitle ? (
-                <Header textAlign="center">{this.state.submittedTitle}</Header>
-              ) : (
-                <Grid centered>
-                  <Form onSubmit={this.handleTitleSubmit}>
-                    <Form.Group widths="equal">
-                      <Form.Input
-                        style={{ width: "300px" }}
-                        fluid
-                        placeholder="Title"
-                        onChange={this.changeHandler}
-                        name="title"
-                        value={this.state.title}
-                      />
-                    </Form.Group>
-                    <Form.Button>Set Title</Form.Button>
-                  </Form>
-                </Grid>
-              )}
-              <div className="recorderContainer">
-                <AudioReactRecorder state={recordState} onStop={this.onStop} />
-                <div className="audioContainer">
-                  <Button className="audioButton" onClick={this.start}>
-                    Get Ready...
-                  </Button>
-                  <Button className="audioButton" onClick={this.startListen}>
-                    Get Set...
-                  </Button>
-                </div>
-                <div className="audioContainer">
-                  <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
-                    Just say "Stop Listening!" when you are finished and
-                    press...
-                  </Header>
-                  <Button onClick={this.stop}>Stop Recording</Button>
-                  {/* <Button onClick={this.stopListen}>Stop Listening</Button> */}
-                </div>
-              </div>
-              {this.state.blobUrl ? (
-                <div className="audioContainer">
-                  <Header>Replay Before Upload</Header>
-                  <audio src={this.state.blobUrl} controls />
-                  <Button onClick={this.handleUploadClick}>Upload</Button>
-                </div>
-              ) : null}
-
+          <div className="journal audioJournal">
+            {this.state.submittedTitle ? (
+              <Header textAlign="center">{this.state.submittedTitle}</Header>
+            ) : (
+              <Grid centered>
+                <Form onSubmit={this.handleTitleSubmit}>
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      style={{ width: "300px" }}
+                      fluid
+                      placeholder="Title"
+                      onChange={this.changeHandler}
+                      name="title"
+                      value={this.state.title}
+                    />
+                  </Form.Group>
+                  <Form.Button>Set Title</Form.Button>
+                </Form>
+              </Grid>
+            )}
+            <div className="recorderContainer">
+              <AudioReactRecorder state={recordState} onStop={this.onStop} />
               <div className="audioContainer">
-                <div id="interim" className="interim"></div>
-                <div id="final" className="final"></div>
+                <Button className="audioButton" onClick={this.start}>
+                  Get Ready...
+                </Button>
+                <Button className="audioButton" onClick={this.startListen}>
+                  Get Set...
+                </Button>
+              </div>
+              <div className="audioContainer">
+                <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
+                  Just say "Stop Listening!" when you are finished and press...
+                </Header>
+                <Button onClick={this.stop}>Stop Recording</Button>
+                {/* <Button onClick={this.stopListen}>Stop Listening</Button> */}
               </div>
             </div>
-            <div className="footer"></div>
+            {this.state.blobUrl ? (
+              <div className="audioContainer">
+                <Header>Replay Before Upload</Header>
+                <audio src={this.state.blobUrl} controls />
+                <Button onClick={this.handleUploadClick}>Upload</Button>
+              </div>
+            ) : null}
+
+            <div className="audioContainer">
+              <div id="interim" className="interim"></div>
+              <div id="final" className="final"></div>
+            </div>
           </div>
+          <div className="footer"></div>
         </div>
       </>
     )
