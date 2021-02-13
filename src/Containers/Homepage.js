@@ -43,6 +43,7 @@ class Homepage extends React.Component {
           >
             Building Emotional Intelligence in Children
           </Header>
+
           <Container className="homepageContainer">
             <div className="homepageText">
               EmotionKnow is an online journaling application for children with

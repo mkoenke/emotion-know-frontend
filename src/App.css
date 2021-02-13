@@ -190,7 +190,7 @@
   justify-content: center;
   bottom: 10px;
   position: absolute;
-  margin-left: 200px;
+  /* margin-left: 200px; */
 }
 .cardbutton {
   background-color: rgb(10, 157, 174) !important;
@@ -206,6 +206,7 @@
 }
 .pattern {
   background-image: url(https://stockshop.angiemakes.com/wp-content/uploads/2016/09/Teal-Marbled-Paper-Background.-Abstract-Marbled-Background-2324.jpg);
+  /* background-image: url(https://cdn.pixabay.com/photo/2015/06/04/09/17/background-paper-797285_960_720.jpg); */
 }
 
 .shift {
