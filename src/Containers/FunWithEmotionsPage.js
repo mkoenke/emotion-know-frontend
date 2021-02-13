@@ -59,8 +59,8 @@ class FunWithEmotionsPage extends React.Component {
   }
 
   componentWillUnmount() {
-    // this.stopSDK()
-    stopSDK()
+    this.stopSDK()
+    // stopSDK()
   }
 
   findEmotion = (valence, arousal) => {

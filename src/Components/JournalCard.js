@@ -41,6 +41,7 @@ class JournalCard extends React.Component {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  // position: "relative",
                 }}
               >
                 <Popup
@@ -49,7 +50,7 @@ class JournalCard extends React.Component {
                     <Button
                       icon="close"
                       onClick={this.handleDeleteClick}
-                      className="cardbutton"
+                      className="cardbutton delete"
                     />
                   }
                 />

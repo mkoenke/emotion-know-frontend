@@ -1,7 +1,7 @@
 import JwPagination from "jw-react-pagination"
 import React from "react"
 import { connect } from "react-redux"
-import { Container, Header, Menu, Popup, Table } from "semantic-ui-react"
+import { Container, Grid, Header, Menu, Popup, Table } from "semantic-ui-react"
 import Chart from "../Components/Chart"
 import Graph from "../Components/Graph"
 
@@ -56,9 +56,20 @@ class ReportGalleryPage extends React.Component {
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
 
     return (
-      <div className="bargraph">
-        <Graph report={this.state.clickedReport} date={dateWithoutTime} />
-      </div>
+      <Grid centered columns="two">
+        <Grid.Row>
+          <Grid.Column>
+            <div className="bargraph">
+              <Graph report={this.state.clickedReport} date={dateWithoutTime} />
+            </div>
+          </Grid.Column>
+          <Grid.Column>
+            <div className="bargraph">
+              <Graph report={this.state.clickedReport} date={dateWithoutTime} />
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     )
   }
 
@@ -99,6 +110,7 @@ class ReportGalleryPage extends React.Component {
 
   render() {
     console.log("Props: ", this.props)
+    console.log("State: ", this.state)
     const customLabels = {
       first: "<<",
       last: ">>",

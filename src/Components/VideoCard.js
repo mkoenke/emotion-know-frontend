@@ -3,7 +3,7 @@ import Animista, { AnimistaTypes } from "react-animista"
 import Flippy, { BackSide, FrontSide } from "react-flippy"
 import { connect } from "react-redux"
 import { Button, Card, Image, Popup } from "semantic-ui-react"
-import { BigPlayButton, Player } from "video-react"
+import { BigPlayButton, ControlBar, LoadingSpinner, Player } from "video-react"
 import { deleteVideo } from "../Redux/actions"
 
 class VideoCard extends React.Component {
@@ -43,18 +43,27 @@ class VideoCard extends React.Component {
                 >
                   <Player style={{ height: "80%", width: "80%" }}>
                     <source src={this.props.cardObj.url} />
+                    <ControlBar autoHide={false} />
+                    <LoadingSpinner />
                     <BigPlayButton position="center" />
                   </Player>
                 </div>
 
-                <div className="delete">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // position: "relative",
+                  }}
+                >
                   <Popup
                     content="Warning!  This will delete this journal entry!"
                     trigger={
                       <Button
                         icon="close"
                         onClick={this.handleDeleteClick}
-                        className="cardbutton"
+                        className="cardbutton delete"
                       />
                     }
                   />
