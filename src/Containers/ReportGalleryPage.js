@@ -2,6 +2,7 @@ import JwPagination from "jw-react-pagination"
 import React from "react"
 import { connect } from "react-redux"
 import { Container, Grid, Header, Menu, Popup, Table } from "semantic-ui-react"
+import { BigPlayButton, ControlBar, LoadingSpinner, Player } from "video-react"
 import Chart from "../Components/Chart"
 import Graph from "../Components/Graph"
 
@@ -11,6 +12,7 @@ class ReportGalleryPage extends React.Component {
     clickedReport: {},
     items: [],
     pageOfItems: [],
+    clickedJournal: {},
   }
 
   componentDidMount() {
@@ -25,10 +27,13 @@ class ReportGalleryPage extends React.Component {
     let clickedReport = this.props.allReports.find(
       (report) => report.created_at === event.target.closest("tr").id
     )
-    this.setState({
-      beenClicked: !this.state.beenClicked,
-      clickedReport: clickedReport,
-    })
+    this.setState(
+      {
+        beenClicked: !this.state.beenClicked,
+        clickedReport: clickedReport,
+      },
+      this.findJournal
+    )
   }
 
   handleParentReportClick = (event) => {
@@ -37,14 +42,38 @@ class ReportGalleryPage extends React.Component {
       (report) => report.created_at === event.target.closest("tr").id
     )
     console.log("clicked report:", clickedReport)
-    this.setState({
-      beenClicked: !this.state.beenClicked,
-      clickedReport: clickedReport,
-    })
+    this.setState(
+      {
+        beenClicked: !this.state.beenClicked,
+        clickedReport: clickedReport,
+      },
+      this.findJournal
+    )
+  }
+
+  findJournal = () => {
+    if (this.state.clickedReport.journal_entry_id) {
+      let journal = this.props.allJournals.find(
+        (journal) => journal.id === this.state.clickedReport.journal_entry_id
+      )
+      console.log("Found journal: ", journal)
+      this.setState({ clickedJournal: journal })
+    } else if (this.state.clickedReport.audio_entry_id) {
+      let journal = this.props.allAudios.find(
+        (journal) => journal.id === this.state.clickedReport.audio_entry_id
+      )
+      console.log("Found journal: ", journal)
+      this.setState({ clickedJournal: journal })
+    } else if (this.state.clickedReport.video_entry_id) {
+      let journal = this.props.allVideos.find(
+        (journal) => journal.id === this.state.clickedReport.video_entry_id
+      )
+      console.log("Found journal: ", journal)
+      this.setState({ clickedJournal: journal })
+    }
   }
 
   onChangePage = (pageOfItems) => {
-    // update local state with new page of items
     this.setState({ pageOfItems })
   }
 
@@ -65,7 +94,20 @@ class ReportGalleryPage extends React.Component {
           </Grid.Column>
           <Grid.Column>
             <div className="bargraph">
-              <Graph report={this.state.clickedReport} date={dateWithoutTime} />
+              <div>{this.state.clickedJournal.title}</div>
+
+              {this.state.clickedJournal.clip ? (
+                <audio src={this.state.clickedJournal.url} controls></audio>
+              ) : this.state.clickedJournal.video ? (
+                <Player style={{ height: "80%", width: "80%" }}>
+                  <source src={this.state.clickedJournal.url} />
+                  <ControlBar autoHide={false} />
+                  <LoadingSpinner />
+                  <BigPlayButton position="center" />
+                </Player>
+              ) : (
+                <div>{this.state.clickedJournal.content}</div>
+              )}
             </div>
           </Grid.Column>
         </Grid.Row>
@@ -300,6 +342,9 @@ function mapStateToProps(state) {
     parent: state.parent,
     allReports: state.allReports,
     parentsReports: state.parentsReports,
+    allJournals: state.allJournals,
+    allAudios: state.allAudios,
+    allVideos: state.allVideos,
   }
 }
 
