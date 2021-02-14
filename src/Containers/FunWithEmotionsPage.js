@@ -381,22 +381,31 @@ class FunWithEmotionsPage extends React.Component {
                 style={{ color: "rgb(171, 218, 225)" }}
               >
                 {this.state.emo ? (
-                  `Dominant Emotion: ${this.state.emo} `
+                  <>
+                    Dominant Emotion: {this.state.emo}
+                    <Container>
+                      <div
+                        style={{
+                          backgroundImage:
+                            "linear-gradient(rgb(248, 245, 242), rgb(10, 157, 174))",
+                          marginTop: "30px",
+                        }}
+                      >
+                        <Bar
+                          data={data}
+                          width={600}
+                          height={400}
+                          options={{ maintainAspectRatio: false }}
+                        />
+                      </div>
+                    </Container>
+                  </>
                 ) : (
                   <>
                     <p>Please wait a moment...</p> <Loader active inline />
                   </>
                 )}
               </Header>
-
-              <Container>
-                <Bar
-                  data={data}
-                  width={600}
-                  height={400}
-                  options={{ maintainAspectRatio: false }}
-                />
-              </Container>
 
               {/* <Header
               className="h1"
