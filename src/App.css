@@ -229,3 +229,8 @@
 .cardContent {
   margin-top: 30px !important;
 }
+.lineGraph {
+  background-color: white;
+  box-shadow: 10px 10px 5px grey !important;
+  padding: 50px;
+}

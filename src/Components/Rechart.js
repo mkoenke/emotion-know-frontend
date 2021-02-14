@@ -8,193 +8,161 @@ class LineGraph extends React.Component {
   }
 
   state = {
-    //   data: {
-    //     labels: [],
-    //     datasets: [],
-    //   },
-    data: [
-      {
-        type: "line",
-        color: "green",
-        title: "Fear",
-        points: [],
-      },
-      {
-        type: "line",
-        title: "Anger",
-        color: "red",
-        points: [
-          { key: "January", value: 10 },
-          { key: "February", value: 15 },
-          { key: "March", value: 25 },
-          { key: "April", value: 30 },
-          { key: "May", value: 40 },
-          { key: "June", value: 35 },
-          { key: "July", value: 40 },
-          { key: "August", value: 60 },
-          { key: "September", value: 60 },
-          { key: "October", value: 75 },
-          { key: "November", value: 80 },
-          { key: "December", value: 100 },
-        ],
-      },
-      {
-        type: "line",
-        color: "yellow",
-        title: "Joy",
-        points: [],
-      },
-      {
-        type: "line",
-        color: "blue",
-        title: "Sadness",
-        points: [],
-      },
-      {
-        type: "line",
-        color: "purple",
-        title: "Surprise",
-        points: [],
-      },
-      {
-        type: "line",
-        color: "orange",
-        title: "Disgust",
-        points: [],
-      },
-    ],
+    data: [],
     keys: [],
   }
 
   chartData = () => {
     if (this.props.allReports.length) {
+      let angerKeysAndValues = this.props.allReports.map((report) => {
+        let date = new Date(report.created_at)
+
+        return { key: `${date}`, value: report.anger }
+      })
+      console.log("Anger Keys and Values : ", angerKeysAndValues)
+      let disgustKeysAndValues = this.props.allReports.map((report) => {
+        let date = new Date(report.created_at)
+
+        return { key: `${date}`, value: report.disgust }
+      })
+      let fearKeysAndValues = this.props.allReports.map((report) => {
+        let date = new Date(report.created_at)
+
+        return { key: `${date}`, value: report.fear }
+      })
+      let joyKeysAndValues = this.props.allReports.map((report) => {
+        let date = new Date(report.created_at)
+
+        return { key: `${date}`, value: report.joy }
+      })
+      let sadnessKeysAndValues = this.props.allReports.map((report) => {
+        let date = new Date(report.created_at)
+
+        return { key: `${date}`, value: report.sadness }
+      })
+      let surpriseKeysAndValues = this.props.allReports.map((report) => {
+        let date = new Date(report.created_at)
+
+        return { key: `${date}`, value: report.surprise }
+      })
       let xAxisCategories = this.props.allReports.map((report) => {
         let date = new Date(report.created_at)
-        let dateWithoutTime =
-          date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-        return `${dateWithoutTime}`
+
+        return `${date}`
       })
-      let angerData = this.props.allReports.map((report) => report.anger)
-      let disgustData = this.props.allReports.map((report) => report.disgust)
-      let fearData = this.props.allReports.map((report) => report.fear)
-      let joyData = this.props.allReports.map((report) => report.joy)
-      let sadnessData = this.props.allReports.map((report) => report.sadness)
-      let surpriseData = this.props.allReports.map((report) => report.surprise)
 
       this.setState({
-        data: {
-          
-         [
-            {
-              label: "Anger",
-              data: angerData,
-              fill: false,
-              backgroundColor: "rgb(255, 0, 0)",
-              borderColor: "rgba(255, 0, 0, 0.2)",
-            },
-            {
-              label: "Disgust",
-              data: disgustData,
-              fill: false,
-              backgroundColor: "rgb(255, 128, 0)",
-              borderColor: "rgba(255, 128, 0, 0.2)",
-            },
-            {
-              label: "Fear",
-              data: fearData,
-              fill: false,
-              backgroundColor: "rgb(0, 255, 0)",
-              borderColor: "rgba(0, 255, 0, 0.2)",
-            },
-            {
-              label: "Joy",
-              data: joyData,
-              fill: false,
-              backgroundColor: "rgb(255, 255, 0)",
-              borderColor: "rgba(255, 255, 0, 0.2)",
-            },
-            {
-              label: "Sadness",
-              data: sadnessData,
-              fill: false,
-              backgroundColor: "rgb(0, 0, 255)",
-              borderColor: "rgba(0, 0, 255, 0.2)",
-            },
-            {
-              label: "Surprise",
-              data: surpriseData,
-              fill: false,
-              backgroundColor: "rgb(127, 0, 255)",
-              borderColor: "rgba(127, 0, 255, 0.2)",
-            },
-          ],
-        },
+        data: [
+          {
+            type: "line",
+            title: "Anger",
+            color: "red",
+            points: angerKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "orange",
+            title: "Disgust",
+            points: disgustKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "green",
+            title: "Fear",
+            points: fearKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "yellow",
+            title: "Joy",
+            points: joyKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "blue",
+            title: "Sadness",
+            points: sadnessKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "purple",
+            title: "Surprise",
+            points: surpriseKeysAndValues,
+          },
+        ],
+        keys: xAxisCategories,
       })
-    } else {
-      let xAxisCategories = this.props.parentsReports.map(
-        (report) => `${new Date(report.created_at)}`
-      )
-      let angerData = this.props.parentsReports.map((report) => report.anger)
-      let disgustData = this.props.parentsReports.map(
-        (report) => report.disgust
-      )
-      let fearData = this.props.parentsReports.map((report) => report.fear)
-      let joyData = this.props.parentsReports.map((report) => report.joy)
-      let sadnessData = this.props.parentsReports.map(
-        (report) => report.sadness
-      )
-      let surpriseData = this.props.parentsReports.map(
-        (report) => report.surprise
-      )
+    } else if (this.props.parentsReports.length) {
+      let angerKeysAndValues = this.props.parentsReports.map((report) => {
+        let date = new Date(report.created_at)
+
+        return { key: `${date}`, value: report.anger }
+      })
+      let disgustKeysAndValues = this.props.parentsReports.map((report) => {
+        let date = new Date(report.created_at)
+        return { key: `${date}`, value: report.disgust }
+      })
+      let fearKeysAndValues = this.props.parentsReports.map((report) => {
+        let date = new Date(report.created_at)
+        return { key: `${date}`, value: report.fear }
+      })
+      let joyKeysAndValues = this.props.parentsReports.map((report) => {
+        let date = new Date(report.created_at)
+        return { key: `${date}`, value: report.joy }
+      })
+      let sadnessKeysAndValues = this.props.parentsReports.map((report) => {
+        let date = new Date(report.created_at)
+        return { key: `${date}`, value: report.sadness }
+      })
+      let surpriseKeysAndValues = this.props.parentsReports.map((report) => {
+        let date = new Date(report.created_at)
+        return { key: `${date}`, value: report.surprise }
+      })
+      let xAxisCategories = this.props.parentsReports.map((report) => {
+        let date = new Date(report.created_at)
+        return `${date}`
+      })
 
       this.setState({
-        data: {
-          labels: xAxisCategories,
-          datasets: [
-            {
-              label: "Anger",
-              data: angerData,
-              fill: false,
-              backgroundColor: "rgb(255, 0, 0)",
-              borderColor: "rgba(255, 0, 0, 0.2)",
-            },
-            {
-              label: "Disgust",
-              data: disgustData,
-              fill: false,
-              backgroundColor: "rgb(255, 128, 0)",
-              borderColor: "rgba(255, 128, 0, 0.2)",
-            },
-            {
-              label: "Fear",
-              data: fearData,
-              fill: false,
-              backgroundColor: "rgb(0, 255, 0)",
-              borderColor: "rgba(0, 255, 0, 0.2)",
-            },
-            {
-              label: "Joy",
-              data: joyData,
-              fill: false,
-              backgroundColor: "rgb(255, 255, 0)",
-              borderColor: "rgba(255, 255, 0, 0.2)",
-            },
-            {
-              label: "Sadness",
-              data: sadnessData,
-              fill: false,
-              backgroundColor: "rgb(0, 0, 255)",
-              borderColor: "rgba(0, 0, 255, 0.2)",
-            },
-            {
-              label: "Surprise",
-              data: surpriseData,
-              fill: false,
-              backgroundColor: "rgb(127, 0, 255)",
-              borderColor: "rgba(127, 0, 255, 0.2)",
-            },
-          ],
-        },
+        data: [
+          {
+            type: "line",
+            title: "Anger",
+            color: "red",
+            points: angerKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "orange",
+            title: "Disgust",
+            points: disgustKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "green",
+            title: "Fear",
+            points: fearKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "yellow",
+            title: "Joy",
+            points: joyKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "blue",
+            title: "Sadness",
+            points: sadnessKeysAndValues,
+          },
+          {
+            type: "line",
+            color: "purple",
+            title: "Surprise",
+            points: surpriseKeysAndValues,
+          },
+        ],
+        keys: xAxisCategories,
       })
     }
   }
@@ -208,6 +176,10 @@ class LineGraph extends React.Component {
         keys={this.state.keys}
         key_zoom={true}
         value_zoom={true}
+        value_gridColor={"#ddd"}
+        labelRotate={45}
+        key_editLabel={(key) => key.split(" ").slice(0, 3).join(" ")}
+        axisThickness={{ horizontal: 90, vertical: 50 }}
       />
     )
   }

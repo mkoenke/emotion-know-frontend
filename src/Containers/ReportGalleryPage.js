@@ -11,8 +11,8 @@ import {
   Table,
 } from "semantic-ui-react"
 import { BigPlayButton, ControlBar, LoadingSpinner, Player } from "video-react"
-import Chart from "../Components/Chart"
 import Graph from "../Components/Graph"
+import Chart from "../Components/Rechart"
 
 class ReportGalleryPage extends React.Component {
   state = {
@@ -135,6 +135,56 @@ class ReportGalleryPage extends React.Component {
       </Grid>
     )
   }
+  renderParentReportGraph = () => {
+    console.log("Report in render report graph: ", this.state.clickedReport)
+
+    let date = new Date(this.state.clickedReport.created_at)
+    let dateWithoutTime =
+      date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+
+    return (
+      <Grid centered columns="one">
+        <Grid.Row>
+          <Grid.Column>
+            <div
+              className="bargraph smallGraph"
+              style={{ paddingTop: "117px" }}
+            >
+              <Graph report={this.state.clickedReport} date={dateWithoutTime} />
+            </div>
+          </Grid.Column>
+          {/* <Grid.Column>
+            <div className="bargraph smallGraph">
+              <Header textAlign="center" className="reportHeader">
+                {this.state.clickedJournal.title}
+              </Header>
+
+              {this.state.clickedJournal.clip ? (
+                <div className="smallAudio">
+                  <audio src={this.state.clickedJournal.url} controls></audio>
+                </div>
+              ) : this.state.clickedJournal.video ? (
+                <Player>
+                  <source src={this.state.clickedJournal.url} />
+                  <ControlBar autoHide={false} />
+                  <LoadingSpinner />
+                  <BigPlayButton position="center" />
+                </Player>
+              ) : (
+                <Card centered>
+                  <Card.Content>
+                    <Card.Description textAlign="center">
+                      {this.state.clickedJournal.content}
+                    </Card.Description>
+                  </Card.Content>
+                </Card>
+              )}
+            </div>
+          </Grid.Column> */}
+        </Grid.Row>
+      </Grid>
+    )
+  }
 
   listOfReports = () => {
     return this.state.pageOfItems.map((report) => {
@@ -233,7 +283,7 @@ class ReportGalleryPage extends React.Component {
                   Emotional Reports over Time
                 </Header>
                 <br />
-                <div className="bargraph">
+                <div className="lineGraph">
                   <Chart />
                 </div>
               </Container>
@@ -270,7 +320,7 @@ class ReportGalleryPage extends React.Component {
 
                         <br />
                         {this.state.beenClicked
-                          ? this.renderReportGraph()
+                          ? this.renderParentReportGraph()
                           : null}
                       </Container>
                     }
@@ -343,7 +393,7 @@ class ReportGalleryPage extends React.Component {
                     </Header>
 
                     <br />
-                    <div className="bargraph">
+                    <div className="lineGraph">
                       <Chart />
                     </div>
                   </Container>
