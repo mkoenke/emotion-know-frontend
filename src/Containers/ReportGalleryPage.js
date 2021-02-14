@@ -11,8 +11,8 @@ import {
   Table,
 } from "semantic-ui-react"
 import { BigPlayButton, ControlBar, LoadingSpinner, Player } from "video-react"
+import Chart from "../Components/Chart"
 import Graph from "../Components/Graph"
-import Chart from "../Components/Rechart"
 
 class ReportGalleryPage extends React.Component {
   state = {

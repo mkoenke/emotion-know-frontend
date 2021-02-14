@@ -1,65 +1,27 @@
+import { Line } from "@reactchartjs/react-chart.js"
 import React from "react"
-import Chart from "react-apexcharts"
 import { connect } from "react-redux"
 
-class MyChart extends React.Component {
+class Chart extends React.Component {
   componentDidMount() {
-    this.xAxis()
     this.chartData()
   }
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps !== this.props) {
-  //     this.xAxis()
-  //     this.chartData()
-  //   }
-  // }
+
   state = {
-    options: {
-      chart: {
-        id: `${this.props.child}`,
-      },
-      xaxis: {
-        categories: [],
-      },
+    data: {
+      labels: [],
+      datasets: [],
     },
-    series: [],
   }
 
-  xAxis = () => {
-    if (this.props.allReports.length) {
-      let xAxisCategories = this.props.allReports.map(
-        (report) => `${report.date}`
-      )
-      console.log("X-axis: ", xAxisCategories)
-      this.setState({
-        options: {
-          // ...this.state.options,
-          xaxis: {
-            // ...this.state.options.xaxis,
-            categories: xAxisCategories,
-            // labels: xAxisCategories,
-          },
-        },
-      })
-    } else {
-      let xAxisCategories = this.props.parentsReports.map(
-        (report) => `${report.date}`
-      )
-      console.log("X-axis: ", xAxisCategories)
-      this.setState({
-        options: {
-          // ...this.state.options,
-          xaxis: {
-            // ...this.state.options.xaxis,
-            categories: xAxisCategories,
-            // labels: xAxisCategories,
-          },
-        },
-      })
-    }
-  }
   chartData = () => {
     if (this.props.allReports.length) {
+      let xAxisCategories = this.props.allReports.map((report) => {
+        let date = new Date(report.created_at)
+        let dateWithoutTime =
+          date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+        return `${dateWithoutTime}`
+      })
       let angerData = this.props.allReports.map((report) => report.anger)
       let disgustData = this.props.allReports.map((report) => report.disgust)
       let fearData = this.props.allReports.map((report) => report.fear)
@@ -68,20 +30,58 @@ class MyChart extends React.Component {
       let surpriseData = this.props.allReports.map((report) => report.surprise)
 
       this.setState({
-        options: {
-          ...this.state.options,
+        data: {
+          labels: xAxisCategories,
+          datasets: [
+            {
+              label: "Anger",
+              data: angerData,
+              fill: false,
+              backgroundColor: "rgb(255, 0, 0)",
+              borderColor: "rgba(255, 0, 0, 0.2)",
+            },
+            {
+              label: "Disgust",
+              data: disgustData,
+              fill: false,
+              backgroundColor: "rgb(255, 128, 0)",
+              borderColor: "rgba(255, 128, 0, 0.2)",
+            },
+            {
+              label: "Fear",
+              data: fearData,
+              fill: false,
+              backgroundColor: "rgb(0, 255, 0)",
+              borderColor: "rgba(0, 255, 0, 0.2)",
+            },
+            {
+              label: "Joy",
+              data: joyData,
+              fill: false,
+              backgroundColor: "rgb(255, 255, 0)",
+              borderColor: "rgba(255, 255, 0, 0.2)",
+            },
+            {
+              label: "Sadness",
+              data: sadnessData,
+              fill: false,
+              backgroundColor: "rgb(0, 0, 255)",
+              borderColor: "rgba(0, 0, 255, 0.2)",
+            },
+            {
+              label: "Surprise",
+              data: surpriseData,
+              fill: false,
+              backgroundColor: "rgb(127, 0, 255)",
+              borderColor: "rgba(127, 0, 255, 0.2)",
+            },
+          ],
         },
-        series: [
-          ...this.state.series,
-          { name: "Anger", data: angerData },
-          { name: "Disgust", data: disgustData },
-          { name: "Fear", data: fearData },
-          { name: "Joy", data: joyData },
-          { name: "Sadness", data: sadnessData },
-          { name: "Surprise", data: surpriseData },
-        ],
       })
     } else {
+      let xAxisCategories = this.props.parentsReports.map(
+        (report) => `${new Date(report.created_at)}`
+      )
       let angerData = this.props.parentsReports.map((report) => report.anger)
       let disgustData = this.props.parentsReports.map(
         (report) => report.disgust
@@ -96,18 +96,53 @@ class MyChart extends React.Component {
       )
 
       this.setState({
-        options: {
-          ...this.state.options,
+        data: {
+          labels: xAxisCategories,
+          datasets: [
+            {
+              label: "Anger",
+              data: angerData,
+              fill: false,
+              backgroundColor: "rgb(255, 0, 0)",
+              borderColor: "rgba(255, 0, 0, 0.2)",
+            },
+            {
+              label: "Disgust",
+              data: disgustData,
+              fill: false,
+              backgroundColor: "rgb(255, 128, 0)",
+              borderColor: "rgba(255, 128, 0, 0.2)",
+            },
+            {
+              label: "Fear",
+              data: fearData,
+              fill: false,
+              backgroundColor: "rgb(0, 255, 0)",
+              borderColor: "rgba(0, 255, 0, 0.2)",
+            },
+            {
+              label: "Joy",
+              data: joyData,
+              fill: false,
+              backgroundColor: "rgb(255, 255, 0)",
+              borderColor: "rgba(255, 255, 0, 0.2)",
+            },
+            {
+              label: "Sadness",
+              data: sadnessData,
+              fill: false,
+              backgroundColor: "rgb(0, 0, 255)",
+              borderColor: "rgba(0, 0, 255, 0.2)",
+            },
+            {
+              label: "Surprise",
+              data: surpriseData,
+              fill: false,
+              backgroundColor: "rgb(127, 0, 255)",
+              borderColor: "rgba(127, 0, 255, 0.2)",
+            },
+          ],
         },
-        series: [
-          ...this.state.series,
-          { name: "Anger", data: angerData },
-          { name: "Disgust", data: disgustData },
-          { name: "Fear", data: fearData },
-          { name: "Joy", data: joyData },
-          { name: "Sadness", data: sadnessData },
-          { name: "Surprise", data: surpriseData },
-        ],
       })
     }
   }
@@ -115,15 +150,7 @@ class MyChart extends React.Component {
   render() {
     console.log("Reports in chart:", this.props.allReports)
     console.log("State in chart: ", this.state)
-    return (
-      <Chart
-        options={this.state.options}
-        series={this.state.series}
-        type="line"
-        width={500}
-        height={320}
-      />
-    )
+    return <Line data={this.state.data} />
   }
 }
 
@@ -135,4 +162,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(MyChart)
+export default connect(mapStateToProps)(Chart)
