@@ -146,41 +146,10 @@ class ReportGalleryPage extends React.Component {
       <Grid centered columns="one">
         <Grid.Row>
           <Grid.Column>
-            <div
-              className="bargraph smallGraph"
-              style={{ paddingTop: "117px" }}
-            >
+            <div className="bargraph smallGraph" style={{ padding: "50px" }}>
               <Graph report={this.state.clickedReport} date={dateWithoutTime} />
             </div>
           </Grid.Column>
-          {/* <Grid.Column>
-            <div className="bargraph smallGraph">
-              <Header textAlign="center" className="reportHeader">
-                {this.state.clickedJournal.title}
-              </Header>
-
-              {this.state.clickedJournal.clip ? (
-                <div className="smallAudio">
-                  <audio src={this.state.clickedJournal.url} controls></audio>
-                </div>
-              ) : this.state.clickedJournal.video ? (
-                <Player>
-                  <source src={this.state.clickedJournal.url} />
-                  <ControlBar autoHide={false} />
-                  <LoadingSpinner />
-                  <BigPlayButton position="center" />
-                </Player>
-              ) : (
-                <Card centered>
-                  <Card.Content>
-                    <Card.Description textAlign="center">
-                      {this.state.clickedJournal.content}
-                    </Card.Description>
-                  </Card.Content>
-                </Card>
-              )}
-            </div>
-          </Grid.Column> */}
         </Grid.Row>
       </Grid>
     )
@@ -360,7 +329,9 @@ class ReportGalleryPage extends React.Component {
                       </Table.Footer>
                     </Table>
                     <br />
-                    {this.state.beenClicked ? this.renderReportGraph() : null}
+                    {this.state.beenClicked
+                      ? this.renderParentReportGraph()
+                      : null}
                   </Container>
                 )}
                 {!this.props.parentsReports.length ? (
