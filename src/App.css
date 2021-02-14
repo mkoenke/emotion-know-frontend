@@ -25,7 +25,6 @@
 .h1 {
   font-size: 5em;
   font-weight: 700;
-  /* font-style: italic; */
   letter-spacing: 0.3em;
   color: rgb(10, 157, 174);
 }
@@ -43,7 +42,6 @@
   color: rgb(10, 157, 174) !important;
 }
 .pageHeader {
-  background-color: rgb(248, 245, 242);
   font-family: "Comic Sans MS", "Comic Sans" !important;
   color: rgb(10, 157, 174) !important;
   font-size: 42px !important;
@@ -51,6 +49,15 @@
   padding: 30px !important;
   font-weight: 900 !important;
   text-shadow: 2px 2px 2px grey;
+}
+.waitOrDom {
+  font-family: "Comic Sans MS", "Comic Sans" !important;
+  color: rgb(10, 157, 174) !important;
+  font-size: 42px !important;
+  margin: 0 !important;
+  padding: 30px !important;
+  font-weight: 900 !important;
+  text-shadow: 2px 2px 2px white;
 }
 .background {
   background-color: rgb(248, 245, 242) !important;
@@ -88,7 +95,6 @@
 }
 
 .reportHeader {
-  /* font-size: 30px; */
   font-weight: 100 !important;
 }
 .formLabel {
@@ -172,7 +178,6 @@
 
 .homepageText {
   width: 70% !important;
-  /* align-items: center !important; */
   padding-left: 100px;
 }
 .homepageContainer {
@@ -180,7 +185,6 @@
   padding: 30px;
   font-size: 20px;
   font-family: "Comic Sans MS", "Comic Sans";
-  /* margin-left: 30px !important; */
 }
 .delete {
   margin: 20px;
@@ -190,7 +194,6 @@
   justify-content: center;
   bottom: 10px;
   position: absolute;
-  /* margin-left: 200px; */
 }
 .cardbutton {
   background-color: rgb(10, 157, 174) !important;
@@ -205,8 +208,8 @@
   transform: scale(1.1);
 }
 .pattern {
-  background-image: url(https://stockshop.angiemakes.com/wp-content/uploads/2016/09/Teal-Marbled-Paper-Background.-Abstract-Marbled-Background-2324.jpg);
-  /* background-image: url(https://cdn.pixabay.com/photo/2015/06/04/09/17/background-paper-797285_960_720.jpg); */
+  /* background-image: url(https://stockshop.angiemakes.com/wp-content/uploads/2016/09/Teal-Marbled-Paper-Background.-Abstract-Marbled-Background-2324.jpg); */
+  background-image: linear-gradient(rgb(248, 245, 242), rgb(10, 157, 174));
 }
 
 .shift {

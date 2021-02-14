@@ -29,7 +29,6 @@ function App() {
   return (
     <>
       <NavBar />
-
       <Switch>
         <Route path="/resources" component={ResourcesPage} />
         <Route path="/welcome" component={WelcomePageContainer} />

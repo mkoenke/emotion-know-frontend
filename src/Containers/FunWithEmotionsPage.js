@@ -357,44 +357,48 @@ class FunWithEmotionsPage extends React.Component {
       <>
         {!this.props.parent && this.props.child ? (
           <>
-            <Header
-              className="pageHeader"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)" }}
-            >
-              Let's make some funny faces, {this.props.child.username}!
-            </Header>
-            <Grid centered className="videoGrid background">
-              <Webcam className="webcam" videoConstraints={videoConstraints} />
-            </Grid>
-            <Header
-              className="pageHeader"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)" }}
-            >
-              {this.state.emo ? (
-                `Dominant Emotion: ${this.state.emo} `
-              ) : (
-                <>
-                  <p>Please wait a moment...</p> <Loader active inline />
-                </>
-              )}
-            </Header>
-            <div className=" background">
+            <div className="pattern">
+              <Header
+                className="pageHeader"
+                size="huge"
+                textAlign="center"
+                style={{ color: "rgb(171, 218, 225)" }}
+              >
+                Let's make some funny faces, {this.props.child.username}!
+              </Header>
+
+              <Grid centered className="videoGrid ">
+                <Webcam
+                  className="webcam"
+                  videoConstraints={videoConstraints}
+                />
+              </Grid>
+
+              <Header
+                className="waitOrDom"
+                size="huge"
+                textAlign="center"
+                style={{ color: "rgb(171, 218, 225)" }}
+              >
+                {this.state.emo ? (
+                  `Dominant Emotion: ${this.state.emo} `
+                ) : (
+                  <>
+                    <p>Please wait a moment...</p> <Loader active inline />
+                  </>
+                )}
+              </Header>
+
               <Container>
-                {/* <div className="bargraph"> */}
                 <Bar
                   data={data}
                   width={600}
                   height={400}
                   options={{ maintainAspectRatio: false }}
                 />
-                {/* </div> */}
               </Container>
-            </div>
-            {/* <Header
+
+              {/* <Header
               className="h1"
               size="huge"
               textAlign="center"
@@ -402,7 +406,8 @@ class FunWithEmotionsPage extends React.Component {
             >
               {this.state.mood ? this.state.mood : null}
             </Header> */}
-            <div className="footer background" />
+              <div className="footer " />
+            </div>
           </>
         ) : null}
         <Message positive>
