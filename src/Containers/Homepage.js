@@ -32,22 +32,23 @@ class Homepage extends React.Component {
           style={{ height: "500px" }}
         ></ParallaxBanner>
         {/* <Container className="background"> */}
-        <div className="root">
-          <span className={`copy h1`}>
-            <Parallax x={[-80, 80]} className="letter">
-              EmotionKnow
-            </Parallax>
-          </span>
-          <Header
-            style={{
-              color: "rgb(171, 218, 225)",
-              fontFamily: "Comic Sans MS",
-            }}
-            size="large"
-          >
-            Building Emotional Intelligence in Children
-          </Header>
-
+        <div className="background">
+          <div className="root">
+            <span className={`copy h1`}>
+              <Parallax x={[-80, 80]} className="letter">
+                EmotionKnow
+              </Parallax>
+            </span>
+            <Header
+              style={{
+                color: "rgb(171, 218, 225)",
+                fontFamily: "Comic Sans MS",
+              }}
+              size="large"
+            >
+              Building Emotional Intelligence in Children
+            </Header>
+          </div>
           <Container className="homepageContainer">
             <div className="homepageText">
               EmotionKnow is an online journaling application for children with
@@ -80,7 +81,7 @@ class Homepage extends React.Component {
           ]}
           style={{ height: "500px" }}
         ></ParallaxBanner>
-        <div className="root">
+        <div className="root height">
           <span className={`copy h1`} onClick={this.handleSignUpClick}>
             <Parallax x={[80, -80]} className="letter link">
               Sign Up!
