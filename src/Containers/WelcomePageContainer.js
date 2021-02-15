@@ -12,12 +12,7 @@ class WelcomePageContainer extends React.Component {
         {!this.props.parent && this.props.child ? (
           <>
             <div className="background">
-              <Header
-                className="pageHeader"
-                // size="huge"
-                textAlign="center"
-                // style={{ color: "rgb(171, 218, 225)" }}
-              >
+              <Header className="pageHeader" textAlign="center">
                 Welcome to EmotionKnow, {this.props.child.username}!
               </Header>
 

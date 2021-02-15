@@ -31,6 +31,7 @@ class Homepage extends React.Component {
           ]}
           style={{ height: "500px" }}
         ></ParallaxBanner>
+        {/* <Container className="background"> */}
         <div className="root">
           <span className={`copy h1`}>
             <Parallax x={[-80, 80]} className="letter">
@@ -38,7 +39,10 @@ class Homepage extends React.Component {
             </Parallax>
           </span>
           <Header
-            style={{ color: "rgb(171, 218, 225)", fontFamily: "Comic Sans MS" }}
+            style={{
+              color: "rgb(171, 218, 225)",
+              fontFamily: "Comic Sans MS",
+            }}
             size="large"
           >
             Building Emotional Intelligence in Children
@@ -66,6 +70,7 @@ class Homepage extends React.Component {
             </div>
           </Container>
         </div>
+        {/* </Container> */}
         <ParallaxBanner
           layers={[
             {

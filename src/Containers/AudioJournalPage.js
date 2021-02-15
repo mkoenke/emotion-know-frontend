@@ -2,7 +2,7 @@ import AudioReactRecorder, { RecordState } from "audio-react-recorder"
 import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
-import { Button, Form, Grid, Header } from "semantic-ui-react"
+import { Button, Form, Grid, Header, Popup } from "semantic-ui-react"
 import { addAudioToAllAudio, addReportToAllReports } from "../Redux/actions"
 
 const SpeechRecognition =
@@ -22,6 +22,12 @@ class VoiceRecorderPage extends React.Component {
     blob: null,
     listening: false,
     finalTranscript: "",
+  }
+  componentWillUnmount() {
+    ///not hitting here
+    console.log("here")
+    this.stop()
+    this.stopListen()
   }
 
   changeHandler = (e) => {
@@ -84,6 +90,7 @@ class VoiceRecorderPage extends React.Component {
       console.log("stopCmd", stopCmd)
 
       if (stopCmd[0] === "stop" && stopCmd[1] === "listening") {
+        this.setState({ listening: false }, this.stop)
         recognition.stop()
         recognition.onend = () => {
           console.log("Stopped listening per command")
@@ -158,7 +165,6 @@ class VoiceRecorderPage extends React.Component {
     this.setState({
       recordState: RecordState.START,
     })
-    // setTimeout(this.startListen(), 5000)
   }
 
   stop = () => {
@@ -194,7 +200,9 @@ class VoiceRecorderPage extends React.Component {
 
           <div className="journal audioJournal">
             {this.state.submittedTitle ? (
-              <Header textAlign="center">{this.state.submittedTitle}</Header>
+              <Header as="h1" className="content" textAlign="center">
+                {this.state.submittedTitle}
+              </Header>
             ) : (
               <Grid centered>
                 <Form onSubmit={this.handleTitleSubmit}>
@@ -213,22 +221,41 @@ class VoiceRecorderPage extends React.Component {
               </Grid>
             )}
             <div className="recorderContainer">
-              <AudioReactRecorder state={recordState} onStop={this.onStop} />
+              <div>
+                {this.state.listening ? (
+                  <>
+                    <Header className="content extraLarge">GO!</Header>
+                    <Header className="content">
+                      When you are finished, just say "Stop Listening!"
+                    </Header>
+                  </>
+                ) : null}
+                <AudioReactRecorder state={recordState} onStop={this.onStop} />
+              </div>
               <div className="audioContainer">
-                <Button className="audioButton" onClick={this.start}>
-                  Get Ready...
-                </Button>
+                <Popup
+                  content='Now Pess "Get Set!"'
+                  on="click"
+                  pinned
+                  size="huge"
+                  trigger={
+                    <Button className="audioButton" onClick={this.start}>
+                      Get Ready!
+                    </Button>
+                  }
+                />
+
                 <Button className="audioButton" onClick={this.startListen}>
-                  Get Set...
+                  Get Set!
                 </Button>
               </div>
-              <div className="audioContainer">
-                <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
-                  Just say "Stop Listening!" when you are finished and press...
-                </Header>
-                <Button onClick={this.stop}>Stop Recording</Button>
-                {/* <Button onClick={this.stopListen}>Stop Listening</Button> */}
-              </div>
+              {/* <div className="audioContainer"> */}
+              {/* <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
+                  Just say "Stop Listening!" when you are finished
+                </Header> */}
+              {/* <Button onClick={this.stop}>Stop Recording</Button> */}
+              {/* <Button onClick={this.stopListen}>Stop Listening</Button> */}
+              {/* </div> */}
             </div>
             {this.state.blobUrl ? (
               <div className="audioContainer">

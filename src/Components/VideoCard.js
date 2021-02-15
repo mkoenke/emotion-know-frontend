@@ -20,7 +20,7 @@ class VideoCard extends React.Component {
               <Card
                 id={this.props.cardObj.id}
                 centered
-                className="journalCard cardSize"
+                className="pattern cardSize"
               >
                 <Card.Content>
                   <Card.Header className="journalTitle">

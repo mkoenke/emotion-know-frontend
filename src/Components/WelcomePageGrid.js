@@ -72,7 +72,7 @@ class WelcomePageGrid extends React.Component {
         id: 8,
         header: "Fun with Emotions",
         image: funWithEmotions,
-        description: "Lets see what emotions you are expressing!",
+        description: "Lets see what emotions your face can express!",
         url: "./fun",
       },
     ]

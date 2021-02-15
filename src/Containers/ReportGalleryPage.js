@@ -17,7 +17,7 @@ import Graph from "../Components/Graph"
 class ReportGalleryPage extends React.Component {
   state = {
     beenClicked: false,
-    clickedReport: {},
+    clickedReport: null,
     items: [],
     pageOfItems: [],
     clickedJournal: {},
@@ -146,7 +146,10 @@ class ReportGalleryPage extends React.Component {
       <Grid centered columns="one">
         <Grid.Row>
           <Grid.Column>
-            <div className="bargraph smallGraph" style={{ padding: "50px" }}>
+            <div
+              className="bargraph smallGraph pattern"
+              style={{ padding: "50px" }}
+            >
               <Graph report={this.state.clickedReport} date={dateWithoutTime} />
             </div>
           </Grid.Column>
@@ -252,7 +255,7 @@ class ReportGalleryPage extends React.Component {
                   Emotional Reports over Time
                 </Header>
                 <br />
-                <div className="lineGraph">
+                <div className="lineGraph pattern">
                   <Chart />
                 </div>
               </Container>
@@ -269,7 +272,6 @@ class ReportGalleryPage extends React.Component {
                       className=" pageHeader"
                       size="huge"
                       textAlign="center"
-                      // style={{ color: "rgb(171, 218, 225)" }}
                     >
                       {this.props.child.username}'s Reports
                     </Header>
@@ -364,7 +366,7 @@ class ReportGalleryPage extends React.Component {
                     </Header>
 
                     <br />
-                    <div className="lineGraph">
+                    <div className="lineGraph pattern">
                       <Chart />
                     </div>
                   </Container>

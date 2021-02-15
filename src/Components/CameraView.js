@@ -3,7 +3,15 @@
 import emailjs from "emailjs-com"
 import React from "react"
 import { connect } from "react-redux"
-import { Button, Form, Grid, Header, Message } from "semantic-ui-react"
+import {
+  Button,
+  Dimmer,
+  Form,
+  Grid,
+  Header,
+  Loader,
+  Message,
+} from "semantic-ui-react"
 import { addReportToAllReports, addVideoToAllVideos } from "../Redux/actions"
 import Video from "./VideoRecorder"
 
@@ -28,6 +36,7 @@ class RecordView extends React.Component {
     surpriseAvg: "",
     disgustAvg: "",
     sadnessAvg: "",
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -43,6 +52,7 @@ class RecordView extends React.Component {
       .then(({ start, stop }) => {
         this.startSDK = start
         this.stopSDK = stop
+        this.setState({ isLoading: false })
       })
   }
 
@@ -216,6 +226,13 @@ class RecordView extends React.Component {
           </div>
           <div>
             <Grid centered>
+              {this.state.isLoading ? (
+                <>
+                  <Dimmer active>
+                    <p>Please wait a moment...</p> <Loader active inline />
+                  </Dimmer>
+                </>
+              ) : null}
               <div style={{ height: "620px", width: "800px" }}>
                 <Video
                   onRecordingComplete={this.onRecordingComplete}
