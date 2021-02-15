@@ -11,16 +11,18 @@ class WelcomePageContainer extends React.Component {
       <>
         {!this.props.parent && this.props.child ? (
           <>
-            <Header
-              className="pageHeader"
-              // size="huge"
-              textAlign="center"
-              // style={{ color: "rgb(171, 218, 225)" }}
-            >
-              Welcome to EmotionKnow, {this.props.child.username}!
-            </Header>
+            <div className="background">
+              <Header
+                className="pageHeader"
+                // size="huge"
+                textAlign="center"
+                // style={{ color: "rgb(171, 218, 225)" }}
+              >
+                Welcome to EmotionKnow, {this.props.child.username}!
+              </Header>
 
-            <WelcomePageGrid />
+              <WelcomePageGrid />
+            </div>
           </>
         ) : null}
         {this.props.parent ? <ReportGalleryPage /> : null}
