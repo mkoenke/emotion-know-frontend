@@ -90,9 +90,7 @@ class WelcomePageGrid extends React.Component {
     return (
       <Card.Group>
         <Grid centered columns="three" className="background">
-          {/* <Card.Group> */}
           <Grid.Row className="shift">{this.arrayOfCards()}</Grid.Row>
-          {/* </Card.Group> */}
         </Grid>
       </Card.Group>
     )

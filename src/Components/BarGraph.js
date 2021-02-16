@@ -2,7 +2,7 @@ import { Bar } from "@reactchartjs/react-chart.js"
 import React from "react"
 import { connect } from "react-redux"
 
-class Graph extends React.Component {
+class BarGraph extends React.Component {
   state = {
     data: {
       labels: ["Anger", "Disgust", "Fear", "Joy", "Sadness", "Surprise"],
@@ -40,8 +40,6 @@ class Graph extends React.Component {
   }
 
   render() {
-    console.log("Props in graph: ", this.props)
-    console.log("State in graph: ", this.state)
     return <Bar data={this.state.data} />
   }
 }
@@ -53,4 +51,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Graph)
+export default connect(mapStateToProps)(BarGraph)

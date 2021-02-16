@@ -21,7 +21,7 @@ class SignUpModal extends React.Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault()
-    console.log("Sign up")
+
     let parentData = {
       email: this.state.email,
       password: this.state.parentPassword,
@@ -36,13 +36,12 @@ class SignUpModal extends React.Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success new parent:", data.parent)
         let childData = {
           username: this.state.username,
           password: this.state.password,
           parent_id: data.parent.id,
         }
-        console.log("child data:", childData)
+
         fetch("http://localhost:3000/children", {
           method: "POST",
           headers: {
@@ -53,9 +52,8 @@ class SignUpModal extends React.Component {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log("Success:", data)
             localStorage.setItem("token", data.jwt)
-            console.log("props: ", this.props)
+
             this.props.dispatchChild(data.child)
             this.props.setViewModalStateToFalse()
           })
@@ -69,7 +67,6 @@ class SignUpModal extends React.Component {
   }
 
   render() {
-    console.log("state:", this.state)
     return (
       <Modal
         onClose={() => this.setState({ isOpen: false })}

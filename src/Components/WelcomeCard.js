@@ -15,12 +15,7 @@ class CardClass extends React.Component {
               id={this.props.cardObj.id}
               centered
             >
-              <Image
-                className="cardImage"
-                src={this.props.cardObj.image}
-                // wrapped
-                // ui={false}
-              />
+              <Image className="cardImage" src={this.props.cardObj.image} />
               <Card.Content className="content">
                 <Card.Header textAlign="center" className="content">
                   {this.props.cardObj.header}

@@ -32,18 +32,11 @@ class NavBar extends React.Component {
   }
 
   render() {
-    console.log("Child in nav bar:", this.props.child)
-    console.log("props: ", this.props)
-    console.log("state: ", this.state)
     const { activeItem } = this.state
 
     return (
       <div>
-        <Menu
-          pointing
-          secondary
-          style={{ backgroundColor: "rgb(8, 126, 139)" }}
-        >
+        <Menu pointing secondary className="navBarBackground">
           {this.props.child ? (
             <NavLink to="/welcome">
               <Menu.Item
@@ -51,7 +44,6 @@ class NavBar extends React.Component {
                 active={activeItem === "home"}
                 onClick={this.handleItemClick}
                 className="navbar navitem"
-                color="white"
               />
             </NavLink>
           ) : (

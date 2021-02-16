@@ -19,18 +19,15 @@ class LoginModal extends React.Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault()
-    console.log("login submit")
     let child = {
       username: this.state.username,
       password: this.state.password,
     }
-    console.log("Props:", this.props)
     this.props.login(child)
     this.props.handleLoginClick()
   }
 
   render() {
-    console.log(this.state)
     return (
       <Modal
         onClose={() => this.setState({ isOpen: false })}

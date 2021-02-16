@@ -19,19 +19,15 @@ class ParentLoginModal extends React.Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault()
-    console.log("login submit")
     let parent = {
       email: this.state.email,
       password: this.state.password,
     }
-    console.log("Parent in submit: ", parent)
-    console.log("Props:", this.props)
     this.props.loginParent(parent)
     this.props.handleParentLoginClick()
   }
 
   render() {
-    console.log(this.state)
     return (
       <Modal
         onClose={() => this.setState({ isOpen: false })}

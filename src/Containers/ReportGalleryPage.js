@@ -11,8 +11,8 @@ import {
   Table,
 } from "semantic-ui-react"
 import { BigPlayButton, ControlBar, LoadingSpinner, Player } from "video-react"
-import Chart from "../Components/Chart"
-import Graph from "../Components/Graph"
+import BarGraph from "../Components/BarGraph"
+import LineGraph from "../Components/LineGraph"
 
 class ReportGalleryPage extends React.Component {
   state = {
@@ -48,7 +48,6 @@ class ReportGalleryPage extends React.Component {
     let clickedReport = this.props.parentsReports.find(
       (report) => report.created_at === event.target.closest("tr").id
     )
-
     this.setState(
       {
         beenClicked: !this.state.beenClicked,
@@ -93,7 +92,10 @@ class ReportGalleryPage extends React.Component {
         <Grid.Row>
           <Grid.Column>
             <div className="bargraph smallGraph pattern smallGraphPadding">
-              <Graph report={this.state.clickedReport} date={dateWithoutTime} />
+              <BarGraph
+                report={this.state.clickedReport}
+                date={dateWithoutTime}
+              />
             </div>
           </Grid.Column>
           <Grid.Column>
@@ -137,7 +139,10 @@ class ReportGalleryPage extends React.Component {
         <Grid.Row>
           <Grid.Column>
             <div className="bargraph smallGraph pattern parentGraphPadding">
-              <Graph report={this.state.clickedReport} date={dateWithoutTime} />
+              <BarGraph
+                report={this.state.clickedReport}
+                date={dateWithoutTime}
+              />
             </div>
           </Grid.Column>
         </Grid.Row>
@@ -195,11 +200,7 @@ class ReportGalleryPage extends React.Component {
             <div className="background">
               <Container>
                 {this.props.child ? (
-                  <Header
-                    className=" pageHeader"
-                    size="huge"
-                    textAlign="center"
-                  >
+                  <Header className="pageHeader" size="huge" textAlign="center">
                     {this.props.child.username}'s Reports
                   </Header>
                 ) : null}
@@ -225,6 +226,7 @@ class ReportGalleryPage extends React.Component {
                             items={this.state.items}
                             onChangePage={this.onChangePage}
                             labels={customLabels}
+                            className="pagination"
                           />
                         </Menu>
                       </Table.HeaderCell>
@@ -241,7 +243,7 @@ class ReportGalleryPage extends React.Component {
                 </Header>
                 <br />
                 <div className="lineGraph pattern">
-                  <Chart />
+                  <LineGraph />
                 </div>
               </Container>
               <div className="footer"></div>
@@ -254,7 +256,7 @@ class ReportGalleryPage extends React.Component {
                 <Container>
                   {this.props.child ? (
                     <Header
-                      className=" pageHeader"
+                      className="pageHeader"
                       size="huge"
                       textAlign="center"
                     >
@@ -264,6 +266,8 @@ class ReportGalleryPage extends React.Component {
                 </Container>
                 {!this.props.parentsReports.length ? (
                   <Popup
+                    open
+                    size="huge"
                     trigger={
                       <Container textAlign="center">
                         <Header as="h2" className="content tableHeaderMargin">
@@ -301,6 +305,7 @@ class ReportGalleryPage extends React.Component {
                                 items={this.state.items}
                                 onChangePage={this.onChangePage}
                                 labels={customLabels}
+                                className="pagination"
                               />
                             </Menu>
                           </Table.HeaderCell>
@@ -315,15 +320,14 @@ class ReportGalleryPage extends React.Component {
                 )}
                 {!this.props.parentsReports.length ? (
                   <Popup
+                    open
+                    size="huge"
                     trigger={
                       <Container textAlign="center">
                         <Header as="h2" className="content tableHeaderMargin">
                           Emotional Reports over Time
                         </Header>
-
-                        <br />
-
-                        <Chart />
+                        <LineGraph />
                       </Container>
                     }
                     content="Your child's emotions over time will appear here!"
@@ -333,10 +337,8 @@ class ReportGalleryPage extends React.Component {
                     <Header as="h2" className="content tableHeaderMargin">
                       Emotional Reports over Time
                     </Header>
-
-                    <br />
                     <div className="lineGraph pattern">
-                      <Chart />
+                      <LineGraph />
                     </div>
                   </Container>
                 )}

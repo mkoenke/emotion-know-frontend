@@ -27,7 +27,12 @@ class AudioCard extends React.Component {
                   <Card.Header className="journalTitle">
                     {this.props.cardObj.title}
                   </Card.Header>
-                  <Image src={this.props.image} size="medium" circular />
+                  <Image
+                    src={this.props.image}
+                    size="medium"
+                    circular
+                    className="journalCardImage"
+                  />
                 </Card.Content>
               </Card>
             </FrontSide>

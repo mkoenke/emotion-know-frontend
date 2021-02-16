@@ -168,8 +168,6 @@ class LineGraph extends React.Component {
   }
 
   render() {
-    console.log("Reports in chart:", this.props.allReports)
-    console.log("State in chart: ", this.state)
     return (
       <Chart
         data={this.state.data}

@@ -43,6 +43,9 @@
   font-family: "Comic Sans MS", "Comic Sans";
   color: rgb(248, 245, 242) !important ;
 }
+.navBarBackground {
+  background-color: rgb(8, 126, 139) !important;
+}
 .link {
   cursor: pointer;
 }
@@ -83,6 +86,9 @@
   height: 300px !important;
   width: 100% !important;
   object-fit: cover;
+}
+.journalCardImage {
+  margin-left: 10px;
 }
 .content {
   font-family: "Comic Sans MS", "Comic Sans" !important;
@@ -298,4 +304,7 @@
 }
 .inputWidth {
   width: 300px !important;
+}
+.pagination {
+  font-family: "Comic Sans MS", "Comic Sans" !important;
 }
