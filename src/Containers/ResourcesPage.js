@@ -7,7 +7,7 @@ import resourceImage from "../assets/images/paperFamily.jpg"
 class ResourcesPage extends React.Component {
   render() {
     return (
-      <>
+      <div className="resources">
         <ParallaxBanner
           layers={[
             {
@@ -15,30 +15,25 @@ class ResourcesPage extends React.Component {
               amount: 0.3,
             },
           ]}
-          style={{ height: "400px" }}
+          className="bannerHeight"
         ></ParallaxBanner>
         <div className="root">
-          <span className={`copy h1`}>
+          <span className="copy h1">
             <Parallax x={[-80, 80]} className="letter">
               EmotionKnow
             </Parallax>
           </span>
-          <span className={`copy h1`} style={{ marginTop: "40px" }}>
+          <span className="copy h1 spanMargin">
             <Parallax x={[-80, 80]} className="letter">
               Resources
             </Parallax>
           </span>
-          <Header style={{ color: "rgb(171, 218, 225)" }} className="resources">
+          <Header size="large" className="subHeader">
             Building Emotional Intelligence in Children
           </Header>
         </div>
 
-        <Grid
-          centered
-          celled="internally"
-          // style={{ marginBottom: "100px" }}
-          className="resources"
-        >
+        <Grid centered celled="internally" className=" resourceBtmMargin">
           <Grid.Row>
             <Grid.Column width={5}>
               <Header textAlign="center" size="huge" className="resources">
@@ -107,10 +102,6 @@ class ResourcesPage extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <div
-          style={{ dispaly: "block", height: "300px" }}
-          className="resources"
-        />
         <ParallaxBanner
           layers={[
             {
@@ -118,13 +109,9 @@ class ResourcesPage extends React.Component {
               amount: 0.3,
             },
           ]}
-          style={{ height: "400px" }}
+          className="bannerHeight"
         ></ParallaxBanner>
-        {/* <div
-          style={{ dispaly: "block", height: "300px" }}
-          className="resources"
-        /> */}
-      </>
+      </div>
     )
   }
 }

@@ -10,12 +10,7 @@ class CameraPage extends React.Component {
       <>
         <div className="pattern">
           {this.props.child ? (
-            <Header
-              className="pageHeader"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)" }}
-            >
+            <Header className="pageHeader" size="huge" textAlign="center">
               How are you feeling today, {this.props.child.username}?
             </Header>
           ) : null}

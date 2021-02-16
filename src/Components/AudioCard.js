@@ -21,6 +21,9 @@ class AudioCard extends React.Component {
                 className="pattern cardSize"
               >
                 <Card.Content>
+                  <Card.Header className="content">
+                    {this.props.cardObj.date}
+                  </Card.Header>
                   <Card.Header className="journalTitle">
                     {this.props.cardObj.title}
                   </Card.Header>
@@ -29,24 +32,10 @@ class AudioCard extends React.Component {
               </Card>
             </FrontSide>
             <BackSide>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginTop: "120px",
-                }}
-              >
+              <div className="smallAudio">
                 <audio controls src={this.props.cardObj.url} />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "10px",
-                }}
-              >
+              <div className="buttonDiv">
                 <Popup
                   content="Warning!  This will delete this journal entry!"
                   trigger={

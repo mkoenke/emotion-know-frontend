@@ -8,7 +8,6 @@
   align-items: space-around;
   justify-content: center;
   align-items: center;
-  /* height: 50vh; */
   background-color: rgb(248, 245, 242);
   padding: 50px;
 }
@@ -28,6 +27,17 @@
   letter-spacing: 0.3em;
   color: rgb(10, 157, 174);
 }
+.bannerHeight {
+  height: 400px;
+}
+.spanMargin {
+  margin-top: 40px;
+}
+.subHeader {
+  color: rgb(171, 218, 225) !important;
+  font-family: "Comic Sans MS", "Comic Sans" !important;
+}
+
 .navbar {
   font-size: 24px;
   font-family: "Comic Sans MS", "Comic Sans";
@@ -40,6 +50,9 @@
   background-color: rgb(248, 245, 242);
   font-family: "Comic Sans MS", "Comic Sans" !important;
   color: rgb(10, 157, 174) !important;
+}
+.resourceBtmMargin {
+  margin-bottom: 300px !important;
 }
 .pageHeader {
   font-family: "Comic Sans MS", "Comic Sans" !important;
@@ -109,6 +122,10 @@
   min-height: 400px !important;
   min-width: 350px !important;
 }
+.videoCardDiv {
+  padding-top: 40px;
+}
+
 .journal {
   background-color: white;
   box-shadow: 10px 10px 5px grey !important;
@@ -163,9 +180,7 @@
   margin: 1em;
   width: 300px;
 }
-/* .journalCard {
-  background-color: rgb(171, 218, 225) !important;
-} */
+
 .journalTitle {
   margin: 30px;
   font-family: "Comic Sans MS", "Comic Sans" !important;
@@ -207,6 +222,12 @@
   background-color: rgb(10, 157, 174) !important;
   border-radius: 50% !important;
 }
+.buttonDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
 
 .grow {
   transition: all 0.2s ease-in-out;
@@ -216,7 +237,6 @@
   transform: scale(1.1);
 }
 .pattern {
-  /* background-image: url(https://stockshop.angiemakes.com/wp-content/uploads/2016/09/Teal-Marbled-Paper-Background.-Abstract-Marbled-Background-2324.jpg); */
   background-image: linear-gradient(
     rgb(248, 245, 242),
     rgb(10, 157, 174)
@@ -239,6 +259,7 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  margin-top: 120px;
 }
 .cardContent {
   margin-top: 30px !important;
@@ -247,4 +268,34 @@
   background-color: white;
   box-shadow: 10px 10px 5px grey !important;
   padding: 50px;
+}
+.overflow {
+  object-fit: contain;
+}
+.funGraphDiv {
+  background-image: linear-gradient(rgb(248, 245, 242), rgb(10, 157, 174));
+  margin-top: 30px;
+}
+
+.removeMargin {
+  margin: 0px !important;
+}
+.formSize {
+  height: 800px !important;
+  width: 500px !important;
+}
+.smallGraphPadding {
+  padding-top: 117px;
+}
+.parentGraphPadding {
+  padding: 50px;
+}
+.tableHeaderMargin {
+  margin: 30px !important;
+}
+.homepageBannerHeight {
+  height: 500px;
+}
+.inputWidth {
+  width: 300px !important;
 }

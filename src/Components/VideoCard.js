@@ -23,6 +23,9 @@ class VideoCard extends React.Component {
                 className="pattern cardSize"
               >
                 <Card.Content>
+                  <Card.Header className="content">
+                    {this.props.cardObj.date}
+                  </Card.Header>
                   <Card.Header className="journalTitle">
                     {this.props.cardObj.title}
                   </Card.Header>
@@ -31,17 +34,9 @@ class VideoCard extends React.Component {
               </Card>
             </FrontSide>
             <BackSide>
-              <div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    objectFit: "contain",
-                    overflow: "scroll",
-                  }}
-                >
-                  <Player style={{ height: "80%", width: "80%" }}>
+              <div className="background">
+                <div className="videoCardDiv">
+                  <Player>
                     <source src={this.props.cardObj.url} />
                     <ControlBar autoHide={false} />
                     <LoadingSpinner />
@@ -49,14 +44,7 @@ class VideoCard extends React.Component {
                   </Player>
                 </div>
 
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    // position: "relative",
-                  }}
-                >
+                <div className="buttonDiv">
                   <Popup
                     content="Warning!  This will delete this journal entry!"
                     trigger={

@@ -182,18 +182,12 @@ class VoiceRecorderPage extends React.Component {
   }
 
   render() {
-    console.log("state in audio recorder: ", this.state)
     const { recordState } = this.state
     return (
       <>
         <div className="pattern">
           {this.props.child ? (
-            <Header
-              className="pageHeader"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)", margin: "50px" }}
-            >
+            <Header className="pageHeader" size="huge" textAlign="center">
               How are you feeling today, {this.props.child.username}?
             </Header>
           ) : null}
@@ -208,9 +202,9 @@ class VoiceRecorderPage extends React.Component {
                 <Form onSubmit={this.handleTitleSubmit}>
                   <Form.Group widths="equal">
                     <Form.Input
-                      style={{ width: "300px" }}
+                      className="inputWidth"
                       fluid
-                      placeholder="Title"
+                      placeholder="Create Title"
                       onChange={this.changeHandler}
                       name="title"
                       value={this.state.title}
@@ -249,13 +243,6 @@ class VoiceRecorderPage extends React.Component {
                   Get Set!
                 </Button>
               </div>
-              {/* <div className="audioContainer"> */}
-              {/* <Header size="medium" style={{ color: "rgb(171, 218, 225)" }}>
-                  Just say "Stop Listening!" when you are finished
-                </Header> */}
-              {/* <Button onClick={this.stop}>Stop Recording</Button> */}
-              {/* <Button onClick={this.stopListen}>Stop Listening</Button> */}
-              {/* </div> */}
             </div>
             {this.state.blobUrl ? (
               <div className="audioContainer">

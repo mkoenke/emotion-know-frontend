@@ -51,12 +51,7 @@ class WritingPage extends React.Component {
       <>
         <div className="pattern">
           {this.props.child ? (
-            <Header
-              className="pageHeader"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)" }}
-            >
+            <Header className="pageHeader" size="huge" textAlign="center">
               How are you feeling today, {this.props.child.username}?
             </Header>
           ) : null}
@@ -71,7 +66,7 @@ class WritingPage extends React.Component {
                   <Form.Field>
                     <label className="formLabel journalForm">Title</label>
                     <input
-                      placeholder="Title"
+                      placeholder="Create Title"
                       onChange={this.changeHandler}
                       name="title"
                       value={this.state.title}
@@ -84,8 +79,7 @@ class WritingPage extends React.Component {
                   </label>
                   <textarea
                     placeholder="Get it all out..."
-                    // type="text"
-                    style={{ height: "800px", width: "500px" }}
+                    className="formSize"
                     onChange={this.changeHandler}
                     name="content"
                     value={this.state.content}

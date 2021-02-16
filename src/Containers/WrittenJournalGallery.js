@@ -36,12 +36,7 @@ class WrittenJournalGallery extends React.Component {
       <>
         <div className="background pagePadding">
           {this.props.child ? (
-            <Header
-              className="pageHeader"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)" }}
-            >
+            <Header className="pageHeader" size="huge" textAlign="center">
               {this.props.child.username}'s Written Journals
             </Header>
           ) : null}

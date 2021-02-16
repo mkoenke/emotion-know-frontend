@@ -36,12 +36,7 @@ class VideoGalleryPage extends React.Component {
       <>
         <div className="background pagePadding">
           {this.props.child ? (
-            <Header
-              className="pageHeader"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)" }}
-            >
+            <Header className="pageHeader" size="huge" textAlign="center">
               {this.props.child.username}'s Video Journals
             </Header>
           ) : null}

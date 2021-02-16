@@ -19,9 +19,8 @@ class Homepage extends React.Component {
     }
   }
   render() {
-    console.log(this.state)
     return (
-      <div className="pusher">
+      <div className="background">
         <ParallaxBanner
           layers={[
             {
@@ -29,23 +28,17 @@ class Homepage extends React.Component {
               amount: 0.3,
             },
           ]}
-          style={{ height: "500px" }}
+          className="homepageBannerHeight"
         ></ParallaxBanner>
-        {/* <Container className="background"> */}
-        <div className="background">
+
+        <div>
           <div className="root">
             <span className={`copy h1`}>
               <Parallax x={[-80, 80]} className="letter">
                 EmotionKnow
               </Parallax>
             </span>
-            <Header
-              style={{
-                color: "rgb(171, 218, 225)",
-                fontFamily: "Comic Sans MS",
-              }}
-              size="large"
-            >
+            <Header className="subHeader" size="large">
               Building Emotional Intelligence in Children
             </Header>
           </div>
@@ -71,7 +64,7 @@ class Homepage extends React.Component {
             </div>
           </Container>
         </div>
-        {/* </Container> */}
+
         <ParallaxBanner
           layers={[
             {
@@ -79,7 +72,7 @@ class Homepage extends React.Component {
               amount: 0.3,
             },
           ]}
-          style={{ height: "500px" }}
+          className="homepageBannerHeight"
         ></ParallaxBanner>
         <div className="root height">
           <span className={`copy h1`} onClick={this.handleSignUpClick}>
@@ -100,7 +93,7 @@ class Homepage extends React.Component {
               amount: 0.3,
             },
           ]}
-          style={{ height: "500px" }}
+          className="homepageBannerHeight"
         ></ParallaxBanner>
       </div>
     )

@@ -21,6 +21,9 @@ class JournalCard extends React.Component {
                 className="pattern cardSize"
               >
                 <Card.Content>
+                  <Card.Header className="content">
+                    {this.props.cardObj.date}
+                  </Card.Header>
                   <Card.Header className="journalTitle">
                     {this.props.cardObj.title}
                   </Card.Header>
@@ -31,18 +34,12 @@ class JournalCard extends React.Component {
             <BackSide>
               <Card centered className="cardContent">
                 <Card.Content>
-                  <Card.Description textAlign="center">
+                  <Card.Description textAlign="center" className="overflow">
                     {this.props.cardObj.content}
                   </Card.Description>
                 </Card.Content>
               </Card>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+              <div>
                 <Popup
                   content="Warning!  This will delete this journal entry!"
                   trigger={

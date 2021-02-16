@@ -314,7 +314,6 @@ class FunWithEmotionsPage extends React.Component {
   }
 
   render() {
-    console.log("state: ", this.state)
     const videoConstraints = {
       facingMode: "user",
     }
@@ -358,39 +357,23 @@ class FunWithEmotionsPage extends React.Component {
         {!this.props.parent && this.props.child ? (
           <>
             <div className="pattern">
-              <Header
-                className="pageHeader"
-                size="huge"
-                textAlign="center"
-                style={{ color: "rgb(171, 218, 225)" }}
-              >
+              <Header className="pageHeader" size="huge" textAlign="center">
                 Let's make some funny faces, {this.props.child.username}!
               </Header>
 
-              <Grid centered className="videoGrid ">
+              <Grid centered className="videoGrid">
                 <Webcam
                   className="webcam"
                   videoConstraints={videoConstraints}
                 />
               </Grid>
 
-              <Header
-                className="waitOrDom"
-                size="huge"
-                textAlign="center"
-                style={{ color: "rgb(171, 218, 225)" }}
-              >
+              <Header className="waitOrDom" size="huge" textAlign="center">
                 {this.state.emo ? (
                   <>
                     Dominant Emotion: {this.state.emo}
                     <Container>
-                      <div
-                        style={{
-                          backgroundImage:
-                            "linear-gradient(rgb(248, 245, 242), rgb(10, 157, 174))",
-                          marginTop: "30px",
-                        }}
-                      >
+                      <div className="funGraphDiv">
                         <Bar
                           data={data}
                           width={600}
@@ -415,11 +398,11 @@ class FunWithEmotionsPage extends React.Component {
             >
               {this.state.mood ? this.state.mood : null}
             </Header> */}
-              <div className="footer " />
+              <div className="footer" />
             </div>
           </>
         ) : null}
-        <Message positive>
+        <Message positive className="removeMargin">
           <Message.Header>Your privacy is important to us!</Message.Header>
           <p>
             MorphCast is a patented technology using facial analysis to adapt

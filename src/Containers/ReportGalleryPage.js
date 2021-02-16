@@ -45,11 +45,10 @@ class ReportGalleryPage extends React.Component {
   }
 
   handleParentReportClick = (event) => {
-    console.log("target: ", event.target)
     let clickedReport = this.props.parentsReports.find(
       (report) => report.created_at === event.target.closest("tr").id
     )
-    console.log("clicked report:", clickedReport)
+
     this.setState(
       {
         beenClicked: !this.state.beenClicked,
@@ -64,19 +63,19 @@ class ReportGalleryPage extends React.Component {
       let journal = this.props.allJournals.find(
         (journal) => journal.id === this.state.clickedReport.journal_entry_id
       )
-      console.log("Found journal: ", journal)
+
       this.setState({ clickedJournal: journal })
     } else if (this.state.clickedReport.audio_entry_id) {
       let journal = this.props.allAudios.find(
         (journal) => journal.id === this.state.clickedReport.audio_entry_id
       )
-      console.log("Found journal: ", journal)
+
       this.setState({ clickedJournal: journal })
     } else if (this.state.clickedReport.video_entry_id) {
       let journal = this.props.allVideos.find(
         (journal) => journal.id === this.state.clickedReport.video_entry_id
       )
-      console.log("Found journal: ", journal)
+
       this.setState({ clickedJournal: journal })
     }
   }
@@ -86,25 +85,19 @@ class ReportGalleryPage extends React.Component {
   }
 
   renderReportGraph = () => {
-    console.log("Report in render report graph: ", this.state.clickedReport)
-
     let date = new Date(this.state.clickedReport.created_at)
     let dateWithoutTime =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-
     return (
       <Grid centered columns="two">
         <Grid.Row>
           <Grid.Column>
-            <div
-              className="bargraph smallGraph"
-              style={{ paddingTop: "117px" }}
-            >
+            <div className="bargraph smallGraph pattern smallGraphPadding">
               <Graph report={this.state.clickedReport} date={dateWithoutTime} />
             </div>
           </Grid.Column>
           <Grid.Column>
-            <div className="bargraph smallGraph">
+            <div className="bargraph smallGraph pattern">
               <Header textAlign="center" className="reportHeader">
                 {this.state.clickedJournal.title}
               </Header>
@@ -136,20 +129,14 @@ class ReportGalleryPage extends React.Component {
     )
   }
   renderParentReportGraph = () => {
-    console.log("Report in render report graph: ", this.state.clickedReport)
-
     let date = new Date(this.state.clickedReport.created_at)
     let dateWithoutTime =
       date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
-
     return (
       <Grid centered columns="one">
         <Grid.Row>
           <Grid.Column>
-            <div
-              className="bargraph smallGraph pattern"
-              style={{ padding: "50px" }}
-            >
+            <div className="bargraph smallGraph pattern parentGraphPadding">
               <Graph report={this.state.clickedReport} date={dateWithoutTime} />
             </div>
           </Grid.Column>
@@ -194,8 +181,6 @@ class ReportGalleryPage extends React.Component {
   }
 
   render() {
-    console.log("Props: ", this.props)
-    console.log("State: ", this.state)
     const customLabels = {
       first: "<<",
       last: ">>",
@@ -220,7 +205,7 @@ class ReportGalleryPage extends React.Component {
                 ) : null}
               </Container>
               <Container textAlign="center">
-                <Header as="h2" className="content" style={{ margin: "30px" }}>
+                <Header as="h2" className="content tableHeaderMargin">
                   Individual Journal Emotional Reports
                 </Header>
                 <Table celled className="table content">
@@ -251,7 +236,7 @@ class ReportGalleryPage extends React.Component {
                 {this.state.beenClicked ? this.renderReportGraph() : null}
               </Container>
               <Container textAlign="center">
-                <Header as="h2" className="content" style={{ margin: "30px" }}>
+                <Header as="h2" className="content tableHeaderMargin">
                   Emotional Reports over Time
                 </Header>
                 <br />
@@ -281,11 +266,7 @@ class ReportGalleryPage extends React.Component {
                   <Popup
                     trigger={
                       <Container textAlign="center">
-                        <Header
-                          as="h2"
-                          className="content"
-                          style={{ margin: "30px" }}
-                        >
+                        <Header as="h2" className="content tableHeaderMargin">
                           Individual Journal Emotional Reports
                         </Header>
 
@@ -299,11 +280,7 @@ class ReportGalleryPage extends React.Component {
                   />
                 ) : (
                   <Container textAlign="center">
-                    <Header
-                      as="h2"
-                      className="content"
-                      style={{ margin: "30px" }}
-                    >
+                    <Header as="h2" className="content tableHeaderMargin">
                       Individual Journal Emotional Reports
                     </Header>
 
@@ -340,11 +317,7 @@ class ReportGalleryPage extends React.Component {
                   <Popup
                     trigger={
                       <Container textAlign="center">
-                        <Header
-                          as="h2"
-                          className="content"
-                          style={{ margin: "30px" }}
-                        >
+                        <Header as="h2" className="content tableHeaderMargin">
                           Emotional Reports over Time
                         </Header>
 
@@ -357,11 +330,7 @@ class ReportGalleryPage extends React.Component {
                   />
                 ) : (
                   <Container textAlign="center">
-                    <Header
-                      as="h2"
-                      className="content"
-                      style={{ margin: "30px" }}
-                    >
+                    <Header as="h2" className="content tableHeaderMargin">
                       Emotional Reports over Time
                     </Header>
 
