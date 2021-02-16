@@ -4,7 +4,7 @@ import { Bar } from "@reactchartjs/react-chart.js"
 import React from "react"
 import { connect } from "react-redux"
 import Webcam from "react-webcam"
-import { Container, Grid, Header, Loader, Message } from "semantic-ui-react"
+import { Grid, Header, Loader, Message } from "semantic-ui-react"
 // import { startSDK, stopSDK } from "../App"
 
 class FunWithEmotionsPage extends React.Component {
@@ -24,7 +24,7 @@ class FunWithEmotionsPage extends React.Component {
     CY.loader()
       .licenseKey(process.env.sdkLicense)
       .addModule(CY.modules().FACE_EMOTION.name)
-      .addModule(CY.modules().FACE_AROUSAL_VALENCE.name)
+      // .addModule(CY.modules().FACE_AROUSAL_VALENCE.name)
       .load()
       .then(({ start, stop }) => {
         start()
@@ -43,19 +43,19 @@ class FunWithEmotionsPage extends React.Component {
         surprise: evt.detail.output.rawEmotion.Surprise,
       })
     })
-    window.addEventListener(
-      CY.modules().FACE_AROUSAL_VALENCE.eventName,
-      (evt) => {
-        this.setState({
-          arousal: evt.detail.output.arousalvalence.arousal,
-          valence: evt.detail.output.arousalvalence.valence,
-        })
-        let arousal = evt.detail.output.arousalvalence.arousal
-        let valence = evt.detail.output.arousalvalence.valence
-        // this.calculateCoordinates(arousal, valence)
-        this.findEmotion(arousal, valence)
-      }
-    )
+    // window.addEventListener(
+    //   CY.modules().FACE_AROUSAL_VALENCE.eventName,
+    //   (evt) => {
+    //     this.setState({
+    //       arousal: evt.detail.output.arousalvalence.arousal,
+    //       valence: evt.detail.output.arousalvalence.valence,
+    //     })
+    //     let arousal = evt.detail.output.arousalvalence.arousal
+    //     let valence = evt.detail.output.arousalvalence.valence
+    //     // this.calculateCoordinates(arousal, valence)
+    //     this.findEmotion(arousal, valence)
+    //   }
+    // )
   }
 
   componentWillUnmount() {
@@ -372,16 +372,16 @@ class FunWithEmotionsPage extends React.Component {
                 {this.state.emo ? (
                   <>
                     Dominant Emotion: {this.state.emo}
-                    <Container>
+                    <Grid centered>
                       <div className="funGraphDiv">
                         <Bar
                           data={data}
-                          width={600}
-                          height={400}
+                          width={700}
+                          height={320}
                           options={{ maintainAspectRatio: false }}
                         />
                       </div>
-                    </Container>
+                    </Grid>
                   </>
                 ) : (
                   <>

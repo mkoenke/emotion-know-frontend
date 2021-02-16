@@ -69,7 +69,6 @@
 .waitOrDom {
   font-family: "Comic Sans MS", "Comic Sans" !important;
   color: rgb(10, 157, 174) !important;
-  font-size: 42px !important;
   margin: 0 !important;
   padding: 30px !important;
   font-weight: 900 !important;
@@ -105,8 +104,8 @@
   margin: 50px;
 }
 .webcam {
-  height: 620px;
-  width: 800px;
+  height: 520px;
+  width: 700px;
 }
 .bargraph {
   background-color: white;
@@ -115,7 +114,6 @@
 .table {
   box-shadow: 10px 10px 5px grey !important;
 }
-
 .reportHeader {
   font-weight: 100 !important;
 }
@@ -281,6 +279,10 @@
 .funGraphDiv {
   background-image: linear-gradient(rgb(248, 245, 242), rgb(10, 157, 174));
   margin-top: 30px;
+  padding: 30px;
+  border-radius: 5px;
+  height: 320px;
+  width: 700px;
 }
 
 .removeMargin {
