@@ -43,24 +43,27 @@ class Homepage extends React.Component {
             </Header>
           </div>
           <Container className="homepageContainer">
+            <div className="homepageText">Welcome to EmotionKnow!</div>
             <div className="homepageText">
-              EmotionKnow is an online journaling application for children with
-              written, audio, and video journaling methods providing feedback on
-              universal emotions to children and parents. Input from the child
-              is evaluated by MorphCast SDK or TwinWord API reporting data in
-              graph form on emotional states expressed.
+              For chidren, we are here to support you in your emotional growth!
+              Say goodbye to traditional diaries and journals, and say hello to
+              options, privacy, and emotional feedback! You can choose to record
+              a video, record your voice, or write a journal entry, see all the
+              journals you have created, and see what emotions you have
+              expressed in your journal entries. We provide feedback on the
+              universal emotions of Joy, Surprise, Sadness, Disgust, Anger, and
+              Fear. Now you have an easy way to keep track of how you have been
+              feeling! And don't forget to check out the Fun With Emotions Page
+              to see what emotions you can express with your face in real time!
+              You are beautifully emotionally intelligent!
             </div>
             <div className="homepageText">
-              Children and parents have separate portals so children have access
-              to a history of their recordings and the corresponding graphical
-              representation of emotions whereas parents only have access to the
-              graphical representation.
-            </div>
-            <div className="homepageText">
-              EmotionKnow is intended to help children grow in emotional
-              intelligence and help parents stay attuned to their child’s
-              wellbeing, providing an overall sense of connectedness and
-              advanced communication during pivotal stages of development.
+              For parents, we are committed to helping parents stay in the loop
+              with how their child is feeling. Log in to your portal to see the
+              emotional reports generated from your child's journal entries. We
+              want to help you stay attuned to your child’s wellbeing, providing
+              an overall sense of connectedness and advanced communication
+              during pivotal stages of development.
             </div>
           </Container>
         </div>

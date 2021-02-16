@@ -121,11 +121,6 @@ class VoiceRecorderPage extends React.Component {
     journal.append("child_id", this.props.child.id)
     journal.append("content", this.state.finalTranscript)
     journal.append("clip", file, `${this.state.submittedTitle}`)
-
-    for (let value of journal.values()) {
-      console.log(value)
-    }
-
     fetch("http://localhost:3000/audio_entries", {
       method: "POST",
       body: journal,

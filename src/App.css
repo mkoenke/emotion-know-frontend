@@ -200,6 +200,7 @@
 
 .homepageText {
   margin: 20px !important;
+  line-height: 26px;
 }
 .homepageContainer {
   color: rgb(10, 157, 174);

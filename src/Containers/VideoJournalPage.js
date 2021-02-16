@@ -5,7 +5,6 @@ import CameraView from "../Components/CameraView"
 
 class CameraPage extends React.Component {
   render() {
-    console.log("Props: ", this.props)
     return (
       <>
         <div className="pattern">

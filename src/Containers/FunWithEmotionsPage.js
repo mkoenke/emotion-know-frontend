@@ -64,7 +64,6 @@ class FunWithEmotionsPage extends React.Component {
   }
 
   findEmotion = (valence, arousal) => {
-    console.log("Finding emotions:")
     if (
       valence <= 0.11 &&
       valence >= -0.09 &&
@@ -308,8 +307,6 @@ class FunWithEmotionsPage extends React.Component {
     let y = Math.max(-1, Math.min(arousal, 1))
     let u = (x * Math.sqrt(1 - (y * y) / 2) + 1) * 50
     let v = (y * Math.sqrt(1 - (x * x) / 2) + 1) * 50
-    console.log("X value: ", u)
-    console.log("Y value: ", v)
     return { x: u, y: v }
   }
 

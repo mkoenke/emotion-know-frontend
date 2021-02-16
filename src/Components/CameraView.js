@@ -85,7 +85,6 @@ class RecordView extends React.Component {
     })
       .then((resp) => resp.json())
       .then((returnedVideoJournal) => {
-        console.log("returned video journal:", returnedVideoJournal)
         this.props.dispatchVideo(returnedVideoJournal)
         this.postReport(returnedVideoJournal)
         this.sendEmail()
@@ -130,8 +129,6 @@ class RecordView extends React.Component {
       sadness: this.state.sadnessAvg,
       surprise: this.state.surpriseAvg,
     }
-
-    console.log("Report before post: ", reportToPost)
     return fetch("http://localhost:3000/video_reports", {
       method: "POST",
       headers: {
@@ -142,7 +139,6 @@ class RecordView extends React.Component {
     })
       .then((resp) => resp.json())
       .then((returnedReport) => {
-        console.log("returned video report:", returnedReport)
         this.props.dispatchReport(returnedReport)
       })
   }
@@ -197,7 +193,6 @@ class RecordView extends React.Component {
   }
 
   render() {
-    console.log("State: ", this.state)
     return (
       <>
         <div className="journal videoJournal">
