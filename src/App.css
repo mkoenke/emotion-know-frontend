@@ -197,6 +197,9 @@
 .pagePadding {
   padding: 30px;
 }
+.center {
+  text-align: center;
+}
 
 .homepageText {
   margin: 20px !important;
@@ -204,12 +207,13 @@
 }
 .homepageContainer {
   color: rgb(10, 157, 174);
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
   font-size: 20px;
   font-family: "Comic Sans MS", "Comic Sans";
   object-fit: contain;
   padding-left: 100px;
   padding-right: 100px;
+  padding: 75px;
 }
 .height {
   height: 40vh;
@@ -303,7 +307,8 @@
   margin: 30px !important;
 }
 .homepageBannerHeight {
-  height: 500px;
+  height: 500px !important;
+  object-fit: cover !important;
 }
 .inputWidth {
   width: 300px !important;

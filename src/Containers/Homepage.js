@@ -1,6 +1,7 @@
 import React from "react"
 import { Parallax, ParallaxBanner } from "react-scroll-parallax"
 import { Container, Header } from "semantic-ui-react"
+import handWith3Blocks from "../assets/images/handWith3Blocks.jpg"
 import handWithBlock from "../assets/images/handWithBlock.jpg"
 import handWithBlocks from "../assets/images/handWithBlocks.jpg"
 import handWithVerticalBlocks from "../assets/images/handWithVerticalBlocks.jpg"
@@ -32,7 +33,7 @@ class Homepage extends React.Component {
         ></ParallaxBanner>
 
         <div>
-          <div className="root">
+          <div className="root height">
             <span className={`copy h1`}>
               <Parallax x={[-80, 80]} className="letter">
                 EmotionKnow
@@ -42,8 +43,19 @@ class Homepage extends React.Component {
               Building Emotional Intelligence in Children
             </Header>
           </div>
+        </div>
+        <ParallaxBanner
+          layers={[
+            {
+              image: handWithBlocks,
+              amount: 0.3,
+            },
+          ]}
+          className="homepageBannerHeight"
+        ></ParallaxBanner>
+        <div>
           <Container className="homepageContainer">
-            <div className="homepageText">Welcome to EmotionKnow!</div>
+            <div className="homepageText center">Welcome to EmotionKnow!</div>
             <div className="homepageText">
               For chidren, we are here to support you in your emotional growth!
               Say goodbye to traditional diaries and journals, and say hello to
@@ -71,7 +83,7 @@ class Homepage extends React.Component {
         <ParallaxBanner
           layers={[
             {
-              image: handWithBlocks,
+              image: handWith3Blocks,
               amount: 0.3,
             },
           ]}
