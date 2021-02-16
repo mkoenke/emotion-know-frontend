@@ -54,8 +54,6 @@ class VoiceRecorderPage extends React.Component {
   }
 
   handleListen = () => {
-    console.log("listening?", this.state.listening)
-
     if (this.state.listening) {
       recognition.start()
       recognition.onend = () => {
@@ -87,7 +85,6 @@ class VoiceRecorderPage extends React.Component {
 
       const transcriptArr = finalTranscript.split(" ")
       const stopCmd = transcriptArr.slice(-3, -1)
-      console.log("stopCmd", stopCmd)
 
       if (stopCmd[0] === "stop" && stopCmd[1] === "listening") {
         this.setState({ listening: false }, this.stop)
@@ -127,7 +124,6 @@ class VoiceRecorderPage extends React.Component {
     })
       .then((resp) => resp.json())
       .then((journal) => {
-        console.log("returned audio journal:", journal)
         this.props.dispatchAudio(journal)
         this.sendEmail()
         this.props.dispatchReport(journal.audio_report)

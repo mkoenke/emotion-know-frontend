@@ -19,7 +19,6 @@ class LineGraph extends React.Component {
 
         return { key: `${date}`, value: report.anger }
       })
-      console.log("Anger Keys and Values : ", angerKeysAndValues)
       let disgustKeysAndValues = this.props.allReports.map((report) => {
         let date = new Date(report.created_at)
 
