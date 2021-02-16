@@ -54,7 +54,6 @@ function parentModalReducer(prevState = defaultState.parentModalOpen, action) {
 function childReducer(prevState = defaultState.child, action) {
   switch (action.type) {
     case SET_CHILD:
-      console.log("Set child: ", action.payload)
       return action.payload
     case LOGOUT:
       return null
@@ -66,7 +65,6 @@ function childReducer(prevState = defaultState.child, action) {
 function parentReducer(prevState = defaultState.parent, action) {
   switch (action.type) {
     case SET_PARENT:
-      console.log("Set parent: ", action.payload)
       return action.payload
     case LOGOUT:
       return null
@@ -78,20 +76,13 @@ function parentReducer(prevState = defaultState.parent, action) {
 function journalArrayReducer(prevState = defaultState.allJournals, action) {
   switch (action.type) {
     case ALL_JOURNALS:
-      console.log("All journals in reducer: ", action.payload)
       return action.payload
     case ADD_JOURNAL:
-      console.log("Added journal in reducer: ", action.payload)
-      console.log(
-        "All journals after added journal: ",
-        prevState.concat(action.payload)
-      )
       return prevState.concat(action.payload)
     case DELETE_JOURNAL:
       let filteredArray = prevState.filter(
         (journal) => journal.id !== action.payload.id
       )
-      console.log("all journals after deleted: ", filteredArray)
       return filteredArray
 
     default:
@@ -102,16 +93,13 @@ function journalArrayReducer(prevState = defaultState.allJournals, action) {
 function audioArrayReducer(prevState = defaultState.allAudios, action) {
   switch (action.type) {
     case ALL_AUDIOS:
-      console.log("All audio journals in reducer: ", action.payload)
       return action.payload
     case ADD_AUDIO:
-      console.log("Added audio journal in reducer: ", action.payload)
       return prevState.concat(action.payload)
     case DELETE_AUDIO:
       let filteredArray = prevState.filter(
         (journal) => journal.id !== action.payload.id
       )
-      console.log("all audio journals after deleted: ", filteredArray)
       return filteredArray
 
     default:
@@ -122,16 +110,13 @@ function audioArrayReducer(prevState = defaultState.allAudios, action) {
 function videoArrayReducer(prevState = defaultState.allVideos, action) {
   switch (action.type) {
     case ALL_VIDEOS:
-      console.log("All video journals in reducer: ", action.payload)
       return action.payload
     case ADD_VIDEO:
-      console.log("Added video journal in reducer: ", action.payload)
       return prevState.concat(action.payload)
     case DELETE_VIDEO:
       let filteredArray = prevState.filter(
         (journal) => journal.id !== action.payload.id
       )
-      console.log("all video journals after deleted: ", filteredArray)
       return filteredArray
     default:
       return prevState
@@ -141,12 +126,9 @@ function videoArrayReducer(prevState = defaultState.allVideos, action) {
 function reportArrayReducer(prevState = defaultState.allReports, action) {
   switch (action.type) {
     case ALL_REPORTS:
-      console.log("All reports in reducer: ", action.payload)
       return action.payload
     case ADD_REPORT:
-      console.log("Reports before addtion: ", prevState)
       let reportsWithAddition = [...prevState, action.payload]
-      console.log("Reports with addition: ", reportsWithAddition)
       return reportsWithAddition
     default:
       return prevState
@@ -156,7 +138,6 @@ function reportArrayReducer(prevState = defaultState.allReports, action) {
 function parentReportReducer(prevState = defaultState.parentsReports, action) {
   switch (action.type) {
     case PARENTS_REPORTS:
-      console.log("All parents reports in reducer: ", action.payload)
       return action.payload
     default:
       return prevState
@@ -166,7 +147,6 @@ function parentReportReducer(prevState = defaultState.parentsReports, action) {
 function errorReducer(prevState = defaultState.error, action) {
   switch (action.type) {
     case SET_ERROR:
-      console.log("Error: ", action.payload)
       return action.payload
     default:
       return prevState

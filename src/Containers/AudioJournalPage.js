@@ -24,8 +24,8 @@ class VoiceRecorderPage extends React.Component {
     finalTranscript: "",
   }
   componentWillUnmount() {
-    ///not hitting here
     console.log("here")
+    ///not hitting here
     this.stop()
     this.stopListen()
   }
@@ -253,6 +253,7 @@ class VoiceRecorderPage extends React.Component {
             ) : null}
 
             <div className="audioContainer">
+              <Header className="content">Audio Transcript</Header>
               <div id="interim" className="interim"></div>
               <div id="final" className="final"></div>
             </div>

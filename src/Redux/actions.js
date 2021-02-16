@@ -48,7 +48,6 @@ export function login(child) {
       .then((resp) => resp.json())
       .then((data) => {
         if (!data.error) {
-          console.log("data:", data)
           localStorage.setItem("token", data.jwt)
 
           dispatch(setChild(data.child))
@@ -88,7 +87,6 @@ export function loginParent(parent) {
       .then((resp) => resp.json())
       .then((data) => {
         if (!data.error) {
-          console.log("data:", data)
           localStorage.setItem("token", data.jwt)
 
           dispatch(setParent(data.parent))
@@ -115,19 +113,16 @@ export function logout() {
 
 export function postJournal(journal) {
   return (dispatch) => {
-    // const token = localStorage.getItem("token")
     return fetch("http://localhost:3000/journal_entries", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        // Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(journal),
     })
       .then((resp) => resp.json())
       .then((journal) => {
-        console.log("returned journal:", journal)
         dispatch(addJournalToAllJournals(journal))
         dispatch(addReportToAllReports(journal.report))
       })
@@ -148,8 +143,7 @@ export function deleteJournal(journal) {
       method: "DELETE",
     })
       .then((resp) => resp.json())
-      .then((data) => {
-        console.log("deleted journal:", data)
+      .then(() => {
         dispatch(removeJournal(journal))
       })
   }
@@ -160,14 +154,9 @@ function removeJournal(journal) {
 }
 
 export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
-  console.log("Array of journals: ", arrayOfJournals)
   let arrayOfJournalReports = arrayOfJournals.map((journal) => journal.report)
-  console.log("Array of journal reports:", arrayOfJournalReports)
   let arrayOfAudioReports = arrayOfAudios.map((audio) => audio.audio_report)
-  console.log("Array of audios: ", arrayOfAudios)
-  console.log("Array of audio reports:", arrayOfAudioReports)
   let arrayOfVideoReports = arrayOfVideos.map((video) => video.video_report)
-  console.log("Array of Video reports: ", arrayOfVideoReports)
   let arrayOfReports = [
     ...arrayOfJournalReports,
     ...arrayOfAudioReports,
@@ -176,8 +165,6 @@ export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
   let sortedReports = arrayOfReports.sort(function (a, b) {
     return new Date(a.created_at) - new Date(b.created_at)
   })
-  console.log("Sorted reports: ", sortedReports)
-
   return { type: ALL_REPORTS, payload: sortedReports }
 }
 
@@ -190,7 +177,6 @@ export function parentsReports(journalReports, audioReports, videoReports) {
   let sortedReports = arrayOfReports.sort(function (a, b) {
     return new Date(a.created_at) - new Date(b.created_at)
   })
-  console.log("ARRAY OF SORTED PARENTS REPORTS: ", sortedReports)
   return { type: PARENTS_REPORTS, payload: sortedReports }
 }
 
@@ -208,8 +194,7 @@ export function deleteAudio(journal) {
       method: "DELETE",
     })
       .then((resp) => resp.json())
-      .then((data) => {
-        console.log("deleted audio journal:", data)
+      .then(() => {
         dispatch(removeAudio(journal))
       })
   }
@@ -233,8 +218,7 @@ export function deleteVideo(journal) {
       method: "DELETE",
     })
       .then((resp) => resp.json())
-      .then((data) => {
-        console.log("deleted video journal:", data)
+      .then(() => {
         dispatch(removeVideo(journal))
       })
   }

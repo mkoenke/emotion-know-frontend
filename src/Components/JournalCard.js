@@ -44,7 +44,7 @@ class JournalCard extends React.Component {
                   </Card.Description>
                 </Card.Content>
               </Card>
-              <div>
+              <div className="buttonDiv">
                 <Popup
                   content="Warning!  This will delete this journal entry!"
                   trigger={

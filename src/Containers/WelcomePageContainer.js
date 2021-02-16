@@ -6,7 +6,6 @@ import ReportGalleryPage from "./ReportGalleryPage"
 
 class WelcomePageContainer extends React.Component {
   render() {
-    console.log("props: ", this.props.parent)
     return (
       <>
         {!this.props.parent && this.props.child ? (
