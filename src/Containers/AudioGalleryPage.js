@@ -1,12 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Grid, Header } from "semantic-ui-react"
-import image5 from "../assets/images/audio1.jpg"
 import image6 from "../assets/images/audio2.jpg"
 import image1 from "../assets/images/audioGallery1.jpg"
-import image2 from "../assets/images/audioGallery2.jpg"
 import image3 from "../assets/images/audioGallery3.jpg"
 import image4 from "../assets/images/audioGallery4.jpg"
+import image2 from "../assets/images/boyMic.jpg"
+import image5 from "../assets/images/newAudio.jpg"
 import AudioCard from "../Components/AudioCard"
 
 class AudioGalleryPage extends React.Component {

@@ -259,6 +259,7 @@
   font-family: "Comic Sans MS", "Comic Sans" !important;
   color: rgb(10, 157, 174) !important;
   padding-top: 15px !important;
+  margin-bottom: 30px !important;
 }
 .smallGraph {
   min-height: 500px;
@@ -298,7 +299,8 @@
   width: 500px !important;
 }
 .smallGraphPadding {
-  padding-top: 117px;
+  padding-top: 117px !important;
+  padding: 10px;
 }
 .parentGraphPadding {
   padding: 50px;
