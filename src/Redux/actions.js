@@ -19,21 +19,7 @@ import {
   SET_PARENT,
 } from "./actionTypes"
 
-export function setModal(value) {
-  return { type: MODAL_OPEN, payload: value }
-}
-
-export function setParentModal(value) {
-  return { type: PARENT_MODAL_OPEN, payload: value }
-}
-
-export function setChild(child) {
-  return { type: SET_CHILD, payload: child }
-}
-
-export function setParent(parent) {
-  return { type: SET_PARENT, payload: parent }
-}
+///login/logout actions
 
 export function login(child) {
   return (dispatch) => {
@@ -68,10 +54,6 @@ export function login(child) {
         }
       })
   }
-}
-
-export function setError(error) {
-  return { type: SET_ERROR, payload: error }
 }
 
 export function loginParent(parent) {
@@ -110,6 +92,36 @@ export function loginParent(parent) {
 export function logout() {
   return { type: LOGOUT }
 }
+
+//child actions
+
+export function setChild(child) {
+  return { type: SET_CHILD, payload: child }
+}
+
+//parent actions
+
+export function setParent(parent) {
+  return { type: SET_PARENT, payload: parent }
+}
+
+//modal actions
+
+export function setModal(value) {
+  return { type: MODAL_OPEN, payload: value }
+}
+
+export function setParentModal(value) {
+  return { type: PARENT_MODAL_OPEN, payload: value }
+}
+
+//error action
+
+export function setError(error) {
+  return { type: SET_ERROR, payload: error }
+}
+
+//written journal actions
 
 export function postJournal(journal) {
   return (dispatch) => {
@@ -153,32 +165,7 @@ function removeJournal(journal) {
   return { type: DELETE_JOURNAL, payload: journal }
 }
 
-export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
-  let arrayOfJournalReports = arrayOfJournals.map((journal) => journal.report)
-  let arrayOfAudioReports = arrayOfAudios.map((audio) => audio.audio_report)
-  let arrayOfVideoReports = arrayOfVideos.map((video) => video.video_report)
-  let arrayOfReports = [
-    ...arrayOfJournalReports,
-    ...arrayOfAudioReports,
-    ...arrayOfVideoReports,
-  ]
-  let sortedReports = arrayOfReports.sort(function (a, b) {
-    return new Date(a.created_at) - new Date(b.created_at)
-  })
-  return { type: ALL_REPORTS, payload: sortedReports }
-}
-
-export function addReportToAllReports(report) {
-  return { type: ADD_REPORT, payload: report }
-}
-
-export function parentsReports(journalReports, audioReports, videoReports) {
-  let arrayOfReports = [...journalReports, ...audioReports, ...videoReports]
-  let sortedReports = arrayOfReports.sort(function (a, b) {
-    return new Date(a.created_at) - new Date(b.created_at)
-  })
-  return { type: PARENTS_REPORTS, payload: sortedReports }
-}
+// Audio journal actions
 
 export function allAudios(arrayOfAudios) {
   return { type: ALL_AUDIOS, payload: arrayOfAudios }
@@ -204,6 +191,8 @@ function removeAudio(journal) {
   return { type: DELETE_AUDIO, payload: journal }
 }
 
+//Video journal actions
+
 export function allVideos(arrayOfVideos) {
   return { type: ALL_VIDEOS, payload: arrayOfVideos }
 }
@@ -226,4 +215,33 @@ export function deleteVideo(journal) {
 
 function removeVideo(journal) {
   return { type: DELETE_VIDEO, payload: journal }
+}
+
+//Report actions
+
+export function allReports(arrayOfJournals, arrayOfAudios, arrayOfVideos) {
+  let arrayOfJournalReports = arrayOfJournals.map((journal) => journal.report)
+  let arrayOfAudioReports = arrayOfAudios.map((audio) => audio.audio_report)
+  let arrayOfVideoReports = arrayOfVideos.map((video) => video.video_report)
+  let arrayOfReports = [
+    ...arrayOfJournalReports,
+    ...arrayOfAudioReports,
+    ...arrayOfVideoReports,
+  ]
+  let sortedReports = arrayOfReports.sort(function (a, b) {
+    return new Date(a.created_at) - new Date(b.created_at)
+  })
+  return { type: ALL_REPORTS, payload: sortedReports }
+}
+
+export function addReportToAllReports(report) {
+  return { type: ADD_REPORT, payload: report }
+}
+
+export function parentsReports(journalReports, audioReports, videoReports) {
+  let arrayOfReports = [...journalReports, ...audioReports, ...videoReports]
+  let sortedReports = arrayOfReports.sort(function (a, b) {
+    return new Date(a.created_at) - new Date(b.created_at)
+  })
+  return { type: PARENTS_REPORTS, payload: sortedReports }
 }

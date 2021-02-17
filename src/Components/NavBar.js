@@ -20,6 +20,7 @@ class NavBar extends React.Component {
       this.props.dispatchModal(true)
     }
   }
+
   handleParentLoginClick = () => {
     if (!this.props.parent) {
       this.props.dispatchParentModal(true)
@@ -33,7 +34,6 @@ class NavBar extends React.Component {
 
   render() {
     const { activeItem } = this.state
-
     return (
       <div>
         <Menu pointing secondary className="navBarBackground">
