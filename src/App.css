@@ -162,6 +162,7 @@
   align-items: center;
   text-align: center;
   margin: 10px;
+  padding-bottom: 20px;
 }
 .recorderContainer {
   display: flex;
@@ -169,6 +170,7 @@
   align-items: center;
   text-align: center;
   margin: 50px;
+  margin-bottom: 0px !important;
 }
 .interim {
   color: grey;
@@ -176,6 +178,9 @@
   padding: 1em;
   margin: 1em;
   width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  border-color: rgb(10, 157, 174);
 }
 .final {
   color: black;
@@ -183,6 +188,9 @@
   padding: 1em;
   margin: 1em;
   width: 300px;
+  background-color: white;
+  border-radius: 5px;
+  border-color: rgb(10, 157, 174);
 }
 
 .journalTitle {
@@ -207,7 +215,6 @@
 }
 .homepageContainer {
   color: rgb(10, 157, 174);
-  /* padding-bottom: 30px; */
   font-size: 20px;
   font-family: "Comic Sans MS", "Comic Sans";
   object-fit: contain;
@@ -317,4 +324,14 @@
 }
 .pagination {
   font-family: "Comic Sans MS", "Comic Sans" !important;
+}
+.replayContainer {
+  background-color: white;
+  box-shadow: 10px 10px 5px grey !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
 }

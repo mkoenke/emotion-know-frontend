@@ -57,7 +57,7 @@ class WritingPage extends React.Component {
           ) : null}
           <br />
           <Grid centered>
-            <div className="journal">
+            <div className="journal background">
               <Form
                 className="content journalForm"
                 onSubmit={this.handleFormSubmit}

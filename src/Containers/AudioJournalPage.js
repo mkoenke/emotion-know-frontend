@@ -24,8 +24,10 @@ class VoiceRecorderPage extends React.Component {
     finalTranscript: "",
   }
   componentWillUnmount() {
-    this.stop()
-    this.stopListen()
+    recognition.abort()
+    recognition.onend = () => {
+      console.log("Stopped listening per click off page")
+    }
   }
 
   changeHandler = (e) => {
@@ -51,6 +53,8 @@ class VoiceRecorderPage extends React.Component {
   }
 
   handleListen = () => {
+    console.log("Here")
+    console.log("this.state: ", this.state.listening)
     if (this.state.listening) {
       recognition.start()
       recognition.onend = () => {
@@ -180,7 +184,7 @@ class VoiceRecorderPage extends React.Component {
             </Header>
           ) : null}
 
-          <div className="journal audioJournal">
+          <div className="journal audioJournal background">
             {this.state.submittedTitle ? (
               <Header as="h1" className="content" textAlign="center">
                 {this.state.submittedTitle}
@@ -212,7 +216,12 @@ class VoiceRecorderPage extends React.Component {
                     </Header>
                   </>
                 ) : null}
-                <AudioReactRecorder state={recordState} onStop={this.onStop} />
+                <AudioReactRecorder
+                  foregroundColor="rgb(10, 157, 174)"
+                  backgroundColor="rgb(171, 218, 225)"
+                  state={recordState}
+                  onStop={this.onStop}
+                />
               </div>
               <div className="audioContainer">
                 <Popup
@@ -233,9 +242,10 @@ class VoiceRecorderPage extends React.Component {
               </div>
             </div>
             {this.state.blobUrl ? (
-              <div className="audioContainer">
-                <Header>Replay Before Upload</Header>
+              <div className="replayContainer">
+                <Header className="content">Replay Before Upload</Header>
                 <audio src={this.state.blobUrl} controls />
+                <br />
                 <Button onClick={this.handleUploadClick}>Upload</Button>
               </div>
             ) : null}
