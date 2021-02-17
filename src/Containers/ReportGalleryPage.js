@@ -236,7 +236,6 @@ class ReportGalleryPage extends React.Component {
                             items={this.state.items}
                             onChangePage={this.onChangePage}
                             labels={customLabels}
-                            className="pagination"
                           />
                         </Menu>
                       </Table.HeaderCell>

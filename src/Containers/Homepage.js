@@ -59,14 +59,14 @@ class Homepage extends React.Component {
             <div className="homepageText">
               For chidren, we are here to support you in your emotional growth!
               Say goodbye to traditional diaries and journals, and say hello to
-              options, privacy, and emotional feedback. You have a choice:
-              record a video, record your voice, or write to create a journal
-              entry. You can also see all the journals you have created in your
-              galleries. See what emotions you have expressed in your report
-              gallery in which provide feedback on the universal emotions of
-              Joy, Surprise, Sadness, Disgust, Anger, and Fear. Now you have an
-              easy way to keep track of how you have been feeling! And don't
-              forget to check out the Fun With Emotions Page to see what
+              privacy, new ways to journal, and emotional feedback. You have a
+              choice: record a video, record your voice, or write to create a
+              journal entry. You can see all the journals you have created in
+              your galleries. Check out what emotions you have expressed in your
+              report gallery wheres there is feedback on the universal emotions
+              of Joy, Surprise, Sadness, Disgust, Anger, and Fear. Now you have
+              an easy way to keep track of how you have been feeling! And don't
+              forget to play with the Fun With Emotions Page to see what
               emotions you can express with your face in real time! You are
               beautifully emotionally intelligent!
             </div>

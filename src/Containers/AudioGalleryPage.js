@@ -1,3 +1,4 @@
+import JwPagination from "jw-react-pagination"
 import React from "react"
 import { connect } from "react-redux"
 import { Grid, Header } from "semantic-ui-react"
@@ -10,10 +11,22 @@ import image5 from "../assets/images/newAudio.jpg"
 import AudioCard from "../Components/AudioCard"
 
 class AudioGalleryPage extends React.Component {
+  state = {
+    items: [],
+    pageOfItems: [],
+  }
+
+  componentDidMount() {
+    this.setState({ items: this.props.allAudios })
+  }
+
+  onChangePage = (pageOfItems) => {
+    this.setState({ pageOfItems })
+  }
   arrayOfJournals = () => {
     const imageArray = [image1, image2, image3, image4, image5, image6]
     let i = 0
-    return this.props.allAudios.map((card) => {
+    return this.state.pageOfItems.map((card) => {
       if (i < imageArray.length - 1) {
         i++
       } else {
@@ -32,6 +45,12 @@ class AudioGalleryPage extends React.Component {
     })
   }
   render() {
+    const customLabels = {
+      first: "<<",
+      last: ">>",
+      previous: "<",
+      next: ">",
+    }
     return (
       <>
         <div className="background pagePadding">
@@ -43,7 +62,16 @@ class AudioGalleryPage extends React.Component {
 
           <Grid centered columns="three">
             <Grid.Row>{this.arrayOfJournals()}</Grid.Row>
+            <div className="paginateLarge">
+              <JwPagination
+                items={this.state.items}
+                onChangePage={this.onChangePage}
+                labels={customLabels}
+                pageSize={9}
+              />
+            </div>
           </Grid>
+          <div className="footer"></div>
         </div>
       </>
     )

@@ -190,7 +190,7 @@ class RecordView extends React.Component {
   render() {
     return (
       <>
-        <div className="journal videoJournal">
+        <div className="journal videoJournal background">
           <div style={{ margin: "50px" }}>
             {this.state.submittedTitle ? (
               <Header as="h1" className="content" textAlign="center">
