@@ -40,14 +40,9 @@ class RecordView extends React.Component {
   }
 
   componentDidMount() {
-    // let source = CY.getUserMediaCameraFactory().createCamera({
-    //   video: document.getElementById("video"),
-    // })
-
     CY.loader()
       .licenseKey(process.env.sdkLicense)
       .addModule(CY.modules().FACE_EMOTION.name)
-      // .source(source)
       .load()
       .then(({ start, stop }) => {
         this.startSDK = start

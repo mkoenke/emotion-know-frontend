@@ -59,23 +59,26 @@ class Homepage extends React.Component {
             <div className="homepageText">
               For chidren, we are here to support you in your emotional growth!
               Say goodbye to traditional diaries and journals, and say hello to
-              options, privacy, and emotional feedback! You can choose to record
-              a video, record your voice, or write a journal entry, see all the
-              journals you have created, and see what emotions you have
-              expressed in your journal entries. We provide feedback on the
-              universal emotions of Joy, Surprise, Sadness, Disgust, Anger, and
-              Fear. Now you have an easy way to keep track of how you have been
-              feeling! And don't forget to check out the Fun With Emotions Page
-              to see what emotions you can express with your face in real time!
-              You are beautifully emotionally intelligent!
+              options, privacy, and emotional feedback. You have a choice:
+              record a video, record your voice, or write to create a journal
+              entry. You can also see all the journals you have created in your
+              galleries. See what emotions you have expressed in your report
+              gallery in which provide feedback on the universal emotions of
+              Joy, Surprise, Sadness, Disgust, Anger, and Fear. Now you have an
+              easy way to keep track of how you have been feeling! And don't
+              forget to check out the Fun With Emotions Page to see what
+              emotions you can express with your face in real time! You are
+              beautifully emotionally intelligent!
             </div>
             <div className="homepageText">
               For parents, we are committed to helping parents stay in the loop
-              with how their child is feeling. Log in to your portal to see the
-              emotional reports generated from your child's journal entries. We
-              want to help you stay attuned to your child’s wellbeing, providing
-              an overall sense of connectedness and advanced communication
-              during pivotal stages of development.
+              with how their child is feeling. When your child uses EmotionKnow
+              to create a journal entry, you will recieve an email to keep you
+              posted. Log in to your portal to see the emotional reports
+              generated from your child's entries. We want to help you stay
+              attuned to your child’s wellbeing, providing an overall sense of
+              connectedness in families, and advanced communication during
+              pivotal stages of development.
             </div>
           </Container>
         </div>

@@ -24,8 +24,6 @@ class VoiceRecorderPage extends React.Component {
     finalTranscript: "",
   }
   componentWillUnmount() {
-    console.log("here")
-    ///not hitting here
     this.stop()
     this.stopListen()
   }
@@ -41,7 +39,6 @@ class VoiceRecorderPage extends React.Component {
       },
       this.handleListen
     )
-    // setTimeout(this.start(), 5000)
   }
 
   stopListen = () => {

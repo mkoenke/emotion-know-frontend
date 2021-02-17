@@ -32,12 +32,14 @@ class ReportGalleryPage extends React.Component {
   }
 
   handleReportClick = (event) => {
+    if (this.state.beenClicked) {
+      this.setState({ beenClicked: false })
+    }
     let clickedReport = this.props.allReports.find(
       (report) => report.created_at === event.target.closest("tr").id
     )
     this.setState(
       {
-        beenClicked: !this.state.beenClicked,
         clickedReport: clickedReport,
       },
       this.findJournal
@@ -50,7 +52,6 @@ class ReportGalleryPage extends React.Component {
     )
     this.setState(
       {
-        beenClicked: !this.state.beenClicked,
         clickedReport: clickedReport,
       },
       this.findJournal
@@ -63,19 +64,28 @@ class ReportGalleryPage extends React.Component {
         (journal) => journal.id === this.state.clickedReport.journal_entry_id
       )
 
-      this.setState({ clickedJournal: journal })
+      this.setState({
+        clickedJournal: journal,
+        beenClicked: true,
+      })
     } else if (this.state.clickedReport.audio_entry_id) {
       let journal = this.props.allAudios.find(
         (journal) => journal.id === this.state.clickedReport.audio_entry_id
       )
 
-      this.setState({ clickedJournal: journal })
+      this.setState({
+        clickedJournal: journal,
+        beenClicked: true,
+      })
     } else if (this.state.clickedReport.video_entry_id) {
       let journal = this.props.allVideos.find(
         (journal) => journal.id === this.state.clickedReport.video_entry_id
       )
 
-      this.setState({ clickedJournal: journal })
+      this.setState({
+        clickedJournal: journal,
+        beenClicked: true,
+      })
     }
   }
 
