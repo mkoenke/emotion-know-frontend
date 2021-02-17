@@ -29,19 +29,21 @@ function App() {
   return (
     <>
       <NavBar />
-      <Switch>
-        <Route path="/resources" component={ResourcesPage} />
-        <Route path="/welcome" component={WelcomePageContainer} />
-        <Route path="/webcam" component={CameraPage} />
-        <Route path="/write" component={WritingPage} />
-        <Route path="/journals" component={WrittenJournalGallery} />
-        <Route path="/audios" component={AudioGalleryPage} />
-        <Route path="/audio" component={VoiceRecorderPage} />
-        <Route path="/videos" component={VideoGalleryPage} />
-        <Route path="/reports" component={ReportGalleryPage} />
-        <Route path="/fun" component={FunWithEmotionsPage} />
-        <Route path="/" component={Homepage} />
-      </Switch>
+      <div className="containerPad">
+        <Switch>
+          <Route path="/resources" component={ResourcesPage} />
+          <Route path="/welcome" component={WelcomePageContainer} />
+          <Route path="/webcam" component={CameraPage} />
+          <Route path="/write" component={WritingPage} />
+          <Route path="/journals" component={WrittenJournalGallery} />
+          <Route path="/audios" component={AudioGalleryPage} />
+          <Route path="/audio" component={VoiceRecorderPage} />
+          <Route path="/videos" component={VideoGalleryPage} />
+          <Route path="/reports" component={ReportGalleryPage} />
+          <Route path="/fun" component={FunWithEmotionsPage} />
+          <Route path="/" component={Homepage} />
+        </Switch>
+      </div>
     </>
   )
 }

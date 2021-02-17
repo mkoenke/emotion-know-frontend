@@ -36,14 +36,14 @@ class NavBar extends React.Component {
     const { activeItem } = this.state
     return (
       <div>
-        <Menu pointing secondary className="navBarBackground">
+        <Menu pointing secondary fixed="top" className="navBarBackground">
           {this.props.child ? (
             <NavLink to="/welcome">
               <Menu.Item
                 name="home"
                 active={activeItem === "home"}
                 onClick={this.handleItemClick}
-                className="navbar navitem"
+                className="navbar"
               />
             </NavLink>
           ) : (

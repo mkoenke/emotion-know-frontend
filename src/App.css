@@ -5,6 +5,9 @@
 .App {
   text-align: center;
 }
+.containerPad {
+  padding-top: 67px;
+}
 
 .root {
   display: flex;
