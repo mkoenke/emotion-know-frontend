@@ -72,7 +72,6 @@ class WrittenJournalGallery extends React.Component {
               />
             </div>
           </Grid>
-          <div className="footer"></div>
         </div>
       </>
     )
