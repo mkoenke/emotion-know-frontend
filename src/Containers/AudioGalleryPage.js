@@ -20,6 +20,12 @@ class AudioGalleryPage extends React.Component {
     this.setState({ items: this.props.allAudios })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.allAudios !== this.state.items) {
+      this.setState({ items: this.props.allAudios })
+    }
+  }
+
   onChangePage = (pageOfItems) => {
     this.setState({ pageOfItems })
   }

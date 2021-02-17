@@ -20,6 +20,12 @@ class WrittenJournalGallery extends React.Component {
     this.setState({ items: this.props.allJournals })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.allJournals !== this.state.items) {
+      this.setState({ items: this.props.allJournals })
+    }
+  }
+
   onChangePage = (pageOfItems) => {
     this.setState({ pageOfItems })
   }

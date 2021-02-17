@@ -20,6 +20,12 @@ class VideoGalleryPage extends React.Component {
     this.setState({ items: this.props.allVideos })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.allVideos !== this.state.items) {
+      this.setState({ items: this.props.allVideos })
+    }
+  }
+
   onChangePage = (pageOfItems) => {
     this.setState({ pageOfItems })
   }
