@@ -6,15 +6,15 @@ EmotionKnow was inspired by my 11-year-old daughter, from the desire to stay con
 
 EmotionKnow offers children new ways to express themselves through journaling with video and audio recording, or writing electronically.
 
-## Prerequisites
+<!-- ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
 <!--- These are just example requirements. Add, duplicate or remove as required --->
 
-- You have installed the latest version of `<coding_language/dependency/requirement_1>`
+<!-- - You have installed the latest version of `<coding_language/dependency/requirement_1>`
 - You have a `<Windows/Linux/Mac>` machine. State which OS is supported/which is not.
-- You have read `<guide/link/documentation_related_to_project>`.
+- You have read `<guide/link/documentation_related_to_project>`. --> -->
 
 <!-- ## Installing EmotionKnow
 
