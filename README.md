@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Welcome to EmotionKnow!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+EmotionKnow was created with React.js front end, Ruby on Rails API, full Authentication with bcrypt and json web tokens, Redux for state management, Semantic UI React and Custom CSS for styling, Microsoft Azure for blob storage, Twinword Emotion Analysis API, and MorphCast SDK based on Deep Neural Network Artificial Intelligence.
 
-## Available Scripts
+EmotionKnow was inspired by my 11-year-old daughter, from the desire to stay connected to her mental health and support her in building emotional intelligence. I had the ambition to integrate my education in Positive Psychology with Computer Science and built an app to support adolescents and their families during pivotal stages of development.
 
-In the project directory, you can run:
+EmotionKnow offers children new ways to express themselves through journaling with video and audio recording, or writing electronically.
 
-### `yarn start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Before you begin, ensure you have met the following requirements:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!--- These are just example requirements. Add, duplicate or remove as required --->
 
-### `yarn test`
+- You have installed the latest version of `<coding_language/dependency/requirement_1>`
+- You have a `<Windows/Linux/Mac>` machine. State which OS is supported/which is not.
+- You have read `<guide/link/documentation_related_to_project>`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- ## Installing EmotionKnow
 
-### `yarn build`
+To install EmotionKnow, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Linux and macOS:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+<install_command>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Windows:
 
-### `yarn eject`
+```
+<install_command>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Using <project_name>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To use <project_name>, follow these steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+<usage_example>
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Add run commands and examples you think users will find useful. Provide an options reference for bonus points! -->
 
-## Learn More
+## Contributing to EmotionKnow
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To contribute to EmotionKnow, follow these steps:
 
-### Code Splitting
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin <project_name>/<location>`
+5. Create the pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-### Analyzing the Bundle Size
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+If you want to contact me you can reach me at mkoenke@sas.upenn.edu.
 
-### Making a Progressive Web App
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!--- If you're not sure which open license to use see https://choosealicense.com/--->
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project uses the following license: [MIT License](https://mit-license.org/).
