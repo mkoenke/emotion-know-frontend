@@ -6,6 +6,8 @@ EmotionKnow was inspired by my 11-year-old daughter, from the desire to stay con
 
 EmotionKnow offers children new ways to express themselves through journaling with video and audio recording, or writing electronically.
 
+[![EmotionKnow Gif](src/assets/images/emotionKnowGif.gif)](https://www.youtube.com/watch?v=sbiJuBXfF88&t=2s)
+
 <!-- ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
