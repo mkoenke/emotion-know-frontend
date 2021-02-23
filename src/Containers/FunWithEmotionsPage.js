@@ -19,12 +19,14 @@ class FunWithEmotionsPage extends React.Component {
     joy: "",
     sadness: "",
     surprise: "",
+    affects98: "",
+    dominantAffect: "",
   }
   componentDidMount() {
     CY.loader()
       .licenseKey(process.env.sdkLicense)
       .addModule(CY.modules().FACE_EMOTION.name)
-      // .addModule(CY.modules().FACE_AROUSAL_VALENCE.name)
+      .addModule(CY.modules().FACE_AROUSAL_VALENCE.name)
       .load()
       .then(({ start, stop }) => {
         start()
@@ -43,24 +45,29 @@ class FunWithEmotionsPage extends React.Component {
         surprise: evt.detail.output.rawEmotion.Surprise,
       })
     })
-    // window.addEventListener(
-    //   CY.modules().FACE_AROUSAL_VALENCE.eventName,
-    //   (evt) => {
-    //     this.setState({
-    //       arousal: evt.detail.output.arousalvalence.arousal,
-    //       valence: evt.detail.output.arousalvalence.valence,
-    //     })
-    //     let arousal = evt.detail.output.arousalvalence.arousal
-    //     let valence = evt.detail.output.arousalvalence.valence
-    //     // this.calculateCoordinates(arousal, valence)
-    //     this.findEmotion(arousal, valence)
-    //   }
-    // )
+    window.addEventListener(
+      CY.modules().FACE_AROUSAL_VALENCE.eventName,
+      (evt) => {
+        this.setState(
+          {
+            affects98: evt.detail.output.affects98,
+          },
+          this.findDominantAffect(evt.detail.output.affects98)
+        )
+      }
+    )
   }
 
   componentWillUnmount() {
     this.stopSDK()
     // stopSDK()
+  }
+
+  findDominantAffect = (affectsObj) => {
+    let affect = Object.keys(affectsObj).reduce(function (a, b) {
+      return affectsObj[a] > affectsObj[b] ? a : b
+    })
+    this.setState({ dominantAffect: affect })
   }
 
   render() {
@@ -102,6 +109,7 @@ class FunWithEmotionsPage extends React.Component {
       ],
     }
 
+    console.log("Affects98: ", this.state.affects98)
     return (
       <>
         {!this.props.parent && this.props.child ? (
@@ -119,9 +127,11 @@ class FunWithEmotionsPage extends React.Component {
               </Grid>
 
               <Header className="waitOrDom" size="huge" textAlign="center">
-                {this.state.emo ? (
+                {this.state.emo && this.state.dominantAffect ? (
                   <>
                     Dominant Emotion: {this.state.emo}
+                    <br />
+                    Dominant Affect: {this.state.dominantAffect}
                     <Grid centered>
                       <div className="funGraphDiv">
                         <Bar
@@ -139,15 +149,6 @@ class FunWithEmotionsPage extends React.Component {
                   </>
                 )}
               </Header>
-
-              {/* <Header
-              className="h1"
-              size="huge"
-              textAlign="center"
-              style={{ color: "rgb(171, 218, 225)" }}
-            >
-              {this.state.mood ? this.state.mood : null}
-            </Header> */}
               <div className="footer" />
             </div>
           </>
