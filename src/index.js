@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 import { ParallaxProvider } from "react-scroll-parallax"
-import { applyMiddleware, createStore } from "redux"
+import { applyMiddleware, createStore, compose } from "redux"
 import thunk from "redux-thunk"
 import App from "./App"
 import "./index.css"
@@ -12,8 +12,10 @@ import reportWebVitals from "./reportWebVitals"
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk)
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+  )
 )
 
 ReactDOM.render(

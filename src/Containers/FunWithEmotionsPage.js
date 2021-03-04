@@ -5,7 +5,6 @@ import React from "react"
 import { connect } from "react-redux"
 import Webcam from "react-webcam"
 import { Grid, Header, Loader, Message } from "semantic-ui-react"
-// import { startSDK, stopSDK } from "../App"
 
 class FunWithEmotionsPage extends React.Component {
   state = {
@@ -23,16 +22,9 @@ class FunWithEmotionsPage extends React.Component {
     dominantAffect: "",
   }
   componentDidMount() {
-    CY.loader()
-      .licenseKey(process.env.sdkLicense)
-      .addModule(CY.modules().FACE_EMOTION.name)
-      .addModule(CY.modules().FACE_AROUSAL_VALENCE.name)
-      .load()
-      .then(({ start, stop }) => {
-        start()
-        this.stopSDK = stop
-      })
-    // startSDK()
+    this.props.startSDK()
+    console.log('component did mount')
+    console.log('this.props', this.props)
 
     window.addEventListener(CY.modules().FACE_EMOTION.eventName, (evt) => {
       this.setState({
@@ -59,8 +51,8 @@ class FunWithEmotionsPage extends React.Component {
   }
 
   componentWillUnmount() {
-    this.stopSDK()
-    // stopSDK()
+    this.props.stopSDK()
+    console.log("stopping SDK")
   }
 
   findDominantAffect = (affectsObj) => {
@@ -144,10 +136,10 @@ class FunWithEmotionsPage extends React.Component {
                     </Grid>
                   </>
                 ) : (
-                  <>
-                    <p>Please wait a moment...</p> <Loader active inline />
-                  </>
-                )}
+                    <>
+                      <p>Please wait a moment...</p> <Loader active inline />
+                    </>
+                  )}
               </Header>
               <div className="footer" />
             </div>
