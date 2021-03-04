@@ -14,7 +14,7 @@ class CameraPage extends React.Component {
             </Header>
           ) : null}
           <div>
-            <CameraView history={this.props.history} />
+            <CameraView history={this.props.history} stopSDK={this.props.stopSDK} startSDK={this.props.startSDK} />
           </div>
         </div>
       </>
