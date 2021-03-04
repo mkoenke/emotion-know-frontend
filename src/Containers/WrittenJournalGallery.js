@@ -20,6 +20,7 @@ class WrittenJournalGallery extends React.Component {
     this.setState({ items: this.props.allJournals })
   }
 
+  //something here is what is causing the component not to update immediately
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.allJournals !== this.state.items) {
       this.setState({ items: this.props.allJournals })
